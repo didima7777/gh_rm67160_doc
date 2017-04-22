@@ -80,9 +80,9 @@ C:   00000062  s_CSEG
 C:   00000080  l_DSEG                          
 C:   000000F7  l_SSEG                          
 C:   00000100  l_IRAM                          
-C:   00000713  l_CSEG                          
-C:   00000775  s_CONST                         
-C:   00000775  s_XINIT                         
+C:   00000AC4  l_CSEG                          
+C:   00000B26  s_CONST                         
+C:   00000B26  s_XINIT                         
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
 Hexadecimal  [32-Bits]
@@ -492,20 +492,21 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                00000062    00000713 =        1811. bytes (REL,CON,CODE)
+CSEG                                00000062    00000AC4 =        2756. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
 C:   00000062  _delayms                           main
 C:   00000083  _spi_cmd                           main
-C:   000000C3  _spi_data                          main
-C:   000000F8  _spi                               main
-C:   00000105  _reset                             main
-C:   00000115  _init                              main
-C:   00000676  _color                             main
-C:   0000072B  _gpio_init                         main
-C:   00000750  _main                              main
-C:   00000771  __sdcc_external_startup            _startup
+C:   000000C1  _spi_data                          main
+C:   000000F4  _spi                               main
+C:   00000101  _reset                             main
+C:   00000111  _init_2                            main
+C:   00000525  _init_1                            main
+C:   00000A86  _color                             main
+C:   00000ADC  _gpio_init                         main
+C:   00000B01  _main                              main
+C:   00000B22  __sdcc_external_startup            _startup
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 19.
 
