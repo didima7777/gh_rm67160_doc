@@ -20,54 +20,56 @@ void delayms(unsigned int ms)
   }
 }
 
-void spi_cmd(unsigned int cmd)
+unsigned char spi_raw_read(void)
 {
-	unsigned int i=0;
+	unsigned char cnt=0, ret=0;
 
-	CSX = 0;
-	SCL = 0;
-	SDI = 0;
-	SCL = 1;
-	for(i=0; i<8; i++){
+	for(cnt=0; cnt<8; cnt++){
 		SCL = 0;			
-		if((cmd & 0x80) == 0x80){
+		ret|= SDO;
+		ret<<= 1;
+		SCL = 1;
+	}
+	return ret;
+}
+
+void spi_raw_write(unsigned char val)
+{
+	unsigned char cnt=0;
+
+	for(cnt=0; cnt<8; cnt++){
+		SCL = 0;			
+		if((val & 0x80) == 0x80){
 			SDI = 1;
 		}
 		else{
 			SDI = 0;
 		}
-		cmd<<= 1;
+		val<<= 1;
 		SCL = 1;
 	}
-	CSX = 1;
+}
+
+void spi_cmd(unsigned char cmd)
+{
+	spi_raw_write(0x20);
+	spi_raw_write(cmd);
+	spi_raw_write(0x00);
+	spi_raw_write(0x00);
 }
 
 void spi_data(unsigned char dat)
 {
-	unsigned int i=0;
-
-	CSX = 0;
-	SCL = 0;
-	SDI = 1;
-	SCL = 1;
-	for(i=0; i<8; i++){
-		SCL = 0;			
-		if((dat & 0x80) == 0x80){
-			SDI = 1;
-		}
-		else{
-			SDI = 0;
-		}
-		dat<<= 1;
-		SCL = 1;
-	}
-	CSX = 1;
+	spi_raw_write(0x20);
+	spi_raw_write(dat);
 }
 
 void spi(unsigned char cmd, unsigned char dat)
 {
+	CSX = 0;
 	spi_cmd(cmd);
 	spi_data(dat);
+	CSX = 1;
 }
 
 void reset(void)
@@ -139,10 +141,8 @@ void init_2(void)
 	spi(0x60, 0x34);
 	spi(0x61, 0x02);
 	spi(0x62, 0x81);
-
 	spi(0xfe, 0x07);
 	spi(0x07, 0x4f);
-
 	spi(0xfe, 01);
 	spi(0x05, 0x15);
 	spi(0x0e, 0x84);
@@ -159,10 +159,10 @@ void init_2(void)
 	spi(0x26, 0x4a);
 	spi(0x2a, 0x03);
 	spi(0x37, 0x0c);
-	spi(0x3a, 0x0c);
+	spi(0x3a, 0x00);
 	spi(0x3b, 0x40);
 	spi(0x3d, 0x01);
-	spi(0x3f,0x38);
+	spi(0x3f, 0x38);
 	spi(0x40, 0x01);
 	spi(0x41, 0x01);
 	spi(0x42, 0x33);
@@ -191,6 +191,7 @@ void init_2(void)
 	spi(0x66, 0x66);
 	spi(0x70, 0xa5);
 	spi(0xfe, 0x05);
+	spi(0x05, 0x08);
 	spi(0xfe, 0x0a);
 	spi(0x29, 0x10);
 	spi(0xfe, 0x00);
@@ -425,14 +426,50 @@ void gpio_init(void)
   P5M1 = 0x00;
 }
 
+void uart_init(void)		//9600bps@11.0592MHz
+{
+	SCON = 0x50;		//8bit and variable baudrate
+	AUXR |= 0x40;		//Timer1's clock is Fosc (1T)
+	AUXR &= 0xFE;		//Use Timer1 as baudrate generator
+	TMOD &= 0x0F;		//Set Timer1 as 16-bit auto reload mode
+	TL1 = 0xE0;		//Initial timer value
+	TH1 = 0xFE;		//Initial timer value
+	ET1 = 0;		//Disable Timer1 interrupt
+	TR1 = 1;		//Timer1 running
+}
+
+void uart_send(unsigned char val)
+{
+	SBUF = val;   //將buffer內容送至SBUF傳送出去
+	while (TI == 0); //判斷TI是否等於1(傳送完畢), 否則停在此行
+	TI = 0;          //清除串列傳送完畢旗號
+}
+
 void main(void)
 {
+	unsigned char ret=0;
+
   gpio_init();
+	uart_init();
   AUXR|= 0x80;
 
 	reset();
-  init_2();
-  color();
+  //init_1();
+  //color();
+
+	delayms(3000);
+	uart_send(0xaa);
+	uart_send(0xbb);
+	uart_send(0xcc);
+
+	CSX = 0;
+	spi_raw_write(0x20);
+	spi_raw_write(0x00);
+	spi_raw_write(0x00);
+	spi_raw_write(0x00);
+	spi_raw_write(0xc0);
+	ret = spi_raw_read();
+	CSX = 1;
   while(1){
     P55 = 0;
     delayms(1000);

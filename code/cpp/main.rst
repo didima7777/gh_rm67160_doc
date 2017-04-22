@@ -1,7 +1,7 @@
                                       1 ;--------------------------------------------------------
                                       2 ; File Created by SDCC : free open source ANSI-C Compiler
                                       3 ; Version 3.4.0 #8981 (Jul  5 2014) (Linux)
-                                      4 ; This file was generated Sat Apr 22 22:59:44 2017
+                                      4 ; This file was generated Sat Apr 22 23:46:25 2017
                                       5 ;--------------------------------------------------------
                                       6 	.module main
                                       7 	.optsdcc -mmcs51 --model-small
@@ -10,2056 +10,2147 @@
                                      10 ; Public variables in this module
                                      11 ;--------------------------------------------------------
                                      12 	.globl _main
-                                     13 	.globl _gpio_init
-                                     14 	.globl _color
-                                     15 	.globl _init_1
-                                     16 	.globl _init_2
-                                     17 	.globl _reset
-                                     18 	.globl _spi
-                                     19 	.globl _spi_data
-                                     20 	.globl _spi_cmd
-                                     21 	.globl _delayms
-                                     22 	.globl _CCF0
-                                     23 	.globl _CCF1
-                                     24 	.globl _CCF2
-                                     25 	.globl _CR
-                                     26 	.globl _CF
-                                     27 	.globl _RI
-                                     28 	.globl _TI
-                                     29 	.globl _RB8
-                                     30 	.globl _TB8
-                                     31 	.globl _REN
-                                     32 	.globl _SM2
-                                     33 	.globl _SM1
-                                     34 	.globl _SM0
-                                     35 	.globl _IT0
-                                     36 	.globl _IE0
-                                     37 	.globl _IT1
-                                     38 	.globl _IE1
-                                     39 	.globl _TR0
-                                     40 	.globl _TF0
-                                     41 	.globl _TR1
-                                     42 	.globl _TF1
-                                     43 	.globl _PX0
-                                     44 	.globl _PT0
-                                     45 	.globl _PX1
-                                     46 	.globl _PT1
-                                     47 	.globl _PS
-                                     48 	.globl _PADC
-                                     49 	.globl _PLVD
-                                     50 	.globl _PPCA
-                                     51 	.globl _EX0
-                                     52 	.globl _ET0
-                                     53 	.globl _EX1
-                                     54 	.globl _ET1
-                                     55 	.globl _ES
-                                     56 	.globl _EADC
-                                     57 	.globl _ELVD
-                                     58 	.globl _EA
-                                     59 	.globl _P77
-                                     60 	.globl _P76
-                                     61 	.globl _P75
-                                     62 	.globl _P74
-                                     63 	.globl _P73
-                                     64 	.globl _P72
-                                     65 	.globl _P71
-                                     66 	.globl _P70
-                                     67 	.globl _P67
-                                     68 	.globl _P66
-                                     69 	.globl _P65
-                                     70 	.globl _P64
-                                     71 	.globl _P63
-                                     72 	.globl _P62
-                                     73 	.globl _P61
-                                     74 	.globl _P60
-                                     75 	.globl _P57
-                                     76 	.globl _P56
-                                     77 	.globl _P55
-                                     78 	.globl _P54
-                                     79 	.globl _P53
-                                     80 	.globl _P52
-                                     81 	.globl _P51
-                                     82 	.globl _P50
-                                     83 	.globl _P47
-                                     84 	.globl _P46
-                                     85 	.globl _P45
-                                     86 	.globl _P44
-                                     87 	.globl _P43
-                                     88 	.globl _P42
-                                     89 	.globl _P41
-                                     90 	.globl _P40
-                                     91 	.globl _P37
-                                     92 	.globl _P36
-                                     93 	.globl _P35
-                                     94 	.globl _P34
-                                     95 	.globl _P33
-                                     96 	.globl _P32
-                                     97 	.globl _P31
-                                     98 	.globl _P30
-                                     99 	.globl _P27
-                                    100 	.globl _P26
-                                    101 	.globl _P25
-                                    102 	.globl _P24
-                                    103 	.globl _P23
-                                    104 	.globl _P22
-                                    105 	.globl _P21
-                                    106 	.globl _P20
-                                    107 	.globl _P17
-                                    108 	.globl _P16
-                                    109 	.globl _P15
-                                    110 	.globl _P14
-                                    111 	.globl _P13
-                                    112 	.globl _P12
-                                    113 	.globl _P11
-                                    114 	.globl _P10
-                                    115 	.globl _P07
-                                    116 	.globl _P06
-                                    117 	.globl _P05
-                                    118 	.globl _P04
-                                    119 	.globl _P03
-                                    120 	.globl _P02
-                                    121 	.globl _P01
-                                    122 	.globl _P00
-                                    123 	.globl _P
-                                    124 	.globl _OV
-                                    125 	.globl _RS0
-                                    126 	.globl _RS1
-                                    127 	.globl _F0
-                                    128 	.globl _AC
-                                    129 	.globl _CY
-                                    130 	.globl _F1
-                                    131 	.globl _RD
-                                    132 	.globl _WR
-                                    133 	.globl _T1
-                                    134 	.globl _T0
-                                    135 	.globl _INT1
-                                    136 	.globl _INT0
-                                    137 	.globl _TXD
-                                    138 	.globl _RXD
-                                    139 	.globl _P3_7
-                                    140 	.globl _P3_6
-                                    141 	.globl _P3_5
-                                    142 	.globl _P3_4
-                                    143 	.globl _P3_3
-                                    144 	.globl _P3_2
-                                    145 	.globl _P3_1
-                                    146 	.globl _P3_0
-                                    147 	.globl _P2_7
-                                    148 	.globl _P2_6
-                                    149 	.globl _P2_5
-                                    150 	.globl _P2_4
-                                    151 	.globl _P2_3
-                                    152 	.globl _P2_2
-                                    153 	.globl _P2_1
-                                    154 	.globl _P2_0
-                                    155 	.globl _P1_7
-                                    156 	.globl _P1_6
-                                    157 	.globl _P1_5
-                                    158 	.globl _P1_4
-                                    159 	.globl _P1_3
-                                    160 	.globl _P1_2
-                                    161 	.globl _P1_1
-                                    162 	.globl _P1_0
-                                    163 	.globl _P0_7
-                                    164 	.globl _P0_6
-                                    165 	.globl _P0_5
-                                    166 	.globl _P0_4
-                                    167 	.globl _P0_3
-                                    168 	.globl _P0_2
-                                    169 	.globl _P0_1
-                                    170 	.globl _P0_0
-                                    171 	.globl _PWMFDCR
-                                    172 	.globl _PWMIF
-                                    173 	.globl _PWMCR
-                                    174 	.globl _PWMCFG
-                                    175 	.globl _CMPCR2
-                                    176 	.globl _CMPCR1
-                                    177 	.globl _CCAP2H
-                                    178 	.globl _CCAP1H
-                                    179 	.globl _CCAP0H
-                                    180 	.globl _PCA_PWM2
-                                    181 	.globl _PCA_PWM1
-                                    182 	.globl _PCA_PWM0
-                                    183 	.globl _CCAP2L
-                                    184 	.globl _CCAP1L
-                                    185 	.globl _CCAP0L
-                                    186 	.globl _CCAPM2
-                                    187 	.globl _CCAPM1
-                                    188 	.globl _CCAPM0
-                                    189 	.globl _CH
-                                    190 	.globl _CL
-                                    191 	.globl _CMOD
-                                    192 	.globl _CCON
-                                    193 	.globl _IAP_CONTR
-                                    194 	.globl _IAP_TRIG
-                                    195 	.globl _IAP_CMD
-                                    196 	.globl _IAP_ADDRL
-                                    197 	.globl _IAP_ADDRH
-                                    198 	.globl _IAP_DATA
-                                    199 	.globl _SPDAT
-                                    200 	.globl _SPCTL
-                                    201 	.globl _SPSTAT
-                                    202 	.globl _ADC_RESL
-                                    203 	.globl _ADC_RES
-                                    204 	.globl _ADC_CONTR
-                                    205 	.globl _SADEN
-                                    206 	.globl _SADDR
-                                    207 	.globl _S4BUF
-                                    208 	.globl _S4CON
-                                    209 	.globl _S3BUF
-                                    210 	.globl _S3CON
-                                    211 	.globl _S2BUF
-                                    212 	.globl _S2CON
-                                    213 	.globl _SBUF
-                                    214 	.globl _SCON
-                                    215 	.globl _WDT_CONTR
-                                    216 	.globl _WKTCH
-                                    217 	.globl _WKTCL
-                                    218 	.globl _T2L
-                                    219 	.globl _T2H
-                                    220 	.globl _T3L
-                                    221 	.globl _T3H
-                                    222 	.globl _T4L
-                                    223 	.globl _T4H
-                                    224 	.globl _T3T4M
-                                    225 	.globl _T4T3M
-                                    226 	.globl _TH1
-                                    227 	.globl _TH0
-                                    228 	.globl _TL1
-                                    229 	.globl _TL0
-                                    230 	.globl _TMOD
-                                    231 	.globl _TCON
-                                    232 	.globl _INT_CLKO
-                                    233 	.globl _IP2
-                                    234 	.globl _IE2
-                                    235 	.globl _IP
-                                    236 	.globl _IE
-                                    237 	.globl _P_SW2
-                                    238 	.globl _P1ASF
-                                    239 	.globl _BUS_SPEED
-                                    240 	.globl _CLK_DIV
-                                    241 	.globl _P_SW1
-                                    242 	.globl _AUXR1
-                                    243 	.globl _AUXR
-                                    244 	.globl _PCON
-                                    245 	.globl _P7M1
-                                    246 	.globl _P7M0
-                                    247 	.globl _P6M1
-                                    248 	.globl _P6M0
-                                    249 	.globl _P5M1
-                                    250 	.globl _P5M0
-                                    251 	.globl _P4M1
-                                    252 	.globl _P4M0
-                                    253 	.globl _P3M1
-                                    254 	.globl _P3M0
-                                    255 	.globl _P2M1
-                                    256 	.globl _P2M0
-                                    257 	.globl _P1M1
-                                    258 	.globl _P1M0
-                                    259 	.globl _P0M1
-                                    260 	.globl _P0M0
-                                    261 	.globl _P7
-                                    262 	.globl _P6
-                                    263 	.globl _P5
-                                    264 	.globl _P4
-                                    265 	.globl _P3
-                                    266 	.globl _P2
-                                    267 	.globl _P1
-                                    268 	.globl _P0
-                                    269 	.globl _DPH
-                                    270 	.globl _DPL
-                                    271 	.globl _SP
-                                    272 	.globl _PSW
-                                    273 	.globl _B
-                                    274 	.globl _ACC
-                                    275 	.globl _spi_PARM_2
-                                    276 ;--------------------------------------------------------
-                                    277 ; special function registers
-                                    278 ;--------------------------------------------------------
-                                    279 	.area RSEG    (ABS,DATA)
-      000000                        280 	.org 0x0000
-                           0000E0   281 _ACC	=	0x00e0
-                           0000F0   282 _B	=	0x00f0
-                           0000D0   283 _PSW	=	0x00d0
-                           000081   284 _SP	=	0x0081
-                           000082   285 _DPL	=	0x0082
-                           000083   286 _DPH	=	0x0083
-                           000080   287 _P0	=	0x0080
-                           000090   288 _P1	=	0x0090
-                           0000A0   289 _P2	=	0x00a0
-                           0000B0   290 _P3	=	0x00b0
-                           0000C0   291 _P4	=	0x00c0
-                           0000C8   292 _P5	=	0x00c8
-                           0000E8   293 _P6	=	0x00e8
-                           0000F8   294 _P7	=	0x00f8
-                           000094   295 _P0M0	=	0x0094
-                           000093   296 _P0M1	=	0x0093
-                           000092   297 _P1M0	=	0x0092
-                           000091   298 _P1M1	=	0x0091
-                           000096   299 _P2M0	=	0x0096
-                           000095   300 _P2M1	=	0x0095
-                           0000B2   301 _P3M0	=	0x00b2
-                           0000B1   302 _P3M1	=	0x00b1
-                           0000B4   303 _P4M0	=	0x00b4
-                           0000B3   304 _P4M1	=	0x00b3
-                           0000CA   305 _P5M0	=	0x00ca
-                           0000C9   306 _P5M1	=	0x00c9
-                           0000CC   307 _P6M0	=	0x00cc
-                           0000CB   308 _P6M1	=	0x00cb
-                           0000E2   309 _P7M0	=	0x00e2
-                           0000E1   310 _P7M1	=	0x00e1
-                           000087   311 _PCON	=	0x0087
-                           00008E   312 _AUXR	=	0x008e
-                           0000A2   313 _AUXR1	=	0x00a2
-                           0000A2   314 _P_SW1	=	0x00a2
-                           000097   315 _CLK_DIV	=	0x0097
-                           0000A1   316 _BUS_SPEED	=	0x00a1
-                           00009D   317 _P1ASF	=	0x009d
-                           0000BA   318 _P_SW2	=	0x00ba
-                           0000A8   319 _IE	=	0x00a8
-                           0000B8   320 _IP	=	0x00b8
-                           0000AF   321 _IE2	=	0x00af
-                           0000B5   322 _IP2	=	0x00b5
-                           00008F   323 _INT_CLKO	=	0x008f
-                           000088   324 _TCON	=	0x0088
-                           000089   325 _TMOD	=	0x0089
-                           00008A   326 _TL0	=	0x008a
-                           00008B   327 _TL1	=	0x008b
-                           00008C   328 _TH0	=	0x008c
-                           00008D   329 _TH1	=	0x008d
-                           0000D1   330 _T4T3M	=	0x00d1
-                           0000D1   331 _T3T4M	=	0x00d1
-                           0000D2   332 _T4H	=	0x00d2
-                           0000D3   333 _T4L	=	0x00d3
-                           0000D4   334 _T3H	=	0x00d4
-                           0000D5   335 _T3L	=	0x00d5
-                           0000D6   336 _T2H	=	0x00d6
-                           0000D7   337 _T2L	=	0x00d7
-                           0000AA   338 _WKTCL	=	0x00aa
-                           0000AB   339 _WKTCH	=	0x00ab
-                           0000C1   340 _WDT_CONTR	=	0x00c1
-                           000098   341 _SCON	=	0x0098
-                           000099   342 _SBUF	=	0x0099
-                           00009A   343 _S2CON	=	0x009a
-                           00009B   344 _S2BUF	=	0x009b
-                           0000AC   345 _S3CON	=	0x00ac
-                           0000AD   346 _S3BUF	=	0x00ad
-                           000084   347 _S4CON	=	0x0084
-                           000085   348 _S4BUF	=	0x0085
-                           0000A9   349 _SADDR	=	0x00a9
-                           0000B9   350 _SADEN	=	0x00b9
-                           0000BC   351 _ADC_CONTR	=	0x00bc
-                           0000BD   352 _ADC_RES	=	0x00bd
-                           0000BE   353 _ADC_RESL	=	0x00be
-                           0000CD   354 _SPSTAT	=	0x00cd
-                           0000CE   355 _SPCTL	=	0x00ce
-                           0000CF   356 _SPDAT	=	0x00cf
-                           0000C2   357 _IAP_DATA	=	0x00c2
-                           0000C3   358 _IAP_ADDRH	=	0x00c3
-                           0000C4   359 _IAP_ADDRL	=	0x00c4
-                           0000C5   360 _IAP_CMD	=	0x00c5
-                           0000C6   361 _IAP_TRIG	=	0x00c6
-                           0000C7   362 _IAP_CONTR	=	0x00c7
-                           0000D8   363 _CCON	=	0x00d8
-                           0000D9   364 _CMOD	=	0x00d9
-                           0000E9   365 _CL	=	0x00e9
-                           0000F9   366 _CH	=	0x00f9
-                           0000DA   367 _CCAPM0	=	0x00da
-                           0000DB   368 _CCAPM1	=	0x00db
-                           0000DC   369 _CCAPM2	=	0x00dc
-                           0000EA   370 _CCAP0L	=	0x00ea
-                           0000EB   371 _CCAP1L	=	0x00eb
-                           0000EC   372 _CCAP2L	=	0x00ec
-                           0000F2   373 _PCA_PWM0	=	0x00f2
-                           0000F3   374 _PCA_PWM1	=	0x00f3
-                           0000F4   375 _PCA_PWM2	=	0x00f4
-                           0000FA   376 _CCAP0H	=	0x00fa
-                           0000FB   377 _CCAP1H	=	0x00fb
-                           0000FC   378 _CCAP2H	=	0x00fc
-                           0000E6   379 _CMPCR1	=	0x00e6
-                           0000E7   380 _CMPCR2	=	0x00e7
-                           0000F1   381 _PWMCFG	=	0x00f1
-                           0000F5   382 _PWMCR	=	0x00f5
-                           0000F6   383 _PWMIF	=	0x00f6
-                           0000F7   384 _PWMFDCR	=	0x00f7
-                                    385 ;--------------------------------------------------------
-                                    386 ; special function bits
-                                    387 ;--------------------------------------------------------
-                                    388 	.area RSEG    (ABS,DATA)
-      000000                        389 	.org 0x0000
-                           000080   390 _P0_0	=	0x0080
-                           000081   391 _P0_1	=	0x0081
-                           000082   392 _P0_2	=	0x0082
-                           000083   393 _P0_3	=	0x0083
-                           000084   394 _P0_4	=	0x0084
-                           000085   395 _P0_5	=	0x0085
-                           000086   396 _P0_6	=	0x0086
-                           000087   397 _P0_7	=	0x0087
-                           000090   398 _P1_0	=	0x0090
-                           000091   399 _P1_1	=	0x0091
-                           000092   400 _P1_2	=	0x0092
-                           000093   401 _P1_3	=	0x0093
-                           000094   402 _P1_4	=	0x0094
-                           000095   403 _P1_5	=	0x0095
-                           000096   404 _P1_6	=	0x0096
-                           000097   405 _P1_7	=	0x0097
-                           0000A0   406 _P2_0	=	0x00a0
-                           0000A1   407 _P2_1	=	0x00a1
-                           0000A2   408 _P2_2	=	0x00a2
-                           0000A3   409 _P2_3	=	0x00a3
-                           0000A4   410 _P2_4	=	0x00a4
-                           0000A5   411 _P2_5	=	0x00a5
-                           0000A6   412 _P2_6	=	0x00a6
-                           0000A7   413 _P2_7	=	0x00a7
-                           0000B0   414 _P3_0	=	0x00b0
-                           0000B1   415 _P3_1	=	0x00b1
-                           0000B2   416 _P3_2	=	0x00b2
-                           0000B3   417 _P3_3	=	0x00b3
-                           0000B4   418 _P3_4	=	0x00b4
-                           0000B5   419 _P3_5	=	0x00b5
-                           0000B6   420 _P3_6	=	0x00b6
-                           0000B7   421 _P3_7	=	0x00b7
-                           0000B0   422 _RXD	=	0x00b0
-                           0000B1   423 _TXD	=	0x00b1
-                           0000B2   424 _INT0	=	0x00b2
-                           0000B3   425 _INT1	=	0x00b3
-                           0000B4   426 _T0	=	0x00b4
-                           0000B5   427 _T1	=	0x00b5
-                           0000B6   428 _WR	=	0x00b6
-                           0000B7   429 _RD	=	0x00b7
-                           0000D1   430 _F1	=	0x00d1
-                           0000D7   431 _CY	=	0x00d7
-                           0000D6   432 _AC	=	0x00d6
-                           0000D5   433 _F0	=	0x00d5
-                           0000D4   434 _RS1	=	0x00d4
-                           0000D3   435 _RS0	=	0x00d3
-                           0000D2   436 _OV	=	0x00d2
-                           0000D0   437 _P	=	0x00d0
-                           000080   438 _P00	=	0x0080
-                           000081   439 _P01	=	0x0081
-                           000082   440 _P02	=	0x0082
-                           000083   441 _P03	=	0x0083
-                           000084   442 _P04	=	0x0084
-                           000085   443 _P05	=	0x0085
-                           000086   444 _P06	=	0x0086
-                           000087   445 _P07	=	0x0087
-                           000090   446 _P10	=	0x0090
-                           000091   447 _P11	=	0x0091
-                           000092   448 _P12	=	0x0092
-                           000093   449 _P13	=	0x0093
-                           000094   450 _P14	=	0x0094
-                           000095   451 _P15	=	0x0095
-                           000096   452 _P16	=	0x0096
-                           000097   453 _P17	=	0x0097
-                           0000A0   454 _P20	=	0x00a0
-                           0000A1   455 _P21	=	0x00a1
-                           0000A2   456 _P22	=	0x00a2
-                           0000A3   457 _P23	=	0x00a3
-                           0000A4   458 _P24	=	0x00a4
-                           0000A5   459 _P25	=	0x00a5
-                           0000A6   460 _P26	=	0x00a6
-                           0000A7   461 _P27	=	0x00a7
-                           0000B0   462 _P30	=	0x00b0
-                           0000B1   463 _P31	=	0x00b1
-                           0000B2   464 _P32	=	0x00b2
-                           0000B3   465 _P33	=	0x00b3
-                           0000B4   466 _P34	=	0x00b4
-                           0000B5   467 _P35	=	0x00b5
-                           0000B6   468 _P36	=	0x00b6
-                           0000B7   469 _P37	=	0x00b7
-                           0000C0   470 _P40	=	0x00c0
-                           0000C1   471 _P41	=	0x00c1
-                           0000C2   472 _P42	=	0x00c2
-                           0000C3   473 _P43	=	0x00c3
-                           0000C4   474 _P44	=	0x00c4
-                           0000C5   475 _P45	=	0x00c5
-                           0000C6   476 _P46	=	0x00c6
-                           0000C7   477 _P47	=	0x00c7
-                           0000C8   478 _P50	=	0x00c8
-                           0000C9   479 _P51	=	0x00c9
-                           0000CA   480 _P52	=	0x00ca
-                           0000CB   481 _P53	=	0x00cb
-                           0000CC   482 _P54	=	0x00cc
-                           0000CD   483 _P55	=	0x00cd
-                           0000CE   484 _P56	=	0x00ce
-                           0000CF   485 _P57	=	0x00cf
-                           0000E8   486 _P60	=	0x00e8
-                           0000E9   487 _P61	=	0x00e9
-                           0000EA   488 _P62	=	0x00ea
-                           0000EB   489 _P63	=	0x00eb
-                           0000EC   490 _P64	=	0x00ec
-                           0000ED   491 _P65	=	0x00ed
-                           0000EE   492 _P66	=	0x00ee
-                           0000EF   493 _P67	=	0x00ef
-                           0000F8   494 _P70	=	0x00f8
-                           0000F9   495 _P71	=	0x00f9
-                           0000FA   496 _P72	=	0x00fa
-                           0000FB   497 _P73	=	0x00fb
-                           0000FC   498 _P74	=	0x00fc
-                           0000FD   499 _P75	=	0x00fd
-                           0000FE   500 _P76	=	0x00fe
-                           0000FF   501 _P77	=	0x00ff
-                           0000AF   502 _EA	=	0x00af
-                           0000AE   503 _ELVD	=	0x00ae
-                           0000AD   504 _EADC	=	0x00ad
-                           0000AC   505 _ES	=	0x00ac
-                           0000AB   506 _ET1	=	0x00ab
-                           0000AA   507 _EX1	=	0x00aa
-                           0000A9   508 _ET0	=	0x00a9
-                           0000A8   509 _EX0	=	0x00a8
-                           0000BF   510 _PPCA	=	0x00bf
-                           0000BE   511 _PLVD	=	0x00be
-                           0000BD   512 _PADC	=	0x00bd
-                           0000BC   513 _PS	=	0x00bc
-                           0000BB   514 _PT1	=	0x00bb
-                           0000BA   515 _PX1	=	0x00ba
-                           0000B9   516 _PT0	=	0x00b9
-                           0000B8   517 _PX0	=	0x00b8
-                           00008F   518 _TF1	=	0x008f
-                           00008E   519 _TR1	=	0x008e
-                           00008D   520 _TF0	=	0x008d
-                           00008C   521 _TR0	=	0x008c
-                           00008B   522 _IE1	=	0x008b
-                           00008A   523 _IT1	=	0x008a
-                           000089   524 _IE0	=	0x0089
-                           000088   525 _IT0	=	0x0088
-                           00009F   526 _SM0	=	0x009f
-                           00009E   527 _SM1	=	0x009e
-                           00009D   528 _SM2	=	0x009d
-                           00009C   529 _REN	=	0x009c
-                           00009B   530 _TB8	=	0x009b
-                           00009A   531 _RB8	=	0x009a
-                           000099   532 _TI	=	0x0099
-                           000098   533 _RI	=	0x0098
-                           0000DF   534 _CF	=	0x00df
-                           0000DE   535 _CR	=	0x00de
-                           0000DA   536 _CCF2	=	0x00da
-                           0000D9   537 _CCF1	=	0x00d9
-                           0000D8   538 _CCF0	=	0x00d8
-                                    539 ;--------------------------------------------------------
-                                    540 ; overlayable register banks
-                                    541 ;--------------------------------------------------------
-                                    542 	.area REG_BANK_0	(REL,OVR,DATA)
-      000000                        543 	.ds 8
-                                    544 ;--------------------------------------------------------
-                                    545 ; internal ram data
-                                    546 ;--------------------------------------------------------
-                                    547 	.area DSEG    (DATA)
-      000008                        548 _spi_PARM_2:
-      000008                        549 	.ds 1
+                                     13 	.globl _uart_send
+                                     14 	.globl _uart_init
+                                     15 	.globl _gpio_init
+                                     16 	.globl _color
+                                     17 	.globl _init_1
+                                     18 	.globl _init_2
+                                     19 	.globl _reset
+                                     20 	.globl _spi
+                                     21 	.globl _spi_data
+                                     22 	.globl _spi_cmd
+                                     23 	.globl _spi_raw_write
+                                     24 	.globl _spi_raw_read
+                                     25 	.globl _delayms
+                                     26 	.globl _CCF0
+                                     27 	.globl _CCF1
+                                     28 	.globl _CCF2
+                                     29 	.globl _CR
+                                     30 	.globl _CF
+                                     31 	.globl _RI
+                                     32 	.globl _TI
+                                     33 	.globl _RB8
+                                     34 	.globl _TB8
+                                     35 	.globl _REN
+                                     36 	.globl _SM2
+                                     37 	.globl _SM1
+                                     38 	.globl _SM0
+                                     39 	.globl _IT0
+                                     40 	.globl _IE0
+                                     41 	.globl _IT1
+                                     42 	.globl _IE1
+                                     43 	.globl _TR0
+                                     44 	.globl _TF0
+                                     45 	.globl _TR1
+                                     46 	.globl _TF1
+                                     47 	.globl _PX0
+                                     48 	.globl _PT0
+                                     49 	.globl _PX1
+                                     50 	.globl _PT1
+                                     51 	.globl _PS
+                                     52 	.globl _PADC
+                                     53 	.globl _PLVD
+                                     54 	.globl _PPCA
+                                     55 	.globl _EX0
+                                     56 	.globl _ET0
+                                     57 	.globl _EX1
+                                     58 	.globl _ET1
+                                     59 	.globl _ES
+                                     60 	.globl _EADC
+                                     61 	.globl _ELVD
+                                     62 	.globl _EA
+                                     63 	.globl _P77
+                                     64 	.globl _P76
+                                     65 	.globl _P75
+                                     66 	.globl _P74
+                                     67 	.globl _P73
+                                     68 	.globl _P72
+                                     69 	.globl _P71
+                                     70 	.globl _P70
+                                     71 	.globl _P67
+                                     72 	.globl _P66
+                                     73 	.globl _P65
+                                     74 	.globl _P64
+                                     75 	.globl _P63
+                                     76 	.globl _P62
+                                     77 	.globl _P61
+                                     78 	.globl _P60
+                                     79 	.globl _P57
+                                     80 	.globl _P56
+                                     81 	.globl _P55
+                                     82 	.globl _P54
+                                     83 	.globl _P53
+                                     84 	.globl _P52
+                                     85 	.globl _P51
+                                     86 	.globl _P50
+                                     87 	.globl _P47
+                                     88 	.globl _P46
+                                     89 	.globl _P45
+                                     90 	.globl _P44
+                                     91 	.globl _P43
+                                     92 	.globl _P42
+                                     93 	.globl _P41
+                                     94 	.globl _P40
+                                     95 	.globl _P37
+                                     96 	.globl _P36
+                                     97 	.globl _P35
+                                     98 	.globl _P34
+                                     99 	.globl _P33
+                                    100 	.globl _P32
+                                    101 	.globl _P31
+                                    102 	.globl _P30
+                                    103 	.globl _P27
+                                    104 	.globl _P26
+                                    105 	.globl _P25
+                                    106 	.globl _P24
+                                    107 	.globl _P23
+                                    108 	.globl _P22
+                                    109 	.globl _P21
+                                    110 	.globl _P20
+                                    111 	.globl _P17
+                                    112 	.globl _P16
+                                    113 	.globl _P15
+                                    114 	.globl _P14
+                                    115 	.globl _P13
+                                    116 	.globl _P12
+                                    117 	.globl _P11
+                                    118 	.globl _P10
+                                    119 	.globl _P07
+                                    120 	.globl _P06
+                                    121 	.globl _P05
+                                    122 	.globl _P04
+                                    123 	.globl _P03
+                                    124 	.globl _P02
+                                    125 	.globl _P01
+                                    126 	.globl _P00
+                                    127 	.globl _P
+                                    128 	.globl _OV
+                                    129 	.globl _RS0
+                                    130 	.globl _RS1
+                                    131 	.globl _F0
+                                    132 	.globl _AC
+                                    133 	.globl _CY
+                                    134 	.globl _F1
+                                    135 	.globl _RD
+                                    136 	.globl _WR
+                                    137 	.globl _T1
+                                    138 	.globl _T0
+                                    139 	.globl _INT1
+                                    140 	.globl _INT0
+                                    141 	.globl _TXD
+                                    142 	.globl _RXD
+                                    143 	.globl _P3_7
+                                    144 	.globl _P3_6
+                                    145 	.globl _P3_5
+                                    146 	.globl _P3_4
+                                    147 	.globl _P3_3
+                                    148 	.globl _P3_2
+                                    149 	.globl _P3_1
+                                    150 	.globl _P3_0
+                                    151 	.globl _P2_7
+                                    152 	.globl _P2_6
+                                    153 	.globl _P2_5
+                                    154 	.globl _P2_4
+                                    155 	.globl _P2_3
+                                    156 	.globl _P2_2
+                                    157 	.globl _P2_1
+                                    158 	.globl _P2_0
+                                    159 	.globl _P1_7
+                                    160 	.globl _P1_6
+                                    161 	.globl _P1_5
+                                    162 	.globl _P1_4
+                                    163 	.globl _P1_3
+                                    164 	.globl _P1_2
+                                    165 	.globl _P1_1
+                                    166 	.globl _P1_0
+                                    167 	.globl _P0_7
+                                    168 	.globl _P0_6
+                                    169 	.globl _P0_5
+                                    170 	.globl _P0_4
+                                    171 	.globl _P0_3
+                                    172 	.globl _P0_2
+                                    173 	.globl _P0_1
+                                    174 	.globl _P0_0
+                                    175 	.globl _PWMFDCR
+                                    176 	.globl _PWMIF
+                                    177 	.globl _PWMCR
+                                    178 	.globl _PWMCFG
+                                    179 	.globl _CMPCR2
+                                    180 	.globl _CMPCR1
+                                    181 	.globl _CCAP2H
+                                    182 	.globl _CCAP1H
+                                    183 	.globl _CCAP0H
+                                    184 	.globl _PCA_PWM2
+                                    185 	.globl _PCA_PWM1
+                                    186 	.globl _PCA_PWM0
+                                    187 	.globl _CCAP2L
+                                    188 	.globl _CCAP1L
+                                    189 	.globl _CCAP0L
+                                    190 	.globl _CCAPM2
+                                    191 	.globl _CCAPM1
+                                    192 	.globl _CCAPM0
+                                    193 	.globl _CH
+                                    194 	.globl _CL
+                                    195 	.globl _CMOD
+                                    196 	.globl _CCON
+                                    197 	.globl _IAP_CONTR
+                                    198 	.globl _IAP_TRIG
+                                    199 	.globl _IAP_CMD
+                                    200 	.globl _IAP_ADDRL
+                                    201 	.globl _IAP_ADDRH
+                                    202 	.globl _IAP_DATA
+                                    203 	.globl _SPDAT
+                                    204 	.globl _SPCTL
+                                    205 	.globl _SPSTAT
+                                    206 	.globl _ADC_RESL
+                                    207 	.globl _ADC_RES
+                                    208 	.globl _ADC_CONTR
+                                    209 	.globl _SADEN
+                                    210 	.globl _SADDR
+                                    211 	.globl _S4BUF
+                                    212 	.globl _S4CON
+                                    213 	.globl _S3BUF
+                                    214 	.globl _S3CON
+                                    215 	.globl _S2BUF
+                                    216 	.globl _S2CON
+                                    217 	.globl _SBUF
+                                    218 	.globl _SCON
+                                    219 	.globl _WDT_CONTR
+                                    220 	.globl _WKTCH
+                                    221 	.globl _WKTCL
+                                    222 	.globl _T2L
+                                    223 	.globl _T2H
+                                    224 	.globl _T3L
+                                    225 	.globl _T3H
+                                    226 	.globl _T4L
+                                    227 	.globl _T4H
+                                    228 	.globl _T3T4M
+                                    229 	.globl _T4T3M
+                                    230 	.globl _TH1
+                                    231 	.globl _TH0
+                                    232 	.globl _TL1
+                                    233 	.globl _TL0
+                                    234 	.globl _TMOD
+                                    235 	.globl _TCON
+                                    236 	.globl _INT_CLKO
+                                    237 	.globl _IP2
+                                    238 	.globl _IE2
+                                    239 	.globl _IP
+                                    240 	.globl _IE
+                                    241 	.globl _P_SW2
+                                    242 	.globl _P1ASF
+                                    243 	.globl _BUS_SPEED
+                                    244 	.globl _CLK_DIV
+                                    245 	.globl _P_SW1
+                                    246 	.globl _AUXR1
+                                    247 	.globl _AUXR
+                                    248 	.globl _PCON
+                                    249 	.globl _P7M1
+                                    250 	.globl _P7M0
+                                    251 	.globl _P6M1
+                                    252 	.globl _P6M0
+                                    253 	.globl _P5M1
+                                    254 	.globl _P5M0
+                                    255 	.globl _P4M1
+                                    256 	.globl _P4M0
+                                    257 	.globl _P3M1
+                                    258 	.globl _P3M0
+                                    259 	.globl _P2M1
+                                    260 	.globl _P2M0
+                                    261 	.globl _P1M1
+                                    262 	.globl _P1M0
+                                    263 	.globl _P0M1
+                                    264 	.globl _P0M0
+                                    265 	.globl _P7
+                                    266 	.globl _P6
+                                    267 	.globl _P5
+                                    268 	.globl _P4
+                                    269 	.globl _P3
+                                    270 	.globl _P2
+                                    271 	.globl _P1
+                                    272 	.globl _P0
+                                    273 	.globl _DPH
+                                    274 	.globl _DPL
+                                    275 	.globl _SP
+                                    276 	.globl _PSW
+                                    277 	.globl _B
+                                    278 	.globl _ACC
+                                    279 	.globl _spi_PARM_2
+                                    280 ;--------------------------------------------------------
+                                    281 ; special function registers
+                                    282 ;--------------------------------------------------------
+                                    283 	.area RSEG    (ABS,DATA)
+      000000                        284 	.org 0x0000
+                           0000E0   285 _ACC	=	0x00e0
+                           0000F0   286 _B	=	0x00f0
+                           0000D0   287 _PSW	=	0x00d0
+                           000081   288 _SP	=	0x0081
+                           000082   289 _DPL	=	0x0082
+                           000083   290 _DPH	=	0x0083
+                           000080   291 _P0	=	0x0080
+                           000090   292 _P1	=	0x0090
+                           0000A0   293 _P2	=	0x00a0
+                           0000B0   294 _P3	=	0x00b0
+                           0000C0   295 _P4	=	0x00c0
+                           0000C8   296 _P5	=	0x00c8
+                           0000E8   297 _P6	=	0x00e8
+                           0000F8   298 _P7	=	0x00f8
+                           000094   299 _P0M0	=	0x0094
+                           000093   300 _P0M1	=	0x0093
+                           000092   301 _P1M0	=	0x0092
+                           000091   302 _P1M1	=	0x0091
+                           000096   303 _P2M0	=	0x0096
+                           000095   304 _P2M1	=	0x0095
+                           0000B2   305 _P3M0	=	0x00b2
+                           0000B1   306 _P3M1	=	0x00b1
+                           0000B4   307 _P4M0	=	0x00b4
+                           0000B3   308 _P4M1	=	0x00b3
+                           0000CA   309 _P5M0	=	0x00ca
+                           0000C9   310 _P5M1	=	0x00c9
+                           0000CC   311 _P6M0	=	0x00cc
+                           0000CB   312 _P6M1	=	0x00cb
+                           0000E2   313 _P7M0	=	0x00e2
+                           0000E1   314 _P7M1	=	0x00e1
+                           000087   315 _PCON	=	0x0087
+                           00008E   316 _AUXR	=	0x008e
+                           0000A2   317 _AUXR1	=	0x00a2
+                           0000A2   318 _P_SW1	=	0x00a2
+                           000097   319 _CLK_DIV	=	0x0097
+                           0000A1   320 _BUS_SPEED	=	0x00a1
+                           00009D   321 _P1ASF	=	0x009d
+                           0000BA   322 _P_SW2	=	0x00ba
+                           0000A8   323 _IE	=	0x00a8
+                           0000B8   324 _IP	=	0x00b8
+                           0000AF   325 _IE2	=	0x00af
+                           0000B5   326 _IP2	=	0x00b5
+                           00008F   327 _INT_CLKO	=	0x008f
+                           000088   328 _TCON	=	0x0088
+                           000089   329 _TMOD	=	0x0089
+                           00008A   330 _TL0	=	0x008a
+                           00008B   331 _TL1	=	0x008b
+                           00008C   332 _TH0	=	0x008c
+                           00008D   333 _TH1	=	0x008d
+                           0000D1   334 _T4T3M	=	0x00d1
+                           0000D1   335 _T3T4M	=	0x00d1
+                           0000D2   336 _T4H	=	0x00d2
+                           0000D3   337 _T4L	=	0x00d3
+                           0000D4   338 _T3H	=	0x00d4
+                           0000D5   339 _T3L	=	0x00d5
+                           0000D6   340 _T2H	=	0x00d6
+                           0000D7   341 _T2L	=	0x00d7
+                           0000AA   342 _WKTCL	=	0x00aa
+                           0000AB   343 _WKTCH	=	0x00ab
+                           0000C1   344 _WDT_CONTR	=	0x00c1
+                           000098   345 _SCON	=	0x0098
+                           000099   346 _SBUF	=	0x0099
+                           00009A   347 _S2CON	=	0x009a
+                           00009B   348 _S2BUF	=	0x009b
+                           0000AC   349 _S3CON	=	0x00ac
+                           0000AD   350 _S3BUF	=	0x00ad
+                           000084   351 _S4CON	=	0x0084
+                           000085   352 _S4BUF	=	0x0085
+                           0000A9   353 _SADDR	=	0x00a9
+                           0000B9   354 _SADEN	=	0x00b9
+                           0000BC   355 _ADC_CONTR	=	0x00bc
+                           0000BD   356 _ADC_RES	=	0x00bd
+                           0000BE   357 _ADC_RESL	=	0x00be
+                           0000CD   358 _SPSTAT	=	0x00cd
+                           0000CE   359 _SPCTL	=	0x00ce
+                           0000CF   360 _SPDAT	=	0x00cf
+                           0000C2   361 _IAP_DATA	=	0x00c2
+                           0000C3   362 _IAP_ADDRH	=	0x00c3
+                           0000C4   363 _IAP_ADDRL	=	0x00c4
+                           0000C5   364 _IAP_CMD	=	0x00c5
+                           0000C6   365 _IAP_TRIG	=	0x00c6
+                           0000C7   366 _IAP_CONTR	=	0x00c7
+                           0000D8   367 _CCON	=	0x00d8
+                           0000D9   368 _CMOD	=	0x00d9
+                           0000E9   369 _CL	=	0x00e9
+                           0000F9   370 _CH	=	0x00f9
+                           0000DA   371 _CCAPM0	=	0x00da
+                           0000DB   372 _CCAPM1	=	0x00db
+                           0000DC   373 _CCAPM2	=	0x00dc
+                           0000EA   374 _CCAP0L	=	0x00ea
+                           0000EB   375 _CCAP1L	=	0x00eb
+                           0000EC   376 _CCAP2L	=	0x00ec
+                           0000F2   377 _PCA_PWM0	=	0x00f2
+                           0000F3   378 _PCA_PWM1	=	0x00f3
+                           0000F4   379 _PCA_PWM2	=	0x00f4
+                           0000FA   380 _CCAP0H	=	0x00fa
+                           0000FB   381 _CCAP1H	=	0x00fb
+                           0000FC   382 _CCAP2H	=	0x00fc
+                           0000E6   383 _CMPCR1	=	0x00e6
+                           0000E7   384 _CMPCR2	=	0x00e7
+                           0000F1   385 _PWMCFG	=	0x00f1
+                           0000F5   386 _PWMCR	=	0x00f5
+                           0000F6   387 _PWMIF	=	0x00f6
+                           0000F7   388 _PWMFDCR	=	0x00f7
+                                    389 ;--------------------------------------------------------
+                                    390 ; special function bits
+                                    391 ;--------------------------------------------------------
+                                    392 	.area RSEG    (ABS,DATA)
+      000000                        393 	.org 0x0000
+                           000080   394 _P0_0	=	0x0080
+                           000081   395 _P0_1	=	0x0081
+                           000082   396 _P0_2	=	0x0082
+                           000083   397 _P0_3	=	0x0083
+                           000084   398 _P0_4	=	0x0084
+                           000085   399 _P0_5	=	0x0085
+                           000086   400 _P0_6	=	0x0086
+                           000087   401 _P0_7	=	0x0087
+                           000090   402 _P1_0	=	0x0090
+                           000091   403 _P1_1	=	0x0091
+                           000092   404 _P1_2	=	0x0092
+                           000093   405 _P1_3	=	0x0093
+                           000094   406 _P1_4	=	0x0094
+                           000095   407 _P1_5	=	0x0095
+                           000096   408 _P1_6	=	0x0096
+                           000097   409 _P1_7	=	0x0097
+                           0000A0   410 _P2_0	=	0x00a0
+                           0000A1   411 _P2_1	=	0x00a1
+                           0000A2   412 _P2_2	=	0x00a2
+                           0000A3   413 _P2_3	=	0x00a3
+                           0000A4   414 _P2_4	=	0x00a4
+                           0000A5   415 _P2_5	=	0x00a5
+                           0000A6   416 _P2_6	=	0x00a6
+                           0000A7   417 _P2_7	=	0x00a7
+                           0000B0   418 _P3_0	=	0x00b0
+                           0000B1   419 _P3_1	=	0x00b1
+                           0000B2   420 _P3_2	=	0x00b2
+                           0000B3   421 _P3_3	=	0x00b3
+                           0000B4   422 _P3_4	=	0x00b4
+                           0000B5   423 _P3_5	=	0x00b5
+                           0000B6   424 _P3_6	=	0x00b6
+                           0000B7   425 _P3_7	=	0x00b7
+                           0000B0   426 _RXD	=	0x00b0
+                           0000B1   427 _TXD	=	0x00b1
+                           0000B2   428 _INT0	=	0x00b2
+                           0000B3   429 _INT1	=	0x00b3
+                           0000B4   430 _T0	=	0x00b4
+                           0000B5   431 _T1	=	0x00b5
+                           0000B6   432 _WR	=	0x00b6
+                           0000B7   433 _RD	=	0x00b7
+                           0000D1   434 _F1	=	0x00d1
+                           0000D7   435 _CY	=	0x00d7
+                           0000D6   436 _AC	=	0x00d6
+                           0000D5   437 _F0	=	0x00d5
+                           0000D4   438 _RS1	=	0x00d4
+                           0000D3   439 _RS0	=	0x00d3
+                           0000D2   440 _OV	=	0x00d2
+                           0000D0   441 _P	=	0x00d0
+                           000080   442 _P00	=	0x0080
+                           000081   443 _P01	=	0x0081
+                           000082   444 _P02	=	0x0082
+                           000083   445 _P03	=	0x0083
+                           000084   446 _P04	=	0x0084
+                           000085   447 _P05	=	0x0085
+                           000086   448 _P06	=	0x0086
+                           000087   449 _P07	=	0x0087
+                           000090   450 _P10	=	0x0090
+                           000091   451 _P11	=	0x0091
+                           000092   452 _P12	=	0x0092
+                           000093   453 _P13	=	0x0093
+                           000094   454 _P14	=	0x0094
+                           000095   455 _P15	=	0x0095
+                           000096   456 _P16	=	0x0096
+                           000097   457 _P17	=	0x0097
+                           0000A0   458 _P20	=	0x00a0
+                           0000A1   459 _P21	=	0x00a1
+                           0000A2   460 _P22	=	0x00a2
+                           0000A3   461 _P23	=	0x00a3
+                           0000A4   462 _P24	=	0x00a4
+                           0000A5   463 _P25	=	0x00a5
+                           0000A6   464 _P26	=	0x00a6
+                           0000A7   465 _P27	=	0x00a7
+                           0000B0   466 _P30	=	0x00b0
+                           0000B1   467 _P31	=	0x00b1
+                           0000B2   468 _P32	=	0x00b2
+                           0000B3   469 _P33	=	0x00b3
+                           0000B4   470 _P34	=	0x00b4
+                           0000B5   471 _P35	=	0x00b5
+                           0000B6   472 _P36	=	0x00b6
+                           0000B7   473 _P37	=	0x00b7
+                           0000C0   474 _P40	=	0x00c0
+                           0000C1   475 _P41	=	0x00c1
+                           0000C2   476 _P42	=	0x00c2
+                           0000C3   477 _P43	=	0x00c3
+                           0000C4   478 _P44	=	0x00c4
+                           0000C5   479 _P45	=	0x00c5
+                           0000C6   480 _P46	=	0x00c6
+                           0000C7   481 _P47	=	0x00c7
+                           0000C8   482 _P50	=	0x00c8
+                           0000C9   483 _P51	=	0x00c9
+                           0000CA   484 _P52	=	0x00ca
+                           0000CB   485 _P53	=	0x00cb
+                           0000CC   486 _P54	=	0x00cc
+                           0000CD   487 _P55	=	0x00cd
+                           0000CE   488 _P56	=	0x00ce
+                           0000CF   489 _P57	=	0x00cf
+                           0000E8   490 _P60	=	0x00e8
+                           0000E9   491 _P61	=	0x00e9
+                           0000EA   492 _P62	=	0x00ea
+                           0000EB   493 _P63	=	0x00eb
+                           0000EC   494 _P64	=	0x00ec
+                           0000ED   495 _P65	=	0x00ed
+                           0000EE   496 _P66	=	0x00ee
+                           0000EF   497 _P67	=	0x00ef
+                           0000F8   498 _P70	=	0x00f8
+                           0000F9   499 _P71	=	0x00f9
+                           0000FA   500 _P72	=	0x00fa
+                           0000FB   501 _P73	=	0x00fb
+                           0000FC   502 _P74	=	0x00fc
+                           0000FD   503 _P75	=	0x00fd
+                           0000FE   504 _P76	=	0x00fe
+                           0000FF   505 _P77	=	0x00ff
+                           0000AF   506 _EA	=	0x00af
+                           0000AE   507 _ELVD	=	0x00ae
+                           0000AD   508 _EADC	=	0x00ad
+                           0000AC   509 _ES	=	0x00ac
+                           0000AB   510 _ET1	=	0x00ab
+                           0000AA   511 _EX1	=	0x00aa
+                           0000A9   512 _ET0	=	0x00a9
+                           0000A8   513 _EX0	=	0x00a8
+                           0000BF   514 _PPCA	=	0x00bf
+                           0000BE   515 _PLVD	=	0x00be
+                           0000BD   516 _PADC	=	0x00bd
+                           0000BC   517 _PS	=	0x00bc
+                           0000BB   518 _PT1	=	0x00bb
+                           0000BA   519 _PX1	=	0x00ba
+                           0000B9   520 _PT0	=	0x00b9
+                           0000B8   521 _PX0	=	0x00b8
+                           00008F   522 _TF1	=	0x008f
+                           00008E   523 _TR1	=	0x008e
+                           00008D   524 _TF0	=	0x008d
+                           00008C   525 _TR0	=	0x008c
+                           00008B   526 _IE1	=	0x008b
+                           00008A   527 _IT1	=	0x008a
+                           000089   528 _IE0	=	0x0089
+                           000088   529 _IT0	=	0x0088
+                           00009F   530 _SM0	=	0x009f
+                           00009E   531 _SM1	=	0x009e
+                           00009D   532 _SM2	=	0x009d
+                           00009C   533 _REN	=	0x009c
+                           00009B   534 _TB8	=	0x009b
+                           00009A   535 _RB8	=	0x009a
+                           000099   536 _TI	=	0x0099
+                           000098   537 _RI	=	0x0098
+                           0000DF   538 _CF	=	0x00df
+                           0000DE   539 _CR	=	0x00de
+                           0000DA   540 _CCF2	=	0x00da
+                           0000D9   541 _CCF1	=	0x00d9
+                           0000D8   542 _CCF0	=	0x00d8
+                                    543 ;--------------------------------------------------------
+                                    544 ; overlayable register banks
+                                    545 ;--------------------------------------------------------
+                                    546 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                        547 	.ds 8
+                                    548 ;--------------------------------------------------------
+                                    549 ; internal ram data
                                     550 ;--------------------------------------------------------
-                                    551 ; overlayable items in internal ram 
-                                    552 ;--------------------------------------------------------
-                                    553 	.area	OSEG    (OVR,DATA)
-                                    554 	.area	OSEG    (OVR,DATA)
-                                    555 	.area	OSEG    (OVR,DATA)
+                                    551 	.area DSEG    (DATA)
+      000008                        552 _spi_PARM_2:
+      000008                        553 	.ds 1
+                                    554 ;--------------------------------------------------------
+                                    555 ; overlayable items in internal ram 
                                     556 ;--------------------------------------------------------
-                                    557 ; Stack segment in internal ram 
-                                    558 ;--------------------------------------------------------
-                                    559 	.area	SSEG
-      000009                        560 __start__stack:
-      000009                        561 	.ds	1
-                                    562 
+                                    557 	.area	OSEG    (OVR,DATA)
+                                    558 	.area	OSEG    (OVR,DATA)
+                                    559 	.area	OSEG    (OVR,DATA)
+                                    560 	.area	OSEG    (OVR,DATA)
+                                    561 ;--------------------------------------------------------
+                                    562 ; Stack segment in internal ram 
                                     563 ;--------------------------------------------------------
-                                    564 ; indirectly addressable internal ram data
-                                    565 ;--------------------------------------------------------
-                                    566 	.area ISEG    (DATA)
-                                    567 ;--------------------------------------------------------
-                                    568 ; absolute internal ram data
-                                    569 ;--------------------------------------------------------
-                                    570 	.area IABS    (ABS,DATA)
-                                    571 	.area IABS    (ABS,DATA)
+                                    564 	.area	SSEG
+      000009                        565 __start__stack:
+      000009                        566 	.ds	1
+                                    567 
+                                    568 ;--------------------------------------------------------
+                                    569 ; indirectly addressable internal ram data
+                                    570 ;--------------------------------------------------------
+                                    571 	.area ISEG    (DATA)
                                     572 ;--------------------------------------------------------
-                                    573 ; bit data
+                                    573 ; absolute internal ram data
                                     574 ;--------------------------------------------------------
-                                    575 	.area BSEG    (BIT)
-                                    576 ;--------------------------------------------------------
-                                    577 ; paged external ram data
-                                    578 ;--------------------------------------------------------
-                                    579 	.area PSEG    (PAG,XDATA)
-                                    580 ;--------------------------------------------------------
-                                    581 ; external ram data
-                                    582 ;--------------------------------------------------------
-                                    583 	.area XSEG    (XDATA)
-                                    584 ;--------------------------------------------------------
-                                    585 ; absolute external ram data
-                                    586 ;--------------------------------------------------------
-                                    587 	.area XABS    (ABS,XDATA)
-                                    588 ;--------------------------------------------------------
-                                    589 ; external initialized ram data
-                                    590 ;--------------------------------------------------------
-                                    591 	.area XISEG   (XDATA)
-                                    592 	.area HOME    (CODE)
-                                    593 	.area GSINIT0 (CODE)
-                                    594 	.area GSINIT1 (CODE)
-                                    595 	.area GSINIT2 (CODE)
-                                    596 	.area GSINIT3 (CODE)
-                                    597 	.area GSINIT4 (CODE)
-                                    598 	.area GSINIT5 (CODE)
-                                    599 	.area GSINIT  (CODE)
-                                    600 	.area GSFINAL (CODE)
-                                    601 	.area CSEG    (CODE)
-                                    602 ;--------------------------------------------------------
-                                    603 ; interrupt vector 
-                                    604 ;--------------------------------------------------------
-                                    605 	.area HOME    (CODE)
-      000000                        606 __interrupt_vect:
-      000000 02 00 06         [24]  607 	ljmp	__sdcc_gsinit_startup
-                                    608 ;--------------------------------------------------------
-                                    609 ; global & static initialisations
-                                    610 ;--------------------------------------------------------
-                                    611 	.area HOME    (CODE)
-                                    612 	.area GSINIT  (CODE)
-                                    613 	.area GSFINAL (CODE)
-                                    614 	.area GSINIT  (CODE)
-                                    615 	.globl __sdcc_gsinit_startup
-                                    616 	.globl __sdcc_program_startup
-                                    617 	.globl __start__stack
-                                    618 	.globl __mcs51_genXINIT
-                                    619 	.globl __mcs51_genXRAMCLEAR
-                                    620 	.globl __mcs51_genRAMCLEAR
-                                    621 	.area GSFINAL (CODE)
-      00005F 02 00 03         [24]  622 	ljmp	__sdcc_program_startup
-                                    623 ;--------------------------------------------------------
-                                    624 ; Home
-                                    625 ;--------------------------------------------------------
-                                    626 	.area HOME    (CODE)
-                                    627 	.area HOME    (CODE)
-      000003                        628 __sdcc_program_startup:
-      000003 02 0B 01         [24]  629 	ljmp	_main
-                                    630 ;	return from main will return to caller
-                                    631 ;--------------------------------------------------------
-                                    632 ; code
-                                    633 ;--------------------------------------------------------
-                                    634 	.area CSEG    (CODE)
-                                    635 ;------------------------------------------------------------
-                                    636 ;Allocation info for local variables in function 'delayms'
-                                    637 ;------------------------------------------------------------
-                                    638 ;ms                        Allocated to registers 
-                                    639 ;cnt                       Allocated to registers r4 r5 
+                                    575 	.area IABS    (ABS,DATA)
+                                    576 	.area IABS    (ABS,DATA)
+                                    577 ;--------------------------------------------------------
+                                    578 ; bit data
+                                    579 ;--------------------------------------------------------
+                                    580 	.area BSEG    (BIT)
+                                    581 ;--------------------------------------------------------
+                                    582 ; paged external ram data
+                                    583 ;--------------------------------------------------------
+                                    584 	.area PSEG    (PAG,XDATA)
+                                    585 ;--------------------------------------------------------
+                                    586 ; external ram data
+                                    587 ;--------------------------------------------------------
+                                    588 	.area XSEG    (XDATA)
+                                    589 ;--------------------------------------------------------
+                                    590 ; absolute external ram data
+                                    591 ;--------------------------------------------------------
+                                    592 	.area XABS    (ABS,XDATA)
+                                    593 ;--------------------------------------------------------
+                                    594 ; external initialized ram data
+                                    595 ;--------------------------------------------------------
+                                    596 	.area XISEG   (XDATA)
+                                    597 	.area HOME    (CODE)
+                                    598 	.area GSINIT0 (CODE)
+                                    599 	.area GSINIT1 (CODE)
+                                    600 	.area GSINIT2 (CODE)
+                                    601 	.area GSINIT3 (CODE)
+                                    602 	.area GSINIT4 (CODE)
+                                    603 	.area GSINIT5 (CODE)
+                                    604 	.area GSINIT  (CODE)
+                                    605 	.area GSFINAL (CODE)
+                                    606 	.area CSEG    (CODE)
+                                    607 ;--------------------------------------------------------
+                                    608 ; interrupt vector 
+                                    609 ;--------------------------------------------------------
+                                    610 	.area HOME    (CODE)
+      000000                        611 __interrupt_vect:
+      000000 02 00 06         [24]  612 	ljmp	__sdcc_gsinit_startup
+                                    613 ;--------------------------------------------------------
+                                    614 ; global & static initialisations
+                                    615 ;--------------------------------------------------------
+                                    616 	.area HOME    (CODE)
+                                    617 	.area GSINIT  (CODE)
+                                    618 	.area GSFINAL (CODE)
+                                    619 	.area GSINIT  (CODE)
+                                    620 	.globl __sdcc_gsinit_startup
+                                    621 	.globl __sdcc_program_startup
+                                    622 	.globl __start__stack
+                                    623 	.globl __mcs51_genXINIT
+                                    624 	.globl __mcs51_genXRAMCLEAR
+                                    625 	.globl __mcs51_genRAMCLEAR
+                                    626 	.area GSFINAL (CODE)
+      00005F 02 00 03         [24]  627 	ljmp	__sdcc_program_startup
+                                    628 ;--------------------------------------------------------
+                                    629 ; Home
+                                    630 ;--------------------------------------------------------
+                                    631 	.area HOME    (CODE)
+                                    632 	.area HOME    (CODE)
+      000003                        633 __sdcc_program_startup:
+      000003 02 0B 27         [24]  634 	ljmp	_main
+                                    635 ;	return from main will return to caller
+                                    636 ;--------------------------------------------------------
+                                    637 ; code
+                                    638 ;--------------------------------------------------------
+                                    639 	.area CSEG    (CODE)
                                     640 ;------------------------------------------------------------
-                                    641 ;	main.c:15: void delayms(unsigned int ms)
-                                    642 ;	-----------------------------------------
-                                    643 ;	 function delayms
-                                    644 ;	-----------------------------------------
-      000062                        645 _delayms:
-                           000007   646 	ar7 = 0x07
-                           000006   647 	ar6 = 0x06
-                           000005   648 	ar5 = 0x05
-                           000004   649 	ar4 = 0x04
-                           000003   650 	ar3 = 0x03
-                           000002   651 	ar2 = 0x02
-                           000001   652 	ar1 = 0x01
-                           000000   653 	ar0 = 0x00
-      000062 AE 82            [24]  654 	mov	r6,dpl
-      000064 AF 83            [24]  655 	mov	r7,dph
-                                    656 ;	main.c:18: while(ms--){
-      000066                        657 00102$:
-      000066 8E 04            [24]  658 	mov	ar4,r6
-      000068 8F 05            [24]  659 	mov	ar5,r7
-      00006A 1E               [12]  660 	dec	r6
-      00006B BE FF 01         [24]  661 	cjne	r6,#0xFF,00124$
-      00006E 1F               [12]  662 	dec	r7
-      00006F                        663 00124$:
-      00006F EC               [12]  664 	mov	a,r4
-      000070 4D               [12]  665 	orl	a,r5
-      000071 60 0F            [24]  666 	jz	00108$
-                                    667 ;	main.c:19: for(cnt=0; cnt<1000; cnt++);
-      000073 7C E8            [12]  668 	mov	r4,#0xE8
-      000075 7D 03            [12]  669 	mov	r5,#0x03
-      000077                        670 00107$:
-      000077 1C               [12]  671 	dec	r4
-      000078 BC FF 01         [24]  672 	cjne	r4,#0xFF,00126$
-      00007B 1D               [12]  673 	dec	r5
-      00007C                        674 00126$:
-      00007C EC               [12]  675 	mov	a,r4
-      00007D 4D               [12]  676 	orl	a,r5
-      00007E 70 F7            [24]  677 	jnz	00107$
-      000080 80 E4            [24]  678 	sjmp	00102$
-      000082                        679 00108$:
-      000082 22               [24]  680 	ret
-                                    681 ;------------------------------------------------------------
-                                    682 ;Allocation info for local variables in function 'spi_cmd'
-                                    683 ;------------------------------------------------------------
-                                    684 ;cmd                       Allocated to registers r6 r7 
-                                    685 ;i                         Allocated to registers r4 r5 
+                                    641 ;Allocation info for local variables in function 'delayms'
+                                    642 ;------------------------------------------------------------
+                                    643 ;ms                        Allocated to registers 
+                                    644 ;cnt                       Allocated to registers r4 r5 
+                                    645 ;------------------------------------------------------------
+                                    646 ;	main.c:15: void delayms(unsigned int ms)
+                                    647 ;	-----------------------------------------
+                                    648 ;	 function delayms
+                                    649 ;	-----------------------------------------
+      000062                        650 _delayms:
+                           000007   651 	ar7 = 0x07
+                           000006   652 	ar6 = 0x06
+                           000005   653 	ar5 = 0x05
+                           000004   654 	ar4 = 0x04
+                           000003   655 	ar3 = 0x03
+                           000002   656 	ar2 = 0x02
+                           000001   657 	ar1 = 0x01
+                           000000   658 	ar0 = 0x00
+      000062 AE 82            [24]  659 	mov	r6,dpl
+      000064 AF 83            [24]  660 	mov	r7,dph
+                                    661 ;	main.c:18: while(ms--){
+      000066                        662 00102$:
+      000066 8E 04            [24]  663 	mov	ar4,r6
+      000068 8F 05            [24]  664 	mov	ar5,r7
+      00006A 1E               [12]  665 	dec	r6
+      00006B BE FF 01         [24]  666 	cjne	r6,#0xFF,00124$
+      00006E 1F               [12]  667 	dec	r7
+      00006F                        668 00124$:
+      00006F EC               [12]  669 	mov	a,r4
+      000070 4D               [12]  670 	orl	a,r5
+      000071 60 0F            [24]  671 	jz	00108$
+                                    672 ;	main.c:19: for(cnt=0; cnt<1000; cnt++);
+      000073 7C E8            [12]  673 	mov	r4,#0xE8
+      000075 7D 03            [12]  674 	mov	r5,#0x03
+      000077                        675 00107$:
+      000077 1C               [12]  676 	dec	r4
+      000078 BC FF 01         [24]  677 	cjne	r4,#0xFF,00126$
+      00007B 1D               [12]  678 	dec	r5
+      00007C                        679 00126$:
+      00007C EC               [12]  680 	mov	a,r4
+      00007D 4D               [12]  681 	orl	a,r5
+      00007E 70 F7            [24]  682 	jnz	00107$
+      000080 80 E4            [24]  683 	sjmp	00102$
+      000082                        684 00108$:
+      000082 22               [24]  685 	ret
                                     686 ;------------------------------------------------------------
-                                    687 ;	main.c:23: void spi_cmd(unsigned int cmd)
-                                    688 ;	-----------------------------------------
-                                    689 ;	 function spi_cmd
-                                    690 ;	-----------------------------------------
-      000083                        691 _spi_cmd:
-      000083 AE 82            [24]  692 	mov	r6,dpl
-      000085 AF 83            [24]  693 	mov	r7,dph
-                                    694 ;	main.c:27: CSX = 0;
-      000087 C2 C2            [12]  695 	clr	_P42
-                                    696 ;	main.c:28: SCL = 0;
-      000089 C2 C0            [12]  697 	clr	_P40
-                                    698 ;	main.c:29: SDI = 0;
-      00008B C2 C1            [12]  699 	clr	_P41
-                                    700 ;	main.c:30: SCL = 1;
-      00008D D2 C0            [12]  701 	setb	_P40
-                                    702 ;	main.c:31: for(i=0; i<8; i++){
-      00008F 7C 00            [12]  703 	mov	r4,#0x00
-      000091 7D 00            [12]  704 	mov	r5,#0x00
-      000093                        705 00105$:
-                                    706 ;	main.c:32: SCL = 0;			
-      000093 C2 C0            [12]  707 	clr	_P40
-                                    708 ;	main.c:33: if((cmd & 0x80) == 0x80){
-      000095 74 80            [12]  709 	mov	a,#0x80
-      000097 5E               [12]  710 	anl	a,r6
-      000098 FA               [12]  711 	mov	r2,a
-      000099 7B 00            [12]  712 	mov	r3,#0x00
-      00009B BA 80 07         [24]  713 	cjne	r2,#0x80,00102$
-      00009E BB 00 04         [24]  714 	cjne	r3,#0x00,00102$
-                                    715 ;	main.c:34: SDI = 1;
-      0000A1 D2 C1            [12]  716 	setb	_P41
-      0000A3 80 02            [24]  717 	sjmp	00103$
-      0000A5                        718 00102$:
-                                    719 ;	main.c:37: SDI = 0;
-      0000A5 C2 C1            [12]  720 	clr	_P41
-      0000A7                        721 00103$:
-                                    722 ;	main.c:39: cmd<<= 1;
-      0000A7 EF               [12]  723 	mov	a,r7
-      0000A8 CE               [12]  724 	xch	a,r6
-      0000A9 25 E0            [12]  725 	add	a,acc
-      0000AB CE               [12]  726 	xch	a,r6
-      0000AC 33               [12]  727 	rlc	a
-      0000AD FF               [12]  728 	mov	r7,a
-                                    729 ;	main.c:40: SCL = 1;
-      0000AE D2 C0            [12]  730 	setb	_P40
-                                    731 ;	main.c:31: for(i=0; i<8; i++){
-      0000B0 0C               [12]  732 	inc	r4
-      0000B1 BC 00 01         [24]  733 	cjne	r4,#0x00,00121$
-      0000B4 0D               [12]  734 	inc	r5
-      0000B5                        735 00121$:
-      0000B5 C3               [12]  736 	clr	c
-      0000B6 EC               [12]  737 	mov	a,r4
-      0000B7 94 08            [12]  738 	subb	a,#0x08
-      0000B9 ED               [12]  739 	mov	a,r5
-      0000BA 94 00            [12]  740 	subb	a,#0x00
-      0000BC 40 D5            [24]  741 	jc	00105$
-                                    742 ;	main.c:42: CSX = 1;
-      0000BE D2 C2            [12]  743 	setb	_P42
-      0000C0 22               [24]  744 	ret
-                                    745 ;------------------------------------------------------------
-                                    746 ;Allocation info for local variables in function 'spi_data'
-                                    747 ;------------------------------------------------------------
-                                    748 ;dat                       Allocated to registers r7 
-                                    749 ;i                         Allocated to registers r5 r6 
-                                    750 ;------------------------------------------------------------
-                                    751 ;	main.c:45: void spi_data(unsigned char dat)
-                                    752 ;	-----------------------------------------
-                                    753 ;	 function spi_data
-                                    754 ;	-----------------------------------------
-      0000C1                        755 _spi_data:
-      0000C1 AF 82            [24]  756 	mov	r7,dpl
-                                    757 ;	main.c:49: CSX = 0;
-      0000C3 C2 C2            [12]  758 	clr	_P42
-                                    759 ;	main.c:50: SCL = 0;
-      0000C5 C2 C0            [12]  760 	clr	_P40
-                                    761 ;	main.c:51: SDI = 1;
-      0000C7 D2 C1            [12]  762 	setb	_P41
-                                    763 ;	main.c:52: SCL = 1;
-      0000C9 D2 C0            [12]  764 	setb	_P40
-                                    765 ;	main.c:53: for(i=0; i<8; i++){
-      0000CB 7D 00            [12]  766 	mov	r5,#0x00
-      0000CD 7E 00            [12]  767 	mov	r6,#0x00
-      0000CF                        768 00105$:
-                                    769 ;	main.c:54: SCL = 0;			
-      0000CF C2 C0            [12]  770 	clr	_P40
-                                    771 ;	main.c:55: if((dat & 0x80) == 0x80){
-      0000D1 74 80            [12]  772 	mov	a,#0x80
-      0000D3 5F               [12]  773 	anl	a,r7
-      0000D4 FC               [12]  774 	mov	r4,a
-      0000D5 BC 80 04         [24]  775 	cjne	r4,#0x80,00102$
-                                    776 ;	main.c:56: SDI = 1;
-      0000D8 D2 C1            [12]  777 	setb	_P41
-      0000DA 80 02            [24]  778 	sjmp	00103$
-      0000DC                        779 00102$:
-                                    780 ;	main.c:59: SDI = 0;
-      0000DC C2 C1            [12]  781 	clr	_P41
-      0000DE                        782 00103$:
-                                    783 ;	main.c:61: dat<<= 1;
-      0000DE EF               [12]  784 	mov	a,r7
-      0000DF 2F               [12]  785 	add	a,r7
-      0000E0 FF               [12]  786 	mov	r7,a
-                                    787 ;	main.c:62: SCL = 1;
-      0000E1 D2 C0            [12]  788 	setb	_P40
-                                    789 ;	main.c:53: for(i=0; i<8; i++){
-      0000E3 0D               [12]  790 	inc	r5
-      0000E4 BD 00 01         [24]  791 	cjne	r5,#0x00,00121$
-      0000E7 0E               [12]  792 	inc	r6
-      0000E8                        793 00121$:
-      0000E8 C3               [12]  794 	clr	c
-      0000E9 ED               [12]  795 	mov	a,r5
-      0000EA 94 08            [12]  796 	subb	a,#0x08
-      0000EC EE               [12]  797 	mov	a,r6
-      0000ED 94 00            [12]  798 	subb	a,#0x00
-      0000EF 40 DE            [24]  799 	jc	00105$
-                                    800 ;	main.c:64: CSX = 1;
-      0000F1 D2 C2            [12]  801 	setb	_P42
-      0000F3 22               [24]  802 	ret
-                                    803 ;------------------------------------------------------------
-                                    804 ;Allocation info for local variables in function 'spi'
-                                    805 ;------------------------------------------------------------
-                                    806 ;dat                       Allocated with name '_spi_PARM_2'
-                                    807 ;cmd                       Allocated to registers r7 
-                                    808 ;------------------------------------------------------------
-                                    809 ;	main.c:67: void spi(unsigned char cmd, unsigned char dat)
-                                    810 ;	-----------------------------------------
-                                    811 ;	 function spi
-                                    812 ;	-----------------------------------------
-      0000F4                        813 _spi:
-                                    814 ;	main.c:69: spi_cmd(cmd);
-      0000F4 7E 00            [12]  815 	mov	r6,#0x00
-      0000F6 8E 83            [24]  816 	mov	dph,r6
-      0000F8 12 00 83         [24]  817 	lcall	_spi_cmd
-                                    818 ;	main.c:70: spi_data(dat);
-      0000FB 85 08 82         [24]  819 	mov	dpl,_spi_PARM_2
-      0000FE 02 00 C1         [24]  820 	ljmp	_spi_data
-                                    821 ;------------------------------------------------------------
-                                    822 ;Allocation info for local variables in function 'reset'
-                                    823 ;------------------------------------------------------------
-                                    824 ;	main.c:73: void reset(void)
-                                    825 ;	-----------------------------------------
-                                    826 ;	 function reset
-                                    827 ;	-----------------------------------------
-      000101                        828 _reset:
-                                    829 ;	main.c:75: RST = 0;
-      000101 C2 CC            [12]  830 	clr	_P54
-                                    831 ;	main.c:76: delayms(150);
-      000103 90 00 96         [24]  832 	mov	dptr,#0x0096
-      000106 12 00 62         [24]  833 	lcall	_delayms
-                                    834 ;	main.c:77: RST = 1;
-      000109 D2 CC            [12]  835 	setb	_P54
-                                    836 ;	main.c:78: delayms(150);
-      00010B 90 00 96         [24]  837 	mov	dptr,#0x0096
-      00010E 02 00 62         [24]  838 	ljmp	_delayms
-                                    839 ;------------------------------------------------------------
-                                    840 ;Allocation info for local variables in function 'init_2'
-                                    841 ;------------------------------------------------------------
-                                    842 ;	main.c:81: void init_2(void)
-                                    843 ;	-----------------------------------------
-                                    844 ;	 function init_2
-                                    845 ;	-----------------------------------------
-      000111                        846 _init_2:
-                                    847 ;	main.c:83: spi(0xfe, 0x04);
-      000111 75 08 04         [24]  848 	mov	_spi_PARM_2,#0x04
-      000114 75 82 FE         [24]  849 	mov	dpl,#0xFE
-      000117 12 00 F4         [24]  850 	lcall	_spi
-                                    851 ;	main.c:84: spi(0x00, 0xdc);
-      00011A 75 08 DC         [24]  852 	mov	_spi_PARM_2,#0xDC
-      00011D 75 82 00         [24]  853 	mov	dpl,#0x00
-      000120 12 00 F4         [24]  854 	lcall	_spi
-                                    855 ;	main.c:85: spi(0x01, 0x00);
-      000123 75 08 00         [24]  856 	mov	_spi_PARM_2,#0x00
-      000126 75 82 01         [24]  857 	mov	dpl,#0x01
-      000129 12 00 F4         [24]  858 	lcall	_spi
-                                    859 ;	main.c:86: spi(0x02, 0x02);
-      00012C 75 08 02         [24]  860 	mov	_spi_PARM_2,#0x02
-      00012F 75 82 02         [24]  861 	mov	dpl,#0x02
-      000132 12 00 F4         [24]  862 	lcall	_spi
-                                    863 ;	main.c:87: spi(0x03, 0x00);
-      000135 75 08 00         [24]  864 	mov	_spi_PARM_2,#0x00
-      000138 75 82 03         [24]  865 	mov	dpl,#0x03
-      00013B 12 00 F4         [24]  866 	lcall	_spi
-                                    867 ;	main.c:88: spi(0x04, 0x00);
-      00013E 75 08 00         [24]  868 	mov	_spi_PARM_2,#0x00
-      000141 75 82 04         [24]  869 	mov	dpl,#0x04
-      000144 12 00 F4         [24]  870 	lcall	_spi
-                                    871 ;	main.c:89: spi(0x05, 0x03);
-      000147 75 08 03         [24]  872 	mov	_spi_PARM_2,#0x03
-      00014A 75 82 05         [24]  873 	mov	dpl,#0x05
-      00014D 12 00 F4         [24]  874 	lcall	_spi
-                                    875 ;	main.c:90: spi(0x06, 0x16);
-      000150 75 08 16         [24]  876 	mov	_spi_PARM_2,#0x16
-      000153 75 82 06         [24]  877 	mov	dpl,#0x06
-      000156 12 00 F4         [24]  878 	lcall	_spi
-                                    879 ;	main.c:91: spi(0x07, 0x13);
-      000159 75 08 13         [24]  880 	mov	_spi_PARM_2,#0x13
-      00015C 75 82 07         [24]  881 	mov	dpl,#0x07
-      00015F 12 00 F4         [24]  882 	lcall	_spi
-                                    883 ;	main.c:92: spi(0x08, 0x08);
-      000162 75 08 08         [24]  884 	mov	_spi_PARM_2,#0x08
-      000165 75 82 08         [24]  885 	mov	dpl,#0x08
-      000168 12 00 F4         [24]  886 	lcall	_spi
-                                    887 ;	main.c:93: spi(0x09, 0xdc);
-      00016B 75 08 DC         [24]  888 	mov	_spi_PARM_2,#0xDC
-      00016E 75 82 09         [24]  889 	mov	dpl,#0x09
-      000171 12 00 F4         [24]  890 	lcall	_spi
-                                    891 ;	main.c:94: spi(0x0a, 0x00);
-      000174 75 08 00         [24]  892 	mov	_spi_PARM_2,#0x00
-      000177 75 82 0A         [24]  893 	mov	dpl,#0x0A
-      00017A 12 00 F4         [24]  894 	lcall	_spi
-                                    895 ;	main.c:95: spi(0x0b, 0x02);
-      00017D 75 08 02         [24]  896 	mov	_spi_PARM_2,#0x02
-      000180 75 82 0B         [24]  897 	mov	dpl,#0x0B
-      000183 12 00 F4         [24]  898 	lcall	_spi
-                                    899 ;	main.c:96: spi(0x0c, 0x00);
-      000186 75 08 00         [24]  900 	mov	_spi_PARM_2,#0x00
-      000189 75 82 0C         [24]  901 	mov	dpl,#0x0C
-      00018C 12 00 F4         [24]  902 	lcall	_spi
-                                    903 ;	main.c:97: spi(0x0d, 0x00);
-      00018F 75 08 00         [24]  904 	mov	_spi_PARM_2,#0x00
-      000192 75 82 0D         [24]  905 	mov	dpl,#0x0D
-      000195 12 00 F4         [24]  906 	lcall	_spi
-                                    907 ;	main.c:98: spi(0x0e, 0x02);
-      000198 75 08 02         [24]  908 	mov	_spi_PARM_2,#0x02
-      00019B 75 82 0E         [24]  909 	mov	dpl,#0x0E
-      00019E 12 00 F4         [24]  910 	lcall	_spi
-                                    911 ;	main.c:99: spi(0x0f, 0x16);
-      0001A1 75 08 16         [24]  912 	mov	_spi_PARM_2,#0x16
-      0001A4 75 82 0F         [24]  913 	mov	dpl,#0x0F
-      0001A7 12 00 F4         [24]  914 	lcall	_spi
-                                    915 ;	main.c:100: spi(0x10, 0x18);
-      0001AA 75 08 18         [24]  916 	mov	_spi_PARM_2,#0x18
-      0001AD 75 82 10         [24]  917 	mov	dpl,#0x10
-      0001B0 12 00 F4         [24]  918 	lcall	_spi
-                                    919 ;	main.c:101: spi(0x11, 0x08);
-      0001B3 75 08 08         [24]  920 	mov	_spi_PARM_2,#0x08
-      0001B6 75 82 11         [24]  921 	mov	dpl,#0x11
-      0001B9 12 00 F4         [24]  922 	lcall	_spi
-                                    923 ;	main.c:102: spi(0x12, 0x92);
-      0001BC 75 08 92         [24]  924 	mov	_spi_PARM_2,#0x92
-      0001BF 75 82 12         [24]  925 	mov	dpl,#0x12
-      0001C2 12 00 F4         [24]  926 	lcall	_spi
-                                    927 ;	main.c:103: spi(0x13, 0x00);
-      0001C5 75 08 00         [24]  928 	mov	_spi_PARM_2,#0x00
-      0001C8 75 82 13         [24]  929 	mov	dpl,#0x13
-      0001CB 12 00 F4         [24]  930 	lcall	_spi
-                                    931 ;	main.c:104: spi(0x14, 0x02);
-      0001CE 75 08 02         [24]  932 	mov	_spi_PARM_2,#0x02
-      0001D1 75 82 14         [24]  933 	mov	dpl,#0x14
-      0001D4 12 00 F4         [24]  934 	lcall	_spi
-                                    935 ;	main.c:105: spi(0x15, 0x05);
-      0001D7 75 08 05         [24]  936 	mov	_spi_PARM_2,#0x05
-      0001DA 75 82 15         [24]  937 	mov	dpl,#0x15
-      0001DD 12 00 F4         [24]  938 	lcall	_spi
-                                    939 ;	main.c:106: spi(0x16, 0x40);
-      0001E0 75 08 40         [24]  940 	mov	_spi_PARM_2,#0x40
-      0001E3 75 82 16         [24]  941 	mov	dpl,#0x16
-      0001E6 12 00 F4         [24]  942 	lcall	_spi
-                                    943 ;	main.c:107: spi(0x17, 0x03);
-      0001E9 75 08 03         [24]  944 	mov	_spi_PARM_2,#0x03
-      0001EC 75 82 17         [24]  945 	mov	dpl,#0x17
-      0001EF 12 00 F4         [24]  946 	lcall	_spi
-                                    947 ;	main.c:108: spi(0x18, 0x16);
-      0001F2 75 08 16         [24]  948 	mov	_spi_PARM_2,#0x16
-      0001F5 75 82 18         [24]  949 	mov	dpl,#0x18
-      0001F8 12 00 F4         [24]  950 	lcall	_spi
-                                    951 ;	main.c:109: spi(0x19, 0xd7);
-      0001FB 75 08 D7         [24]  952 	mov	_spi_PARM_2,#0xD7
-      0001FE 75 82 19         [24]  953 	mov	dpl,#0x19
-      000201 12 00 F4         [24]  954 	lcall	_spi
-                                    955 ;	main.c:110: spi(0x1a, 0x01);
-      000204 75 08 01         [24]  956 	mov	_spi_PARM_2,#0x01
-      000207 75 82 1A         [24]  957 	mov	dpl,#0x1A
-      00020A 12 00 F4         [24]  958 	lcall	_spi
-                                    959 ;	main.c:111: spi(0x1b, 0xdc);
-      00020D 75 08 DC         [24]  960 	mov	_spi_PARM_2,#0xDC
-      000210 75 82 1B         [24]  961 	mov	dpl,#0x1B
-      000213 12 00 F4         [24]  962 	lcall	_spi
-                                    963 ;	main.c:112: spi(0x1c, 0x00);
-      000216 75 08 00         [24]  964 	mov	_spi_PARM_2,#0x00
-      000219 75 82 1C         [24]  965 	mov	dpl,#0x1C
-      00021C 12 00 F4         [24]  966 	lcall	_spi
-                                    967 ;	main.c:113: spi(0x1d, 0x04);
-      00021F 75 08 04         [24]  968 	mov	_spi_PARM_2,#0x04
-      000222 75 82 1D         [24]  969 	mov	dpl,#0x1D
-      000225 12 00 F4         [24]  970 	lcall	_spi
-                                    971 ;	main.c:114: spi(0x1e, 0x00);
-      000228 75 08 00         [24]  972 	mov	_spi_PARM_2,#0x00
-      00022B 75 82 1E         [24]  973 	mov	dpl,#0x1E
-      00022E 12 00 F4         [24]  974 	lcall	_spi
-                                    975 ;	main.c:115: spi(0x1f, 0x00);
-      000231 75 08 00         [24]  976 	mov	_spi_PARM_2,#0x00
-      000234 75 82 1F         [24]  977 	mov	dpl,#0x1F
-      000237 12 00 F4         [24]  978 	lcall	_spi
-                                    979 ;	main.c:116: spi(0x20, 0x03);
-      00023A 75 08 03         [24]  980 	mov	_spi_PARM_2,#0x03
-      00023D 75 82 20         [24]  981 	mov	dpl,#0x20
-      000240 12 00 F4         [24]  982 	lcall	_spi
-                                    983 ;	main.c:117: spi(0x21, 0x16);
-      000243 75 08 16         [24]  984 	mov	_spi_PARM_2,#0x16
-      000246 75 82 21         [24]  985 	mov	dpl,#0x21
-      000249 12 00 F4         [24]  986 	lcall	_spi
-                                    987 ;	main.c:118: spi(0x22, 0x18);
-      00024C 75 08 18         [24]  988 	mov	_spi_PARM_2,#0x18
-      00024F 75 82 22         [24]  989 	mov	dpl,#0x22
-      000252 12 00 F4         [24]  990 	lcall	_spi
-                                    991 ;	main.c:119: spi(0x23, 0x08);
-      000255 75 08 08         [24]  992 	mov	_spi_PARM_2,#0x08
-      000258 75 82 23         [24]  993 	mov	dpl,#0x23
-      00025B 12 00 F4         [24]  994 	lcall	_spi
-                                    995 ;	main.c:120: spi(0x24, 0xdc);
-      00025E 75 08 DC         [24]  996 	mov	_spi_PARM_2,#0xDC
-      000261 75 82 24         [24]  997 	mov	dpl,#0x24
-      000264 12 00 F4         [24]  998 	lcall	_spi
-                                    999 ;	main.c:121: spi(0x25, 0x00);
-      000267 75 08 00         [24] 1000 	mov	_spi_PARM_2,#0x00
-      00026A 75 82 25         [24] 1001 	mov	dpl,#0x25
-      00026D 12 00 F4         [24] 1002 	lcall	_spi
-                                   1003 ;	main.c:122: spi(0x26, 0x04);
-      000270 75 08 04         [24] 1004 	mov	_spi_PARM_2,#0x04
-      000273 75 82 26         [24] 1005 	mov	dpl,#0x26
-      000276 12 00 F4         [24] 1006 	lcall	_spi
-                                   1007 ;	main.c:123: spi(0x27, 0x00);
-      000279 75 08 00         [24] 1008 	mov	_spi_PARM_2,#0x00
-      00027C 75 82 27         [24] 1009 	mov	dpl,#0x27
-      00027F 12 00 F4         [24] 1010 	lcall	_spi
-                                   1011 ;	main.c:124: spi(0x28, 0x00);
-      000282 75 08 00         [24] 1012 	mov	_spi_PARM_2,#0x00
-      000285 75 82 28         [24] 1013 	mov	dpl,#0x28
-      000288 12 00 F4         [24] 1014 	lcall	_spi
-                                   1015 ;	main.c:125: spi(0x29, 0x01);
-      00028B 75 08 01         [24] 1016 	mov	_spi_PARM_2,#0x01
-      00028E 75 82 29         [24] 1017 	mov	dpl,#0x29
-      000291 12 00 F4         [24] 1018 	lcall	_spi
-                                   1019 ;	main.c:126: spi(0x2a, 0x16);
-      000294 75 08 16         [24] 1020 	mov	_spi_PARM_2,#0x16
-      000297 75 82 2A         [24] 1021 	mov	dpl,#0x2A
-      00029A 12 00 F4         [24] 1022 	lcall	_spi
-                                   1023 ;	main.c:127: spi(0x2b, 0x18);
-      00029D 75 08 18         [24] 1024 	mov	_spi_PARM_2,#0x18
-      0002A0 75 82 2B         [24] 1025 	mov	dpl,#0x2B
-      0002A3 12 00 F4         [24] 1026 	lcall	_spi
-                                   1027 ;	main.c:128: spi(0x2d, 0x08);
-      0002A6 75 08 08         [24] 1028 	mov	_spi_PARM_2,#0x08
-      0002A9 75 82 2D         [24] 1029 	mov	dpl,#0x2D
-      0002AC 12 00 F4         [24] 1030 	lcall	_spi
-                                   1031 ;	main.c:129: spi(0x4c, 0x99);
-      0002AF 75 08 99         [24] 1032 	mov	_spi_PARM_2,#0x99
-      0002B2 75 82 4C         [24] 1033 	mov	dpl,#0x4C
-      0002B5 12 00 F4         [24] 1034 	lcall	_spi
-                                   1035 ;	main.c:130: spi(0x4d, 0x00);
-      0002B8 75 08 00         [24] 1036 	mov	_spi_PARM_2,#0x00
-      0002BB 75 82 4D         [24] 1037 	mov	dpl,#0x4D
-      0002BE 12 00 F4         [24] 1038 	lcall	_spi
-                                   1039 ;	main.c:131: spi(0x4e, 0x00);
-      0002C1 75 08 00         [24] 1040 	mov	_spi_PARM_2,#0x00
-      0002C4 75 82 4E         [24] 1041 	mov	dpl,#0x4E
-      0002C7 12 00 F4         [24] 1042 	lcall	_spi
-                                   1043 ;	main.c:132: spi(0x4f, 0x00);
-      0002CA 75 08 00         [24] 1044 	mov	_spi_PARM_2,#0x00
-      0002CD 75 82 4F         [24] 1045 	mov	dpl,#0x4F
-      0002D0 12 00 F4         [24] 1046 	lcall	_spi
-                                   1047 ;	main.c:133: spi(0x50, 0x01);
-      0002D3 75 08 01         [24] 1048 	mov	_spi_PARM_2,#0x01
-      0002D6 75 82 50         [24] 1049 	mov	dpl,#0x50
-      0002D9 12 00 F4         [24] 1050 	lcall	_spi
-                                   1051 ;	main.c:134: spi(0x51, 0x0a);
-      0002DC 75 08 0A         [24] 1052 	mov	_spi_PARM_2,#0x0A
-      0002DF 75 82 51         [24] 1053 	mov	dpl,#0x51
-      0002E2 12 00 F4         [24] 1054 	lcall	_spi
-                                   1055 ;	main.c:135: spi(0x52, 0x00);
-      0002E5 75 08 00         [24] 1056 	mov	_spi_PARM_2,#0x00
-      0002E8 75 82 52         [24] 1057 	mov	dpl,#0x52
-      0002EB 12 00 F4         [24] 1058 	lcall	_spi
-                                   1059 ;	main.c:136: spi(0x5a, 0xe4);
-      0002EE 75 08 E4         [24] 1060 	mov	_spi_PARM_2,#0xE4
-      0002F1 75 82 5A         [24] 1061 	mov	dpl,#0x5A
-      0002F4 12 00 F4         [24] 1062 	lcall	_spi
-                                   1063 ;	main.c:137: spi(0x5e, 0x77);
-      0002F7 75 08 77         [24] 1064 	mov	_spi_PARM_2,#0x77
-      0002FA 75 82 5E         [24] 1065 	mov	dpl,#0x5E
-      0002FD 12 00 F4         [24] 1066 	lcall	_spi
-                                   1067 ;	main.c:138: spi(0x5f, 0x77);
-      000300 75 08 77         [24] 1068 	mov	_spi_PARM_2,#0x77
-      000303 75 82 5F         [24] 1069 	mov	dpl,#0x5F
-      000306 12 00 F4         [24] 1070 	lcall	_spi
-                                   1071 ;	main.c:139: spi(0x60, 0x34);
-      000309 75 08 34         [24] 1072 	mov	_spi_PARM_2,#0x34
-      00030C 75 82 60         [24] 1073 	mov	dpl,#0x60
-      00030F 12 00 F4         [24] 1074 	lcall	_spi
-                                   1075 ;	main.c:140: spi(0x61, 0x02);
-      000312 75 08 02         [24] 1076 	mov	_spi_PARM_2,#0x02
-      000315 75 82 61         [24] 1077 	mov	dpl,#0x61
-      000318 12 00 F4         [24] 1078 	lcall	_spi
-                                   1079 ;	main.c:141: spi(0x62, 0x81);
-      00031B 75 08 81         [24] 1080 	mov	_spi_PARM_2,#0x81
-      00031E 75 82 62         [24] 1081 	mov	dpl,#0x62
-      000321 12 00 F4         [24] 1082 	lcall	_spi
-                                   1083 ;	main.c:143: spi(0xfe, 0x07);
-      000324 75 08 07         [24] 1084 	mov	_spi_PARM_2,#0x07
-      000327 75 82 FE         [24] 1085 	mov	dpl,#0xFE
-      00032A 12 00 F4         [24] 1086 	lcall	_spi
-                                   1087 ;	main.c:144: spi(0x07, 0x4f);
-      00032D 75 08 4F         [24] 1088 	mov	_spi_PARM_2,#0x4F
-      000330 75 82 07         [24] 1089 	mov	dpl,#0x07
-      000333 12 00 F4         [24] 1090 	lcall	_spi
-                                   1091 ;	main.c:146: spi(0xfe, 01);
-      000336 75 08 01         [24] 1092 	mov	_spi_PARM_2,#0x01
-      000339 75 82 FE         [24] 1093 	mov	dpl,#0xFE
-      00033C 12 00 F4         [24] 1094 	lcall	_spi
-                                   1095 ;	main.c:147: spi(0x05, 0x15);
-      00033F 75 08 15         [24] 1096 	mov	_spi_PARM_2,#0x15
-      000342 75 82 05         [24] 1097 	mov	dpl,#0x05
-      000345 12 00 F4         [24] 1098 	lcall	_spi
-                                   1099 ;	main.c:148: spi(0x0e, 0x84);
-      000348 75 08 84         [24] 1100 	mov	_spi_PARM_2,#0x84
-      00034B 75 82 0E         [24] 1101 	mov	dpl,#0x0E
-      00034E 12 00 F4         [24] 1102 	lcall	_spi
-                                   1103 ;	main.c:149: spi(0x10, 0x51);
-      000351 75 08 51         [24] 1104 	mov	_spi_PARM_2,#0x51
-      000354 75 82 10         [24] 1105 	mov	dpl,#0x10
-      000357 12 00 F4         [24] 1106 	lcall	_spi
-                                   1107 ;	main.c:150: spi(0x15, 0x82);
-      00035A 75 08 82         [24] 1108 	mov	_spi_PARM_2,#0x82
-      00035D 75 82 15         [24] 1109 	mov	dpl,#0x15
-      000360 12 00 F4         [24] 1110 	lcall	_spi
-                                   1111 ;	main.c:151: spi(0x18, 0x47);
-      000363 75 08 47         [24] 1112 	mov	_spi_PARM_2,#0x47
-      000366 75 82 18         [24] 1113 	mov	dpl,#0x18
-      000369 12 00 F4         [24] 1114 	lcall	_spi
-                                   1115 ;	main.c:152: spi(0x19, 0x36);
-      00036C 75 08 36         [24] 1116 	mov	_spi_PARM_2,#0x36
-      00036F 75 82 19         [24] 1117 	mov	dpl,#0x19
-      000372 12 00 F4         [24] 1118 	lcall	_spi
-                                   1119 ;	main.c:153: spi(0x1a, 0x10);
-      000375 75 08 10         [24] 1120 	mov	_spi_PARM_2,#0x10
-      000378 75 82 1A         [24] 1121 	mov	dpl,#0x1A
-      00037B 12 00 F4         [24] 1122 	lcall	_spi
-                                   1123 ;	main.c:154: spi(0x1c, 0x77);
-      00037E 75 08 77         [24] 1124 	mov	_spi_PARM_2,#0x77
-      000381 75 82 1C         [24] 1125 	mov	dpl,#0x1C
-      000384 12 00 F4         [24] 1126 	lcall	_spi
-                                   1127 ;	main.c:155: spi(0x21, 0x28);
-      000387 75 08 28         [24] 1128 	mov	_spi_PARM_2,#0x28
-      00038A 75 82 21         [24] 1129 	mov	dpl,#0x21
-      00038D 12 00 F4         [24] 1130 	lcall	_spi
-                                   1131 ;	main.c:156: spi(0x22, 0x90);
-      000390 75 08 90         [24] 1132 	mov	_spi_PARM_2,#0x90
-      000393 75 82 22         [24] 1133 	mov	dpl,#0x22
-      000396 12 00 F4         [24] 1134 	lcall	_spi
-                                   1135 ;	main.c:157: spi(0x23, 0x20);
-      000399 75 08 20         [24] 1136 	mov	_spi_PARM_2,#0x20
-      00039C 75 82 23         [24] 1137 	mov	dpl,#0x23
-      00039F 12 00 F4         [24] 1138 	lcall	_spi
-                                   1139 ;	main.c:158: spi(0x25, 0x03);
-      0003A2 75 08 03         [24] 1140 	mov	_spi_PARM_2,#0x03
-      0003A5 75 82 25         [24] 1141 	mov	dpl,#0x25
-      0003A8 12 00 F4         [24] 1142 	lcall	_spi
-                                   1143 ;	main.c:159: spi(0x26, 0x4a);
-      0003AB 75 08 4A         [24] 1144 	mov	_spi_PARM_2,#0x4A
-      0003AE 75 82 26         [24] 1145 	mov	dpl,#0x26
-      0003B1 12 00 F4         [24] 1146 	lcall	_spi
-                                   1147 ;	main.c:160: spi(0x2a, 0x03);
-      0003B4 75 08 03         [24] 1148 	mov	_spi_PARM_2,#0x03
-      0003B7 75 82 2A         [24] 1149 	mov	dpl,#0x2A
-      0003BA 12 00 F4         [24] 1150 	lcall	_spi
-                                   1151 ;	main.c:161: spi(0x37, 0x0c);
-      0003BD 75 08 0C         [24] 1152 	mov	_spi_PARM_2,#0x0C
-      0003C0 75 82 37         [24] 1153 	mov	dpl,#0x37
-      0003C3 12 00 F4         [24] 1154 	lcall	_spi
-                                   1155 ;	main.c:162: spi(0x3a, 0x0c);
-      0003C6 75 08 0C         [24] 1156 	mov	_spi_PARM_2,#0x0C
-      0003C9 75 82 3A         [24] 1157 	mov	dpl,#0x3A
-      0003CC 12 00 F4         [24] 1158 	lcall	_spi
-                                   1159 ;	main.c:163: spi(0x3b, 0x40);
-      0003CF 75 08 40         [24] 1160 	mov	_spi_PARM_2,#0x40
-      0003D2 75 82 3B         [24] 1161 	mov	dpl,#0x3B
-      0003D5 12 00 F4         [24] 1162 	lcall	_spi
-                                   1163 ;	main.c:164: spi(0x3d, 0x01);
-      0003D8 75 08 01         [24] 1164 	mov	_spi_PARM_2,#0x01
-      0003DB 75 82 3D         [24] 1165 	mov	dpl,#0x3D
-      0003DE 12 00 F4         [24] 1166 	lcall	_spi
-                                   1167 ;	main.c:165: spi(0x3f,0x38);
-      0003E1 75 08 38         [24] 1168 	mov	_spi_PARM_2,#0x38
-      0003E4 75 82 3F         [24] 1169 	mov	dpl,#0x3F
-      0003E7 12 00 F4         [24] 1170 	lcall	_spi
-                                   1171 ;	main.c:166: spi(0x40, 0x01);
-      0003EA 75 08 01         [24] 1172 	mov	_spi_PARM_2,#0x01
-      0003ED 75 82 40         [24] 1173 	mov	dpl,#0x40
-      0003F0 12 00 F4         [24] 1174 	lcall	_spi
-                                   1175 ;	main.c:167: spi(0x41, 0x01);
-      0003F3 75 08 01         [24] 1176 	mov	_spi_PARM_2,#0x01
-      0003F6 75 82 41         [24] 1177 	mov	dpl,#0x41
-      0003F9 12 00 F4         [24] 1178 	lcall	_spi
-                                   1179 ;	main.c:168: spi(0x42, 0x33);
-      0003FC 75 08 33         [24] 1180 	mov	_spi_PARM_2,#0x33
-      0003FF 75 82 42         [24] 1181 	mov	dpl,#0x42
-      000402 12 00 F4         [24] 1182 	lcall	_spi
-                                   1183 ;	main.c:169: spi(0x43, 0x66);
-      000405 75 08 66         [24] 1184 	mov	_spi_PARM_2,#0x66
-      000408 75 82 43         [24] 1185 	mov	dpl,#0x43
-      00040B 12 00 F4         [24] 1186 	lcall	_spi
-                                   1187 ;	main.c:170: spi(0x44, 0x11);
-      00040E 75 08 11         [24] 1188 	mov	_spi_PARM_2,#0x11
-      000411 75 82 44         [24] 1189 	mov	dpl,#0x44
-      000414 12 00 F4         [24] 1190 	lcall	_spi
-                                   1191 ;	main.c:171: spi(0x45, 0x44);
-      000417 75 08 44         [24] 1192 	mov	_spi_PARM_2,#0x44
-      00041A 75 82 45         [24] 1193 	mov	dpl,#0x45
-      00041D 12 00 F4         [24] 1194 	lcall	_spi
-                                   1195 ;	main.c:172: spi(0x46, 0x22);
-      000420 75 08 22         [24] 1196 	mov	_spi_PARM_2,#0x22
-      000423 75 82 46         [24] 1197 	mov	dpl,#0x46
-      000426 12 00 F4         [24] 1198 	lcall	_spi
-                                   1199 ;	main.c:173: spi(0x47, 0x55);
-      000429 75 08 55         [24] 1200 	mov	_spi_PARM_2,#0x55
-      00042C 75 82 47         [24] 1201 	mov	dpl,#0x47
-      00042F 12 00 F4         [24] 1202 	lcall	_spi
-                                   1203 ;	main.c:174: spi(0x4c, 0x33);
-      000432 75 08 33         [24] 1204 	mov	_spi_PARM_2,#0x33
-      000435 75 82 4C         [24] 1205 	mov	dpl,#0x4C
-      000438 12 00 F4         [24] 1206 	lcall	_spi
-                                   1207 ;	main.c:175: spi(0x4d, 0x66);
-      00043B 75 08 66         [24] 1208 	mov	_spi_PARM_2,#0x66
-      00043E 75 82 4D         [24] 1209 	mov	dpl,#0x4D
-      000441 12 00 F4         [24] 1210 	lcall	_spi
-                                   1211 ;	main.c:176: spi(0x4e, 0x11);
-      000444 75 08 11         [24] 1212 	mov	_spi_PARM_2,#0x11
-      000447 75 82 4E         [24] 1213 	mov	dpl,#0x4E
-      00044A 12 00 F4         [24] 1214 	lcall	_spi
-                                   1215 ;	main.c:177: spi(0x4f, 0x44);
-      00044D 75 08 44         [24] 1216 	mov	_spi_PARM_2,#0x44
-      000450 75 82 4F         [24] 1217 	mov	dpl,#0x4F
-      000453 12 00 F4         [24] 1218 	lcall	_spi
-                                   1219 ;	main.c:178: spi(0x50, 0x22);
-      000456 75 08 22         [24] 1220 	mov	_spi_PARM_2,#0x22
-      000459 75 82 50         [24] 1221 	mov	dpl,#0x50
-      00045C 12 00 F4         [24] 1222 	lcall	_spi
-                                   1223 ;	main.c:179: spi(0x51, 0x55);
-      00045F 75 08 55         [24] 1224 	mov	_spi_PARM_2,#0x55
-      000462 75 82 51         [24] 1225 	mov	dpl,#0x51
-      000465 12 00 F4         [24] 1226 	lcall	_spi
-                                   1227 ;	main.c:180: spi(0x56, 0x11);
-      000468 75 08 11         [24] 1228 	mov	_spi_PARM_2,#0x11
-      00046B 75 82 56         [24] 1229 	mov	dpl,#0x56
-      00046E 12 00 F4         [24] 1230 	lcall	_spi
-                                   1231 ;	main.c:181: spi(0x58, 0x44);
-      000471 75 08 44         [24] 1232 	mov	_spi_PARM_2,#0x44
-      000474 75 82 58         [24] 1233 	mov	dpl,#0x58
-      000477 12 00 F4         [24] 1234 	lcall	_spi
-                                   1235 ;	main.c:182: spi(0x59, 0x22);
-      00047A 75 08 22         [24] 1236 	mov	_spi_PARM_2,#0x22
-      00047D 75 82 59         [24] 1237 	mov	dpl,#0x59
-      000480 12 00 F4         [24] 1238 	lcall	_spi
-                                   1239 ;	main.c:183: spi(0x5a, 0x55);
-      000483 75 08 55         [24] 1240 	mov	_spi_PARM_2,#0x55
-      000486 75 82 5A         [24] 1241 	mov	dpl,#0x5A
-      000489 12 00 F4         [24] 1242 	lcall	_spi
-                                   1243 ;	main.c:184: spi(0x5b, 0x33);
-      00048C 75 08 33         [24] 1244 	mov	_spi_PARM_2,#0x33
-      00048F 75 82 5B         [24] 1245 	mov	dpl,#0x5B
-      000492 12 00 F4         [24] 1246 	lcall	_spi
-                                   1247 ;	main.c:185: spi(0x5c, 0x66);
-      000495 75 08 66         [24] 1248 	mov	_spi_PARM_2,#0x66
-      000498 75 82 5C         [24] 1249 	mov	dpl,#0x5C
-      00049B 12 00 F4         [24] 1250 	lcall	_spi
-                                   1251 ;	main.c:186: spi(0x61, 0x11);
-      00049E 75 08 11         [24] 1252 	mov	_spi_PARM_2,#0x11
-      0004A1 75 82 61         [24] 1253 	mov	dpl,#0x61
-      0004A4 12 00 F4         [24] 1254 	lcall	_spi
-                                   1255 ;	main.c:187: spi(0x62, 0x44);
-      0004A7 75 08 44         [24] 1256 	mov	_spi_PARM_2,#0x44
-      0004AA 75 82 62         [24] 1257 	mov	dpl,#0x62
-      0004AD 12 00 F4         [24] 1258 	lcall	_spi
-                                   1259 ;	main.c:188: spi(0x63, 0x22);
-      0004B0 75 08 22         [24] 1260 	mov	_spi_PARM_2,#0x22
-      0004B3 75 82 63         [24] 1261 	mov	dpl,#0x63
-      0004B6 12 00 F4         [24] 1262 	lcall	_spi
-                                   1263 ;	main.c:189: spi(0x64, 0x55);
-      0004B9 75 08 55         [24] 1264 	mov	_spi_PARM_2,#0x55
-      0004BC 75 82 64         [24] 1265 	mov	dpl,#0x64
-      0004BF 12 00 F4         [24] 1266 	lcall	_spi
-                                   1267 ;	main.c:190: spi(0x65, 0x33);
-      0004C2 75 08 33         [24] 1268 	mov	_spi_PARM_2,#0x33
-      0004C5 75 82 65         [24] 1269 	mov	dpl,#0x65
-      0004C8 12 00 F4         [24] 1270 	lcall	_spi
-                                   1271 ;	main.c:191: spi(0x66, 0x66);
-      0004CB 75 08 66         [24] 1272 	mov	_spi_PARM_2,#0x66
-      0004CE 75 82 66         [24] 1273 	mov	dpl,#0x66
-      0004D1 12 00 F4         [24] 1274 	lcall	_spi
-                                   1275 ;	main.c:192: spi(0x70, 0xa5);
-      0004D4 75 08 A5         [24] 1276 	mov	_spi_PARM_2,#0xA5
-      0004D7 75 82 70         [24] 1277 	mov	dpl,#0x70
-      0004DA 12 00 F4         [24] 1278 	lcall	_spi
-                                   1279 ;	main.c:193: spi(0xfe, 0x05);
-      0004DD 75 08 05         [24] 1280 	mov	_spi_PARM_2,#0x05
-      0004E0 75 82 FE         [24] 1281 	mov	dpl,#0xFE
-      0004E3 12 00 F4         [24] 1282 	lcall	_spi
-                                   1283 ;	main.c:194: spi(0xfe, 0x0a);
-      0004E6 75 08 0A         [24] 1284 	mov	_spi_PARM_2,#0x0A
-      0004E9 75 82 FE         [24] 1285 	mov	dpl,#0xFE
-      0004EC 12 00 F4         [24] 1286 	lcall	_spi
-                                   1287 ;	main.c:195: spi(0x29, 0x10);
-      0004EF 75 08 10         [24] 1288 	mov	_spi_PARM_2,#0x10
-      0004F2 75 82 29         [24] 1289 	mov	dpl,#0x29
-      0004F5 12 00 F4         [24] 1290 	lcall	_spi
-                                   1291 ;	main.c:196: spi(0xfe, 0x00);
-      0004F8 75 08 00         [24] 1292 	mov	_spi_PARM_2,#0x00
-      0004FB 75 82 FE         [24] 1293 	mov	dpl,#0xFE
-      0004FE 12 00 F4         [24] 1294 	lcall	_spi
-                                   1295 ;	main.c:197: spi(0x35, 0x00);
-      000501 75 08 00         [24] 1296 	mov	_spi_PARM_2,#0x00
-      000504 75 82 35         [24] 1297 	mov	dpl,#0x35
-      000507 12 00 F4         [24] 1298 	lcall	_spi
-                                   1299 ;	main.c:198: spi(0x11, 0x00);
-      00050A 75 08 00         [24] 1300 	mov	_spi_PARM_2,#0x00
-      00050D 75 82 11         [24] 1301 	mov	dpl,#0x11
-      000510 12 00 F4         [24] 1302 	lcall	_spi
-                                   1303 ;	main.c:199: spi(0x36, 0x40);
-      000513 75 08 40         [24] 1304 	mov	_spi_PARM_2,#0x40
-      000516 75 82 36         [24] 1305 	mov	dpl,#0x36
-      000519 12 00 F4         [24] 1306 	lcall	_spi
-                                   1307 ;	main.c:200: spi(0x29, 0x00);
-      00051C 75 08 00         [24] 1308 	mov	_spi_PARM_2,#0x00
-      00051F 75 82 29         [24] 1309 	mov	dpl,#0x29
-      000522 02 00 F4         [24] 1310 	ljmp	_spi
-                                   1311 ;------------------------------------------------------------
-                                   1312 ;Allocation info for local variables in function 'init_1'
-                                   1313 ;------------------------------------------------------------
-                                   1314 ;	main.c:203: void init_1(void)
-                                   1315 ;	-----------------------------------------
-                                   1316 ;	 function init_1
-                                   1317 ;	-----------------------------------------
-      000525                       1318 _init_1:
-                                   1319 ;	main.c:206: spi(0xfe, 0x01);
-      000525 75 08 01         [24] 1320 	mov	_spi_PARM_2,#0x01
-      000528 75 82 FE         [24] 1321 	mov	dpl,#0xFE
-      00052B 12 00 F4         [24] 1322 	lcall	_spi
-                                   1323 ;	main.c:207: spi(0x05, 0x40);
-      00052E 75 08 40         [24] 1324 	mov	_spi_PARM_2,#0x40
-      000531 75 82 05         [24] 1325 	mov	dpl,#0x05
-      000534 12 00 F4         [24] 1326 	lcall	_spi
-                                   1327 ;	main.c:208: spi(0x06, 0x55);
-      000537 75 08 55         [24] 1328 	mov	_spi_PARM_2,#0x55
-      00053A 75 82 06         [24] 1329 	mov	dpl,#0x06
-      00053D 12 00 F4         [24] 1330 	lcall	_spi
-                                   1331 ;	main.c:209: spi(0x10, 0x71);
-      000540 75 08 71         [24] 1332 	mov	_spi_PARM_2,#0x71
-      000543 75 82 10         [24] 1333 	mov	dpl,#0x10
-      000546 12 00 F4         [24] 1334 	lcall	_spi
-                                   1335 ;	main.c:210: spi(0x0e, 0x80);
-      000549 75 08 80         [24] 1336 	mov	_spi_PARM_2,#0x80
-      00054C 75 82 0E         [24] 1337 	mov	dpl,#0x0E
-      00054F 12 00 F4         [24] 1338 	lcall	_spi
-                                   1339 ;	main.c:211: spi(0x19, 0x55);
-      000552 75 08 55         [24] 1340 	mov	_spi_PARM_2,#0x55
-      000555 75 82 19         [24] 1341 	mov	dpl,#0x19
-      000558 12 00 F4         [24] 1342 	lcall	_spi
-                                   1343 ;	main.c:212: spi(0x18, 0x88);
-      00055B 75 08 88         [24] 1344 	mov	_spi_PARM_2,#0x88
-      00055E 75 82 18         [24] 1345 	mov	dpl,#0x18
-      000561 12 00 F4         [24] 1346 	lcall	_spi
-                                   1347 ;	main.c:213: spi(0x1a, 0x10);
-      000564 75 08 10         [24] 1348 	mov	_spi_PARM_2,#0x10
-      000567 75 82 1A         [24] 1349 	mov	dpl,#0x1A
-      00056A 12 00 F4         [24] 1350 	lcall	_spi
-                                   1351 ;	main.c:214: spi(0x1c, 0x77);
-      00056D 75 08 77         [24] 1352 	mov	_spi_PARM_2,#0x77
-      000570 75 82 1C         [24] 1353 	mov	dpl,#0x1C
-      000573 12 00 F4         [24] 1354 	lcall	_spi
-                                   1355 ;	main.c:215: spi(0x23, 0x21);
-      000576 75 08 21         [24] 1356 	mov	_spi_PARM_2,#0x21
-      000579 75 82 23         [24] 1357 	mov	dpl,#0x23
-      00057C 12 00 F4         [24] 1358 	lcall	_spi
-                                   1359 ;	main.c:216: spi(0x21, 0x40);
-      00057F 75 08 40         [24] 1360 	mov	_spi_PARM_2,#0x40
-      000582 75 82 21         [24] 1361 	mov	dpl,#0x21
-      000585 12 00 F4         [24] 1362 	lcall	_spi
-                                   1363 ;	main.c:217: spi(0x22, 0xb7);
-      000588 75 08 B7         [24] 1364 	mov	_spi_PARM_2,#0xB7
-      00058B 75 82 22         [24] 1365 	mov	dpl,#0x22
-      00058E 12 00 F4         [24] 1366 	lcall	_spi
-                                   1367 ;	main.c:218: spi(0x25, 0x05);
-      000591 75 08 05         [24] 1368 	mov	_spi_PARM_2,#0x05
-      000594 75 82 25         [24] 1369 	mov	dpl,#0x25
-      000597 12 00 F4         [24] 1370 	lcall	_spi
-                                   1371 ;	main.c:219: spi(0x26, 0xfc);
-      00059A 75 08 FC         [24] 1372 	mov	_spi_PARM_2,#0xFC
-      00059D 75 82 26         [24] 1373 	mov	dpl,#0x26
-      0005A0 12 00 F4         [24] 1374 	lcall	_spi
-                                   1375 ;	main.c:220: spi(0x70, 0xff);
-      0005A3 75 08 FF         [24] 1376 	mov	_spi_PARM_2,#0xFF
-      0005A6 75 82 70         [24] 1377 	mov	dpl,#0x70
-      0005A9 12 00 F4         [24] 1378 	lcall	_spi
-                                   1379 ;	main.c:223: spi(0xfe, 0x04);
-      0005AC 75 08 04         [24] 1380 	mov	_spi_PARM_2,#0x04
-      0005AF 75 82 FE         [24] 1381 	mov	dpl,#0xFE
-      0005B2 12 00 F4         [24] 1382 	lcall	_spi
-                                   1383 ;	main.c:224: spi(0x5d, 0x10);
-      0005B5 75 08 10         [24] 1384 	mov	_spi_PARM_2,#0x10
-      0005B8 75 82 5D         [24] 1385 	mov	dpl,#0x5D
-      0005BB 12 00 F4         [24] 1386 	lcall	_spi
-                                   1387 ;	main.c:225: spi(0x5a, 0xff);
-      0005BE 75 08 FF         [24] 1388 	mov	_spi_PARM_2,#0xFF
-      0005C1 75 82 5A         [24] 1389 	mov	dpl,#0x5A
-      0005C4 12 00 F4         [24] 1390 	lcall	_spi
-                                   1391 ;	main.c:228: spi(0xfe, 0x04);
-      0005C7 75 08 04         [24] 1392 	mov	_spi_PARM_2,#0x04
-      0005CA 75 82 FE         [24] 1393 	mov	dpl,#0xFE
-      0005CD 12 00 F4         [24] 1394 	lcall	_spi
-                                   1395 ;	main.c:229: spi(0x00, 0xcc);
-      0005D0 75 08 CC         [24] 1396 	mov	_spi_PARM_2,#0xCC
-      0005D3 75 82 00         [24] 1397 	mov	dpl,#0x00
-      0005D6 12 00 F4         [24] 1398 	lcall	_spi
-                                   1399 ;	main.c:230: spi(0x01, 0x00);
-      0005D9 75 08 00         [24] 1400 	mov	_spi_PARM_2,#0x00
-      0005DC 75 82 01         [24] 1401 	mov	dpl,#0x01
-      0005DF 12 00 F4         [24] 1402 	lcall	_spi
-                                   1403 ;	main.c:231: spi(0x02, 0x02);
-      0005E2 75 08 02         [24] 1404 	mov	_spi_PARM_2,#0x02
-      0005E5 75 82 02         [24] 1405 	mov	dpl,#0x02
-      0005E8 12 00 F4         [24] 1406 	lcall	_spi
-                                   1407 ;	main.c:232: spi(0x03, 0x00);
-      0005EB 75 08 00         [24] 1408 	mov	_spi_PARM_2,#0x00
-      0005EE 75 82 03         [24] 1409 	mov	dpl,#0x03
-      0005F1 12 00 F4         [24] 1410 	lcall	_spi
-                                   1411 ;	main.c:233: spi(0x04, 0xa8);
-      0005F4 75 08 A8         [24] 1412 	mov	_spi_PARM_2,#0xA8
-      0005F7 75 82 04         [24] 1413 	mov	dpl,#0x04
-      0005FA 12 00 F4         [24] 1414 	lcall	_spi
-                                   1415 ;	main.c:234: spi(0x05, 0x01);
-      0005FD 75 08 01         [24] 1416 	mov	_spi_PARM_2,#0x01
-      000600 75 82 05         [24] 1417 	mov	dpl,#0x05
-      000603 12 00 F4         [24] 1418 	lcall	_spi
-                                   1419 ;	main.c:235: spi(0x06, 0x8e);
-      000606 75 08 8E         [24] 1420 	mov	_spi_PARM_2,#0x8E
-      000609 75 82 06         [24] 1421 	mov	dpl,#0x06
-      00060C 12 00 F4         [24] 1422 	lcall	_spi
-                                   1423 ;	main.c:236: spi(0x07, 0xfc);
-      00060F 75 08 FC         [24] 1424 	mov	_spi_PARM_2,#0xFC
-      000612 75 82 07         [24] 1425 	mov	dpl,#0x07
-      000615 12 00 F4         [24] 1426 	lcall	_spi
-                                   1427 ;	main.c:237: spi(0x08, 0x02);
-      000618 75 08 02         [24] 1428 	mov	_spi_PARM_2,#0x02
-      00061B 75 82 08         [24] 1429 	mov	dpl,#0x08
-      00061E 12 00 F4         [24] 1430 	lcall	_spi
-                                   1431 ;	main.c:240: spi(0xfe, 0x04);
-      000621 75 08 04         [24] 1432 	mov	_spi_PARM_2,#0x04
-      000624 75 82 FE         [24] 1433 	mov	dpl,#0xFE
-      000627 12 00 F4         [24] 1434 	lcall	_spi
-                                   1435 ;	main.c:241: spi(0x09, 0xcc);
-      00062A 75 08 CC         [24] 1436 	mov	_spi_PARM_2,#0xCC
-      00062D 75 82 09         [24] 1437 	mov	dpl,#0x09
-      000630 12 00 F4         [24] 1438 	lcall	_spi
-                                   1439 ;	main.c:242: spi(0x0a, 0x00);
-      000633 75 08 00         [24] 1440 	mov	_spi_PARM_2,#0x00
-      000636 75 82 0A         [24] 1441 	mov	dpl,#0x0A
-      000639 12 00 F4         [24] 1442 	lcall	_spi
-                                   1443 ;	main.c:243: spi(0x0b, 0x04);
-      00063C 75 08 04         [24] 1444 	mov	_spi_PARM_2,#0x04
-      00063F 75 82 0B         [24] 1445 	mov	dpl,#0x0B
-      000642 12 00 F4         [24] 1446 	lcall	_spi
-                                   1447 ;	main.c:244: spi(0x0c, 0x00);
-      000645 75 08 00         [24] 1448 	mov	_spi_PARM_2,#0x00
-      000648 75 82 0C         [24] 1449 	mov	dpl,#0x0C
-      00064B 12 00 F4         [24] 1450 	lcall	_spi
-                                   1451 ;	main.c:245: spi(0x0d, 0x80);
-      00064E 75 08 80         [24] 1452 	mov	_spi_PARM_2,#0x80
-      000651 75 82 0D         [24] 1453 	mov	dpl,#0x0D
-      000654 12 00 F4         [24] 1454 	lcall	_spi
-                                   1455 ;	main.c:246: spi(0x0e, 0x02);
-      000657 75 08 02         [24] 1456 	mov	_spi_PARM_2,#0x02
-      00065A 75 82 0E         [24] 1457 	mov	dpl,#0x0E
-      00065D 12 00 F4         [24] 1458 	lcall	_spi
-                                   1459 ;	main.c:247: spi(0x0f, 0x01);
-      000660 75 08 01         [24] 1460 	mov	_spi_PARM_2,#0x01
-      000663 75 82 0F         [24] 1461 	mov	dpl,#0x0F
-      000666 12 00 F4         [24] 1462 	lcall	_spi
-                                   1463 ;	main.c:248: spi(0x10, 0x00);
-      000669 75 08 00         [24] 1464 	mov	_spi_PARM_2,#0x00
-      00066C 75 82 10         [24] 1465 	mov	dpl,#0x10
-      00066F 12 00 F4         [24] 1466 	lcall	_spi
-                                   1467 ;	main.c:249: spi(0x11, 0x02);
-      000672 75 08 02         [24] 1468 	mov	_spi_PARM_2,#0x02
-      000675 75 82 11         [24] 1469 	mov	dpl,#0x11
-      000678 12 00 F4         [24] 1470 	lcall	_spi
-                                   1471 ;	main.c:252: spi(0xfe, 0x04);
-      00067B 75 08 04         [24] 1472 	mov	_spi_PARM_2,#0x04
-      00067E 75 82 FE         [24] 1473 	mov	dpl,#0xFE
-      000681 12 00 F4         [24] 1474 	lcall	_spi
-                                   1475 ;	main.c:253: spi(0x12, 0x8c);
-      000684 75 08 8C         [24] 1476 	mov	_spi_PARM_2,#0x8C
-      000687 75 82 12         [24] 1477 	mov	dpl,#0x12
-      00068A 12 00 F4         [24] 1478 	lcall	_spi
-                                   1479 ;	main.c:254: spi(0x13, 0x00);
-      00068D 75 08 00         [24] 1480 	mov	_spi_PARM_2,#0x00
-      000690 75 82 13         [24] 1481 	mov	dpl,#0x13
-      000693 12 00 F4         [24] 1482 	lcall	_spi
-                                   1483 ;	main.c:255: spi(0x14, 0x02);
-      000696 75 08 02         [24] 1484 	mov	_spi_PARM_2,#0x02
-      000699 75 82 14         [24] 1485 	mov	dpl,#0x14
-      00069C 12 00 F4         [24] 1486 	lcall	_spi
-                                   1487 ;	main.c:256: spi(0x15, 0x01);
-      00069F 75 08 01         [24] 1488 	mov	_spi_PARM_2,#0x01
-      0006A2 75 82 15         [24] 1489 	mov	dpl,#0x15
-      0006A5 12 00 F4         [24] 1490 	lcall	_spi
-                                   1491 ;	main.c:257: spi(0x16, 0x08);
-      0006A8 75 08 08         [24] 1492 	mov	_spi_PARM_2,#0x08
-      0006AB 75 82 16         [24] 1493 	mov	dpl,#0x16
-      0006AE 12 00 F4         [24] 1494 	lcall	_spi
-                                   1495 ;	main.c:258: spi(0x17, 0x00);
-      0006B1 75 08 00         [24] 1496 	mov	_spi_PARM_2,#0x00
-      0006B4 75 82 17         [24] 1497 	mov	dpl,#0x17
-      0006B7 12 00 F4         [24] 1498 	lcall	_spi
-                                   1499 ;	main.c:259: spi(0x18, 0x8e);
-      0006BA 75 08 8E         [24] 1500 	mov	_spi_PARM_2,#0x8E
-      0006BD 75 82 18         [24] 1501 	mov	dpl,#0x18
-      0006C0 12 00 F4         [24] 1502 	lcall	_spi
-                                   1503 ;	main.c:260: spi(0x19, 0x36);
-      0006C3 75 08 36         [24] 1504 	mov	_spi_PARM_2,#0x36
-      0006C6 75 82 19         [24] 1505 	mov	dpl,#0x19
-      0006C9 12 00 F4         [24] 1506 	lcall	_spi
-                                   1507 ;	main.c:261: spi(0x1a, 0x02);
-      0006CC 75 08 02         [24] 1508 	mov	_spi_PARM_2,#0x02
-      0006CF 75 82 1A         [24] 1509 	mov	dpl,#0x1A
-      0006D2 12 00 F4         [24] 1510 	lcall	_spi
-                                   1511 ;	main.c:264: spi(0xfe, 0x04);
-      0006D5 75 08 04         [24] 1512 	mov	_spi_PARM_2,#0x04
-      0006D8 75 82 FE         [24] 1513 	mov	dpl,#0xFE
-      0006DB 12 00 F4         [24] 1514 	lcall	_spi
-                                   1515 ;	main.c:265: spi(0x1b, 0xcc);
-      0006DE 75 08 CC         [24] 1516 	mov	_spi_PARM_2,#0xCC
-      0006E1 75 82 1B         [24] 1517 	mov	dpl,#0x1B
-      0006E4 12 00 F4         [24] 1518 	lcall	_spi
-                                   1519 ;	main.c:266: spi(0x1c, 0x00);
-      0006E7 75 08 00         [24] 1520 	mov	_spi_PARM_2,#0x00
-      0006EA 75 82 1C         [24] 1521 	mov	dpl,#0x1C
-      0006ED 12 00 F4         [24] 1522 	lcall	_spi
-                                   1523 ;	main.c:267: spi(0x1d, 0x02);
-      0006F0 75 08 02         [24] 1524 	mov	_spi_PARM_2,#0x02
-      0006F3 75 82 1D         [24] 1525 	mov	dpl,#0x1D
-      0006F6 12 00 F4         [24] 1526 	lcall	_spi
-                                   1527 ;	main.c:268: spi(0x1e, 0x00);
-      0006F9 75 08 00         [24] 1528 	mov	_spi_PARM_2,#0x00
-      0006FC 75 82 1E         [24] 1529 	mov	dpl,#0x1E
-      0006FF 12 00 F4         [24] 1530 	lcall	_spi
-                                   1531 ;	main.c:269: spi(0x1f, 0x08);
-      000702 75 08 08         [24] 1532 	mov	_spi_PARM_2,#0x08
-      000705 75 82 1F         [24] 1533 	mov	dpl,#0x1F
-      000708 12 00 F4         [24] 1534 	lcall	_spi
-                                   1535 ;	main.c:270: spi(0x20, 0x00);
-      00070B 75 08 00         [24] 1536 	mov	_spi_PARM_2,#0x00
-      00070E 75 82 20         [24] 1537 	mov	dpl,#0x20
-      000711 12 00 F4         [24] 1538 	lcall	_spi
-                                   1539 ;	main.c:271: spi(0x21, 0x8e);
-      000714 75 08 8E         [24] 1540 	mov	_spi_PARM_2,#0x8E
-      000717 75 82 21         [24] 1541 	mov	dpl,#0x21
-      00071A 12 00 F4         [24] 1542 	lcall	_spi
-                                   1543 ;	main.c:272: spi(0x22, 0x00);
-      00071D 75 08 00         [24] 1544 	mov	_spi_PARM_2,#0x00
-      000720 75 82 22         [24] 1545 	mov	dpl,#0x22
-      000723 12 00 F4         [24] 1546 	lcall	_spi
-                                   1547 ;	main.c:273: spi(0x23, 0x02);
-      000726 75 08 02         [24] 1548 	mov	_spi_PARM_2,#0x02
-      000729 75 82 23         [24] 1549 	mov	dpl,#0x23
-      00072C 12 00 F4         [24] 1550 	lcall	_spi
-                                   1551 ;	main.c:276: spi(0xfe, 0x04);
-      00072F 75 08 04         [24] 1552 	mov	_spi_PARM_2,#0x04
-      000732 75 82 FE         [24] 1553 	mov	dpl,#0xFE
-      000735 12 00 F4         [24] 1554 	lcall	_spi
-                                   1555 ;	main.c:277: spi(0x24, 0xcc);
-      000738 75 08 CC         [24] 1556 	mov	_spi_PARM_2,#0xCC
-      00073B 75 82 24         [24] 1557 	mov	dpl,#0x24
-      00073E 12 00 F4         [24] 1558 	lcall	_spi
-                                   1559 ;	main.c:278: spi(0x25, 0x00);
-      000741 75 08 00         [24] 1560 	mov	_spi_PARM_2,#0x00
-      000744 75 82 25         [24] 1561 	mov	dpl,#0x25
-      000747 12 00 F4         [24] 1562 	lcall	_spi
-                                   1563 ;	main.c:279: spi(0x26, 0x02);
-      00074A 75 08 02         [24] 1564 	mov	_spi_PARM_2,#0x02
-      00074D 75 82 26         [24] 1565 	mov	dpl,#0x26
-      000750 12 00 F4         [24] 1566 	lcall	_spi
-                                   1567 ;	main.c:280: spi(0x27, 0x00);
-      000753 75 08 00         [24] 1568 	mov	_spi_PARM_2,#0x00
-      000756 75 82 27         [24] 1569 	mov	dpl,#0x27
-      000759 12 00 F4         [24] 1570 	lcall	_spi
-                                   1571 ;	main.c:281: spi(0x28, 0x08);
-      00075C 75 08 08         [24] 1572 	mov	_spi_PARM_2,#0x08
-      00075F 75 82 28         [24] 1573 	mov	dpl,#0x28
-      000762 12 00 F4         [24] 1574 	lcall	_spi
-                                   1575 ;	main.c:282: spi(0x29, 0x01);
-      000765 75 08 01         [24] 1576 	mov	_spi_PARM_2,#0x01
-      000768 75 82 29         [24] 1577 	mov	dpl,#0x29
-      00076B 12 00 F4         [24] 1578 	lcall	_spi
-                                   1579 ;	main.c:283: spi(0x2a, 0x8e);
-      00076E 75 08 8E         [24] 1580 	mov	_spi_PARM_2,#0x8E
-      000771 75 82 2A         [24] 1581 	mov	dpl,#0x2A
-      000774 12 00 F4         [24] 1582 	lcall	_spi
-                                   1583 ;	main.c:284: spi(0x2b, 0x42);
-      000777 75 08 42         [24] 1584 	mov	_spi_PARM_2,#0x42
-      00077A 75 82 2B         [24] 1585 	mov	dpl,#0x2B
-      00077D 12 00 F4         [24] 1586 	lcall	_spi
-                                   1587 ;	main.c:285: spi(0x2d, 0x02);
-      000780 75 08 02         [24] 1588 	mov	_spi_PARM_2,#0x02
-      000783 75 82 2D         [24] 1589 	mov	dpl,#0x2D
-      000786 12 00 F4         [24] 1590 	lcall	_spi
-                                   1591 ;	main.c:288: spi(0xfe, 0x04);
-      000789 75 08 04         [24] 1592 	mov	_spi_PARM_2,#0x04
-      00078C 75 82 FE         [24] 1593 	mov	dpl,#0xFE
-      00078F 12 00 F4         [24] 1594 	lcall	_spi
-                                   1595 ;	main.c:289: spi(0x2f, 0x8c);
-      000792 75 08 8C         [24] 1596 	mov	_spi_PARM_2,#0x8C
-      000795 75 82 2F         [24] 1597 	mov	dpl,#0x2F
-      000798 12 00 F4         [24] 1598 	lcall	_spi
-                                   1599 ;	main.c:290: spi(0x30, 0x00);
-      00079B 75 08 00         [24] 1600 	mov	_spi_PARM_2,#0x00
-      00079E 75 82 30         [24] 1601 	mov	dpl,#0x30
-      0007A1 12 00 F4         [24] 1602 	lcall	_spi
-                                   1603 ;	main.c:291: spi(0x31, 0x01);
-      0007A4 75 08 01         [24] 1604 	mov	_spi_PARM_2,#0x01
-      0007A7 75 82 31         [24] 1605 	mov	dpl,#0x31
-      0007AA 12 00 F4         [24] 1606 	lcall	_spi
-                                   1607 ;	main.c:292: spi(0x32, 0x03);
-      0007AD 75 08 03         [24] 1608 	mov	_spi_PARM_2,#0x03
-      0007B0 75 82 32         [24] 1609 	mov	dpl,#0x32
-      0007B3 12 00 F4         [24] 1610 	lcall	_spi
-                                   1611 ;	main.c:293: spi(0x33, 0x00);
-      0007B6 75 08 00         [24] 1612 	mov	_spi_PARM_2,#0x00
-      0007B9 75 82 33         [24] 1613 	mov	dpl,#0x33
-      0007BC 12 00 F4         [24] 1614 	lcall	_spi
-                                   1615 ;	main.c:294: spi(0x34, 0x00);
-      0007BF 75 08 00         [24] 1616 	mov	_spi_PARM_2,#0x00
-      0007C2 75 82 34         [24] 1617 	mov	dpl,#0x34
-      0007C5 12 00 F4         [24] 1618 	lcall	_spi
-                                   1619 ;	main.c:295: spi(0x35, 0x01);
-      0007C8 75 08 01         [24] 1620 	mov	_spi_PARM_2,#0x01
-      0007CB 75 82 35         [24] 1621 	mov	dpl,#0x35
-      0007CE 12 00 F4         [24] 1622 	lcall	_spi
-                                   1623 ;	main.c:296: spi(0x36, 0x43);
-      0007D1 75 08 43         [24] 1624 	mov	_spi_PARM_2,#0x43
-      0007D4 75 82 36         [24] 1625 	mov	dpl,#0x36
-      0007D7 12 00 F4         [24] 1626 	lcall	_spi
-                                   1627 ;	main.c:297: spi(0x37, 0x02);
-      0007DA 75 08 02         [24] 1628 	mov	_spi_PARM_2,#0x02
-      0007DD 75 82 37         [24] 1629 	mov	dpl,#0x37
-      0007E0 12 00 F4         [24] 1630 	lcall	_spi
-                                   1631 ;	main.c:300: spi(0xfe, 0x04);
-      0007E3 75 08 04         [24] 1632 	mov	_spi_PARM_2,#0x04
-      0007E6 75 82 FE         [24] 1633 	mov	dpl,#0xFE
-      0007E9 12 00 F4         [24] 1634 	lcall	_spi
-                                   1635 ;	main.c:301: spi(0x38, 0xcc);
-      0007EC 75 08 CC         [24] 1636 	mov	_spi_PARM_2,#0xCC
-      0007EF 75 82 38         [24] 1637 	mov	dpl,#0x38
-      0007F2 12 00 F4         [24] 1638 	lcall	_spi
-                                   1639 ;	main.c:302: spi(0x39, 0x00);
-      0007F5 75 08 00         [24] 1640 	mov	_spi_PARM_2,#0x00
-      0007F8 75 82 39         [24] 1641 	mov	dpl,#0x39
-      0007FB 12 00 F4         [24] 1642 	lcall	_spi
-                                   1643 ;	main.c:303: spi(0x3a, 0x02);
-      0007FE 75 08 02         [24] 1644 	mov	_spi_PARM_2,#0x02
-      000801 75 82 3A         [24] 1645 	mov	dpl,#0x3A
-      000804 12 00 F4         [24] 1646 	lcall	_spi
-                                   1647 ;	main.c:304: spi(0x3b, 0x00);
-      000807 75 08 00         [24] 1648 	mov	_spi_PARM_2,#0x00
-      00080A 75 82 3B         [24] 1649 	mov	dpl,#0x3B
-      00080D 12 00 F4         [24] 1650 	lcall	_spi
-                                   1651 ;	main.c:305: spi(0x3d, 0x20);
-      000810 75 08 20         [24] 1652 	mov	_spi_PARM_2,#0x20
-      000813 75 82 3D         [24] 1653 	mov	dpl,#0x3D
-      000816 12 00 F4         [24] 1654 	lcall	_spi
-                                   1655 ;	main.c:306: spi(0x3f, 0x01);
-      000819 75 08 01         [24] 1656 	mov	_spi_PARM_2,#0x01
-      00081C 75 82 3F         [24] 1657 	mov	dpl,#0x3F
-      00081F 12 00 F4         [24] 1658 	lcall	_spi
-                                   1659 ;	main.c:307: spi(0x40, 0xa4);
-      000822 75 08 A4         [24] 1660 	mov	_spi_PARM_2,#0xA4
-      000825 75 82 40         [24] 1661 	mov	dpl,#0x40
-      000828 12 00 F4         [24] 1662 	lcall	_spi
-                                   1663 ;	main.c:308: spi(0x41, 0x57);
-      00082B 75 08 57         [24] 1664 	mov	_spi_PARM_2,#0x57
-      00082E 75 82 41         [24] 1665 	mov	dpl,#0x41
-      000831 12 00 F4         [24] 1666 	lcall	_spi
-                                   1667 ;	main.c:309: spi(0x42, 0x02);
-      000834 75 08 02         [24] 1668 	mov	_spi_PARM_2,#0x02
-      000837 75 82 42         [24] 1669 	mov	dpl,#0x42
-      00083A 12 00 F4         [24] 1670 	lcall	_spi
-                                   1671 ;	main.c:312: spi(0xfe, 0x04);
-      00083D 75 08 04         [24] 1672 	mov	_spi_PARM_2,#0x04
-      000840 75 82 FE         [24] 1673 	mov	dpl,#0xFE
-      000843 12 00 F4         [24] 1674 	lcall	_spi
-                                   1675 ;	main.c:313: spi(0x43, 0xcc);
-      000846 75 08 CC         [24] 1676 	mov	_spi_PARM_2,#0xCC
-      000849 75 82 43         [24] 1677 	mov	dpl,#0x43
-      00084C 12 00 F4         [24] 1678 	lcall	_spi
-                                   1679 ;	main.c:314: spi(0x44, 0x00);
-      00084F 75 08 00         [24] 1680 	mov	_spi_PARM_2,#0x00
-      000852 75 82 44         [24] 1681 	mov	dpl,#0x44
-      000855 12 00 F4         [24] 1682 	lcall	_spi
-                                   1683 ;	main.c:315: spi(0x45, 0x04);
-      000858 75 08 04         [24] 1684 	mov	_spi_PARM_2,#0x04
-      00085B 75 82 45         [24] 1685 	mov	dpl,#0x45
-      00085E 12 00 F4         [24] 1686 	lcall	_spi
-                                   1687 ;	main.c:316: spi(0x46, 0x00);
-      000861 75 08 00         [24] 1688 	mov	_spi_PARM_2,#0x00
-      000864 75 82 46         [24] 1689 	mov	dpl,#0x46
-      000867 12 00 F4         [24] 1690 	lcall	_spi
-                                   1691 ;	main.c:317: spi(0x47, 0x00);
-      00086A 75 08 00         [24] 1692 	mov	_spi_PARM_2,#0x00
-      00086D 75 82 47         [24] 1693 	mov	dpl,#0x47
-      000870 12 00 F4         [24] 1694 	lcall	_spi
-                                   1695 ;	main.c:318: spi(0x48, 0x00);
-      000873 75 08 00         [24] 1696 	mov	_spi_PARM_2,#0x00
-      000876 75 82 48         [24] 1697 	mov	dpl,#0x48
-      000879 12 00 F4         [24] 1698 	lcall	_spi
-                                   1699 ;	main.c:319: spi(0x49, 0x01);
-      00087C 75 08 01         [24] 1700 	mov	_spi_PARM_2,#0x01
-      00087F 75 82 49         [24] 1701 	mov	dpl,#0x49
-      000882 12 00 F4         [24] 1702 	lcall	_spi
-                                   1703 ;	main.c:320: spi(0x4a, 0x00);
-      000885 75 08 00         [24] 1704 	mov	_spi_PARM_2,#0x00
-      000888 75 82 4A         [24] 1705 	mov	dpl,#0x4A
-      00088B 12 00 F4         [24] 1706 	lcall	_spi
-                                   1707 ;	main.c:321: spi(0x4b, 0x02);
-      00088E 75 08 02         [24] 1708 	mov	_spi_PARM_2,#0x02
-      000891 75 82 4B         [24] 1709 	mov	dpl,#0x4B
-      000894 12 00 F4         [24] 1710 	lcall	_spi
-                                   1711 ;	main.c:324: spi(0xfe, 0x04);
-      000897 75 08 04         [24] 1712 	mov	_spi_PARM_2,#0x04
-      00089A 75 82 FE         [24] 1713 	mov	dpl,#0xFE
-      00089D 12 00 F4         [24] 1714 	lcall	_spi
-                                   1715 ;	main.c:325: spi(0x4c, 0x88);
-      0008A0 75 08 88         [24] 1716 	mov	_spi_PARM_2,#0x88
-      0008A3 75 82 4C         [24] 1717 	mov	dpl,#0x4C
-      0008A6 12 00 F4         [24] 1718 	lcall	_spi
-                                   1719 ;	main.c:326: spi(0x4d, 0x00);
-      0008A9 75 08 00         [24] 1720 	mov	_spi_PARM_2,#0x00
-      0008AC 75 82 4D         [24] 1721 	mov	dpl,#0x4D
-      0008AF 12 00 F4         [24] 1722 	lcall	_spi
-                                   1723 ;	main.c:327: spi(0x4e, 0x01);
-      0008B2 75 08 01         [24] 1724 	mov	_spi_PARM_2,#0x01
-      0008B5 75 82 4E         [24] 1725 	mov	dpl,#0x4E
-      0008B8 12 00 F4         [24] 1726 	lcall	_spi
-                                   1727 ;	main.c:328: spi(0x4f, 0x08);
-      0008BB 75 08 08         [24] 1728 	mov	_spi_PARM_2,#0x08
-      0008BE 75 82 4F         [24] 1729 	mov	dpl,#0x4F
-      0008C1 12 00 F4         [24] 1730 	lcall	_spi
-                                   1731 ;	main.c:329: spi(0x50, 0x01);
-      0008C4 75 08 01         [24] 1732 	mov	_spi_PARM_2,#0x01
-      0008C7 75 82 50         [24] 1733 	mov	dpl,#0x50
-      0008CA 12 00 F4         [24] 1734 	lcall	_spi
-                                   1735 ;	main.c:330: spi(0x51, 0x8e);
-      0008CD 75 08 8E         [24] 1736 	mov	_spi_PARM_2,#0x8E
-      0008D0 75 82 51         [24] 1737 	mov	dpl,#0x51
-      0008D3 12 00 F4         [24] 1738 	lcall	_spi
-                                   1739 ;	main.c:331: spi(0x52, 0x36);
-      0008D6 75 08 36         [24] 1740 	mov	_spi_PARM_2,#0x36
-      0008D9 75 82 52         [24] 1741 	mov	dpl,#0x52
-      0008DC 12 00 F4         [24] 1742 	lcall	_spi
-                                   1743 ;	main.c:334: spi(0xfe, 0x01);
-      0008DF 75 08 01         [24] 1744 	mov	_spi_PARM_2,#0x01
-      0008E2 75 82 FE         [24] 1745 	mov	dpl,#0xFE
-      0008E5 12 00 F4         [24] 1746 	lcall	_spi
-                                   1747 ;	main.c:335: spi(0x3a, 0x00);
-      0008E8 75 08 00         [24] 1748 	mov	_spi_PARM_2,#0x00
-      0008EB 75 82 3A         [24] 1749 	mov	dpl,#0x3A
-      0008EE 12 00 F4         [24] 1750 	lcall	_spi
-                                   1751 ;	main.c:336: spi(0x3b, 0x00);
-      0008F1 75 08 00         [24] 1752 	mov	_spi_PARM_2,#0x00
-      0008F4 75 82 3B         [24] 1753 	mov	dpl,#0x3B
-      0008F7 12 00 F4         [24] 1754 	lcall	_spi
-                                   1755 ;	main.c:337: spi(0x3d, 0x10);
-      0008FA 75 08 10         [24] 1756 	mov	_spi_PARM_2,#0x10
-      0008FD 75 82 3D         [24] 1757 	mov	dpl,#0x3D
-      000900 12 00 F4         [24] 1758 	lcall	_spi
-                                   1759 ;	main.c:338: spi(0x3f, 0x2f);
-      000903 75 08 2F         [24] 1760 	mov	_spi_PARM_2,#0x2F
-      000906 75 82 3F         [24] 1761 	mov	dpl,#0x3F
-      000909 12 00 F4         [24] 1762 	lcall	_spi
-                                   1763 ;	main.c:339: spi(0x40, 0x10);
-      00090C 75 08 10         [24] 1764 	mov	_spi_PARM_2,#0x10
-      00090F 75 82 40         [24] 1765 	mov	dpl,#0x40
-      000912 12 00 F4         [24] 1766 	lcall	_spi
-                                   1767 ;	main.c:340: spi(0x41, 0x0a);
-      000915 75 08 0A         [24] 1768 	mov	_spi_PARM_2,#0x0A
-      000918 75 82 41         [24] 1769 	mov	dpl,#0x41
-      00091B 12 00 F4         [24] 1770 	lcall	_spi
-                                   1771 ;	main.c:341: spi(0x37, 0x10);
-      00091E 75 08 10         [24] 1772 	mov	_spi_PARM_2,#0x10
-      000921 75 82 37         [24] 1773 	mov	dpl,#0x37
-      000924 12 00 F4         [24] 1774 	lcall	_spi
-                                   1775 ;	main.c:344: spi(0xfe, 0x04);
-      000927 75 08 04         [24] 1776 	mov	_spi_PARM_2,#0x04
-      00092A 75 82 FE         [24] 1777 	mov	dpl,#0xFE
-      00092D 12 00 F4         [24] 1778 	lcall	_spi
-                                   1779 ;	main.c:345: spi(0x5e, 0x30);
-      000930 75 08 30         [24] 1780 	mov	_spi_PARM_2,#0x30
-      000933 75 82 5E         [24] 1781 	mov	dpl,#0x5E
-      000936 12 00 F4         [24] 1782 	lcall	_spi
-                                   1783 ;	main.c:346: spi(0x5f, 0x32);
-      000939 75 08 32         [24] 1784 	mov	_spi_PARM_2,#0x32
-      00093C 75 82 5F         [24] 1785 	mov	dpl,#0x5F
-      00093F 12 00 F4         [24] 1786 	lcall	_spi
-                                   1787 ;	main.c:347: spi(0x60, 0x84);
-      000942 75 08 84         [24] 1788 	mov	_spi_PARM_2,#0x84
-      000945 75 82 60         [24] 1789 	mov	dpl,#0x60
-      000948 12 00 F4         [24] 1790 	lcall	_spi
-                                   1791 ;	main.c:348: spi(0x61, 0x76);
-      00094B 75 08 76         [24] 1792 	mov	_spi_PARM_2,#0x76
-      00094E 75 82 61         [24] 1793 	mov	dpl,#0x61
-      000951 12 00 F4         [24] 1794 	lcall	_spi
-                                   1795 ;	main.c:349: spi(0x62, 0x51);
-      000954 75 08 51         [24] 1796 	mov	_spi_PARM_2,#0x51
-      000957 75 82 62         [24] 1797 	mov	dpl,#0x62
-      00095A 12 00 F4         [24] 1798 	lcall	_spi
-                                   1799 ;	main.c:352: spi(0xfe, 0x05);
-      00095D 75 08 05         [24] 1800 	mov	_spi_PARM_2,#0x05
-      000960 75 82 FE         [24] 1801 	mov	dpl,#0xFE
-      000963 12 00 F4         [24] 1802 	lcall	_spi
-                                   1803 ;	main.c:353: spi(0x05, 0x11);
-      000966 75 08 11         [24] 1804 	mov	_spi_PARM_2,#0x11
-      000969 75 82 05         [24] 1805 	mov	dpl,#0x05
-      00096C 12 00 F4         [24] 1806 	lcall	_spi
-                                   1807 ;	main.c:354: spi(0x2a, 0x00);
-      00096F 75 08 00         [24] 1808 	mov	_spi_PARM_2,#0x00
-      000972 75 82 2A         [24] 1809 	mov	dpl,#0x2A
-      000975 12 00 F4         [24] 1810 	lcall	_spi
-                                   1811 ;	main.c:355: spi(0x91, 0x00);
-      000978 75 08 00         [24] 1812 	mov	_spi_PARM_2,#0x00
-      00097B 75 82 91         [24] 1813 	mov	dpl,#0x91
-      00097E 12 00 F4         [24] 1814 	lcall	_spi
-                                   1815 ;	main.c:358: spi(0xfe, 0x01);
-      000981 75 08 01         [24] 1816 	mov	_spi_PARM_2,#0x01
-      000984 75 82 FE         [24] 1817 	mov	dpl,#0xFE
-      000987 12 00 F4         [24] 1818 	lcall	_spi
-                                   1819 ;	main.c:359: spi(0x42, 0x33);
-      00098A 75 08 33         [24] 1820 	mov	_spi_PARM_2,#0x33
-      00098D 75 82 42         [24] 1821 	mov	dpl,#0x42
-      000990 12 00 F4         [24] 1822 	lcall	_spi
-                                   1823 ;	main.c:360: spi(0x43, 0x22);
-      000993 75 08 22         [24] 1824 	mov	_spi_PARM_2,#0x22
-      000996 75 82 43         [24] 1825 	mov	dpl,#0x43
-      000999 12 00 F4         [24] 1826 	lcall	_spi
-                                   1827 ;	main.c:361: spi(0x44, 0x11);
-      00099C 75 08 11         [24] 1828 	mov	_spi_PARM_2,#0x11
-      00099F 75 82 44         [24] 1829 	mov	dpl,#0x44
-      0009A2 12 00 F4         [24] 1830 	lcall	_spi
-                                   1831 ;	main.c:362: spi(0x45, 0x66);
-      0009A5 75 08 66         [24] 1832 	mov	_spi_PARM_2,#0x66
-      0009A8 75 82 45         [24] 1833 	mov	dpl,#0x45
-      0009AB 12 00 F4         [24] 1834 	lcall	_spi
-                                   1835 ;	main.c:363: spi(0x46, 0x55);
-      0009AE 75 08 55         [24] 1836 	mov	_spi_PARM_2,#0x55
-      0009B1 75 82 46         [24] 1837 	mov	dpl,#0x46
-      0009B4 12 00 F4         [24] 1838 	lcall	_spi
-                                   1839 ;	main.c:364: spi(0x47, 0x44);
-      0009B7 75 08 44         [24] 1840 	mov	_spi_PARM_2,#0x44
-      0009BA 75 82 47         [24] 1841 	mov	dpl,#0x47
-      0009BD 12 00 F4         [24] 1842 	lcall	_spi
-                                   1843 ;	main.c:365: spi(0x4c, 0x33);
-      0009C0 75 08 33         [24] 1844 	mov	_spi_PARM_2,#0x33
-      0009C3 75 82 4C         [24] 1845 	mov	dpl,#0x4C
-      0009C6 12 00 F4         [24] 1846 	lcall	_spi
-                                   1847 ;	main.c:366: spi(0x4d, 0x22);
-      0009C9 75 08 22         [24] 1848 	mov	_spi_PARM_2,#0x22
-      0009CC 75 82 4D         [24] 1849 	mov	dpl,#0x4D
-      0009CF 12 00 F4         [24] 1850 	lcall	_spi
-                                   1851 ;	main.c:367: spi(0x4e, 0x11);
-      0009D2 75 08 11         [24] 1852 	mov	_spi_PARM_2,#0x11
-      0009D5 75 82 4E         [24] 1853 	mov	dpl,#0x4E
-      0009D8 12 00 F4         [24] 1854 	lcall	_spi
-                                   1855 ;	main.c:368: spi(0x4f, 0x66);
-      0009DB 75 08 66         [24] 1856 	mov	_spi_PARM_2,#0x66
-      0009DE 75 82 4F         [24] 1857 	mov	dpl,#0x4F
-      0009E1 12 00 F4         [24] 1858 	lcall	_spi
-                                   1859 ;	main.c:369: spi(0x50, 0x55);
-      0009E4 75 08 55         [24] 1860 	mov	_spi_PARM_2,#0x55
-      0009E7 75 82 50         [24] 1861 	mov	dpl,#0x50
-      0009EA 12 00 F4         [24] 1862 	lcall	_spi
-                                   1863 ;	main.c:370: spi(0x51, 0x44);
-      0009ED 75 08 44         [24] 1864 	mov	_spi_PARM_2,#0x44
-      0009F0 75 82 51         [24] 1865 	mov	dpl,#0x51
-      0009F3 12 00 F4         [24] 1866 	lcall	_spi
-                                   1867 ;	main.c:371: spi(0x56, 0x11);
-      0009F6 75 08 11         [24] 1868 	mov	_spi_PARM_2,#0x11
-      0009F9 75 82 56         [24] 1869 	mov	dpl,#0x56
-      0009FC 12 00 F4         [24] 1870 	lcall	_spi
-                                   1871 ;	main.c:372: spi(0x58, 0x22);
-      0009FF 75 08 22         [24] 1872 	mov	_spi_PARM_2,#0x22
-      000A02 75 82 58         [24] 1873 	mov	dpl,#0x58
-      000A05 12 00 F4         [24] 1874 	lcall	_spi
-                                   1875 ;	main.c:373: spi(0x59, 0x33);
-      000A08 75 08 33         [24] 1876 	mov	_spi_PARM_2,#0x33
-      000A0B 75 82 59         [24] 1877 	mov	dpl,#0x59
-      000A0E 12 00 F4         [24] 1878 	lcall	_spi
-                                   1879 ;	main.c:374: spi(0x5a, 0x44);
-      000A11 75 08 44         [24] 1880 	mov	_spi_PARM_2,#0x44
-      000A14 75 82 5A         [24] 1881 	mov	dpl,#0x5A
-      000A17 12 00 F4         [24] 1882 	lcall	_spi
-                                   1883 ;	main.c:375: spi(0x5b, 0x55);
-      000A1A 75 08 55         [24] 1884 	mov	_spi_PARM_2,#0x55
-      000A1D 75 82 5B         [24] 1885 	mov	dpl,#0x5B
-      000A20 12 00 F4         [24] 1886 	lcall	_spi
-                                   1887 ;	main.c:376: spi(0x5c, 0x66);
-      000A23 75 08 66         [24] 1888 	mov	_spi_PARM_2,#0x66
-      000A26 75 82 5C         [24] 1889 	mov	dpl,#0x5C
-      000A29 12 00 F4         [24] 1890 	lcall	_spi
-                                   1891 ;	main.c:377: spi(0x61, 0x11);
-      000A2C 75 08 11         [24] 1892 	mov	_spi_PARM_2,#0x11
-      000A2F 75 82 61         [24] 1893 	mov	dpl,#0x61
-      000A32 12 00 F4         [24] 1894 	lcall	_spi
-                                   1895 ;	main.c:378: spi(0x62, 0x22);
-      000A35 75 08 22         [24] 1896 	mov	_spi_PARM_2,#0x22
-      000A38 75 82 62         [24] 1897 	mov	dpl,#0x62
-      000A3B 12 00 F4         [24] 1898 	lcall	_spi
-                                   1899 ;	main.c:379: spi(0x63, 0x33);
-      000A3E 75 08 33         [24] 1900 	mov	_spi_PARM_2,#0x33
-      000A41 75 82 63         [24] 1901 	mov	dpl,#0x63
-      000A44 12 00 F4         [24] 1902 	lcall	_spi
-                                   1903 ;	main.c:380: spi(0x64, 0x44);
-      000A47 75 08 44         [24] 1904 	mov	_spi_PARM_2,#0x44
-      000A4A 75 82 64         [24] 1905 	mov	dpl,#0x64
-      000A4D 12 00 F4         [24] 1906 	lcall	_spi
-                                   1907 ;	main.c:381: spi(0x65, 0x55);
-      000A50 75 08 55         [24] 1908 	mov	_spi_PARM_2,#0x55
-      000A53 75 82 65         [24] 1909 	mov	dpl,#0x65
-      000A56 12 00 F4         [24] 1910 	lcall	_spi
-                                   1911 ;	main.c:382: spi(0x66, 0x66);
-      000A59 75 08 66         [24] 1912 	mov	_spi_PARM_2,#0x66
-      000A5C 75 82 66         [24] 1913 	mov	dpl,#0x66
-      000A5F 12 00 F4         [24] 1914 	lcall	_spi
-                                   1915 ;	main.c:385: spi(0xfe, 0x00);
-      000A62 75 08 00         [24] 1916 	mov	_spi_PARM_2,#0x00
-      000A65 75 82 FE         [24] 1917 	mov	dpl,#0xFE
-      000A68 12 00 F4         [24] 1918 	lcall	_spi
-                                   1919 ;	main.c:386: spi(0x35, 0x00);
-      000A6B 75 08 00         [24] 1920 	mov	_spi_PARM_2,#0x00
-      000A6E 75 82 35         [24] 1921 	mov	dpl,#0x35
-      000A71 12 00 F4         [24] 1922 	lcall	_spi
-                                   1923 ;	main.c:389: spi_cmd(0x11);
-      000A74 90 00 11         [24] 1924 	mov	dptr,#0x0011
-      000A77 12 00 83         [24] 1925 	lcall	_spi_cmd
-                                   1926 ;	main.c:390: delayms(150);
-      000A7A 90 00 96         [24] 1927 	mov	dptr,#0x0096
-      000A7D 12 00 62         [24] 1928 	lcall	_delayms
-                                   1929 ;	main.c:393: spi_cmd(0x29);
-      000A80 90 00 29         [24] 1930 	mov	dptr,#0x0029
-      000A83 02 00 83         [24] 1931 	ljmp	_spi_cmd
-                                   1932 ;------------------------------------------------------------
-                                   1933 ;Allocation info for local variables in function 'color'
-                                   1934 ;------------------------------------------------------------
-                                   1935 ;x                         Allocated to registers r4 r5 
-                                   1936 ;y                         Allocated to registers r6 r7 
-                                   1937 ;------------------------------------------------------------
-                                   1938 ;	main.c:396: void color(void)
-                                   1939 ;	-----------------------------------------
-                                   1940 ;	 function color
-                                   1941 ;	-----------------------------------------
-      000A86                       1942 _color:
-                                   1943 ;	main.c:400: spi(0x51, 0x20);
-      000A86 75 08 20         [24] 1944 	mov	_spi_PARM_2,#0x20
-      000A89 75 82 51         [24] 1945 	mov	dpl,#0x51
-      000A8C 12 00 F4         [24] 1946 	lcall	_spi
-                                   1947 ;	main.c:402: spi_cmd(0x2c);
-      000A8F 90 00 2C         [24] 1948 	mov	dptr,#0x002C
-      000A92 12 00 83         [24] 1949 	lcall	_spi_cmd
-                                   1950 ;	main.c:403: for(y=0; y<272; y++){
-      000A95 7E 00            [12] 1951 	mov	r6,#0x00
-      000A97 7F 00            [12] 1952 	mov	r7,#0x00
-                                   1953 ;	main.c:404: for(x=0; x<340; x++){
-      000A99                       1954 00109$:
-      000A99 7C 00            [12] 1955 	mov	r4,#0x00
-      000A9B 7D 00            [12] 1956 	mov	r5,#0x00
-      000A9D                       1957 00103$:
-                                   1958 ;	main.c:405: spi_data(0xff);
-      000A9D 75 82 FF         [24] 1959 	mov	dpl,#0xFF
-      000AA0 C0 07            [24] 1960 	push	ar7
-      000AA2 C0 06            [24] 1961 	push	ar6
-      000AA4 C0 05            [24] 1962 	push	ar5
-      000AA6 C0 04            [24] 1963 	push	ar4
-      000AA8 12 00 C1         [24] 1964 	lcall	_spi_data
-                                   1965 ;	main.c:406: spi_data(0x00);
-      000AAB 75 82 00         [24] 1966 	mov	dpl,#0x00
-      000AAE 12 00 C1         [24] 1967 	lcall	_spi_data
-                                   1968 ;	main.c:407: spi_data(0x00);
-      000AB1 75 82 00         [24] 1969 	mov	dpl,#0x00
-      000AB4 12 00 C1         [24] 1970 	lcall	_spi_data
-      000AB7 D0 04            [24] 1971 	pop	ar4
-      000AB9 D0 05            [24] 1972 	pop	ar5
-      000ABB D0 06            [24] 1973 	pop	ar6
-      000ABD D0 07            [24] 1974 	pop	ar7
-                                   1975 ;	main.c:404: for(x=0; x<340; x++){
-      000ABF 0C               [12] 1976 	inc	r4
-      000AC0 BC 00 01         [24] 1977 	cjne	r4,#0x00,00120$
-      000AC3 0D               [12] 1978 	inc	r5
-      000AC4                       1979 00120$:
-      000AC4 C3               [12] 1980 	clr	c
-      000AC5 EC               [12] 1981 	mov	a,r4
-      000AC6 94 54            [12] 1982 	subb	a,#0x54
-      000AC8 ED               [12] 1983 	mov	a,r5
-      000AC9 94 01            [12] 1984 	subb	a,#0x01
-      000ACB 40 D0            [24] 1985 	jc	00103$
-                                   1986 ;	main.c:403: for(y=0; y<272; y++){
-      000ACD 0E               [12] 1987 	inc	r6
-      000ACE BE 00 01         [24] 1988 	cjne	r6,#0x00,00122$
-      000AD1 0F               [12] 1989 	inc	r7
-      000AD2                       1990 00122$:
-      000AD2 C3               [12] 1991 	clr	c
-      000AD3 EE               [12] 1992 	mov	a,r6
-      000AD4 94 10            [12] 1993 	subb	a,#0x10
-      000AD6 EF               [12] 1994 	mov	a,r7
-      000AD7 94 01            [12] 1995 	subb	a,#0x01
-      000AD9 40 BE            [24] 1996 	jc	00109$
-      000ADB 22               [24] 1997 	ret
-                                   1998 ;------------------------------------------------------------
-                                   1999 ;Allocation info for local variables in function 'gpio_init'
-                                   2000 ;------------------------------------------------------------
-                                   2001 ;	main.c:412: void gpio_init(void)
-                                   2002 ;	-----------------------------------------
-                                   2003 ;	 function gpio_init
-                                   2004 ;	-----------------------------------------
-      000ADC                       2005 _gpio_init:
-                                   2006 ;	main.c:414: P0M0 = 0x00;
-      000ADC 75 94 00         [24] 2007 	mov	_P0M0,#0x00
-                                   2008 ;	main.c:415: P0M1 = 0x00;
-      000ADF 75 93 00         [24] 2009 	mov	_P0M1,#0x00
-                                   2010 ;	main.c:416: P1M0 = 0x00;
-      000AE2 75 92 00         [24] 2011 	mov	_P1M0,#0x00
-                                   2012 ;	main.c:417: P1M1 = 0x00;
-      000AE5 75 91 00         [24] 2013 	mov	_P1M1,#0x00
-                                   2014 ;	main.c:418: P2M0 = 0x00;
-      000AE8 75 96 00         [24] 2015 	mov	_P2M0,#0x00
-                                   2016 ;	main.c:419: P2M1 = 0x00;
-      000AEB 75 95 00         [24] 2017 	mov	_P2M1,#0x00
-                                   2018 ;	main.c:420: P3M0 = 0x00;
-      000AEE 75 B2 00         [24] 2019 	mov	_P3M0,#0x00
-                                   2020 ;	main.c:421: P3M1 = 0x00;
-      000AF1 75 B1 00         [24] 2021 	mov	_P3M1,#0x00
-                                   2022 ;	main.c:422: P4M0 = 0x00;
-      000AF4 75 B4 00         [24] 2023 	mov	_P4M0,#0x00
-                                   2024 ;	main.c:423: P4M1 = 0x00;
-      000AF7 75 B3 00         [24] 2025 	mov	_P4M1,#0x00
-                                   2026 ;	main.c:424: P5M0 = 0x00;
-      000AFA 75 CA 00         [24] 2027 	mov	_P5M0,#0x00
-                                   2028 ;	main.c:425: P5M1 = 0x00;
-      000AFD 75 C9 00         [24] 2029 	mov	_P5M1,#0x00
-      000B00 22               [24] 2030 	ret
-                                   2031 ;------------------------------------------------------------
-                                   2032 ;Allocation info for local variables in function 'main'
-                                   2033 ;------------------------------------------------------------
-                                   2034 ;	main.c:428: void main(void)
-                                   2035 ;	-----------------------------------------
-                                   2036 ;	 function main
-                                   2037 ;	-----------------------------------------
-      000B01                       2038 _main:
-                                   2039 ;	main.c:430: gpio_init();
-      000B01 12 0A DC         [24] 2040 	lcall	_gpio_init
-                                   2041 ;	main.c:431: AUXR|= 0x80;
-      000B04 43 8E 80         [24] 2042 	orl	_AUXR,#0x80
-                                   2043 ;	main.c:433: reset();
-      000B07 12 01 01         [24] 2044 	lcall	_reset
-                                   2045 ;	main.c:434: init_2();
-      000B0A 12 01 11         [24] 2046 	lcall	_init_2
-                                   2047 ;	main.c:435: color();
-      000B0D 12 0A 86         [24] 2048 	lcall	_color
-                                   2049 ;	main.c:436: while(1){
-      000B10                       2050 00102$:
-                                   2051 ;	main.c:437: P55 = 0;
-      000B10 C2 CD            [12] 2052 	clr	_P55
-                                   2053 ;	main.c:438: delayms(1000);
-      000B12 90 03 E8         [24] 2054 	mov	dptr,#0x03E8
-      000B15 12 00 62         [24] 2055 	lcall	_delayms
-                                   2056 ;	main.c:439: P55 = 1;
-      000B18 D2 CD            [12] 2057 	setb	_P55
-                                   2058 ;	main.c:440: delayms(1000);
-      000B1A 90 03 E8         [24] 2059 	mov	dptr,#0x03E8
-      000B1D 12 00 62         [24] 2060 	lcall	_delayms
-      000B20 80 EE            [24] 2061 	sjmp	00102$
-                                   2062 	.area CSEG    (CODE)
-                                   2063 	.area CONST   (CODE)
-                                   2064 	.area XINIT   (CODE)
-                                   2065 	.area CABS    (ABS,CODE)
+                                    687 ;Allocation info for local variables in function 'spi_raw_read'
+                                    688 ;------------------------------------------------------------
+                                    689 ;cnt                       Allocated to registers r6 
+                                    690 ;ret                       Allocated to registers r7 
+                                    691 ;------------------------------------------------------------
+                                    692 ;	main.c:23: unsigned char spi_raw_read(void)
+                                    693 ;	-----------------------------------------
+                                    694 ;	 function spi_raw_read
+                                    695 ;	-----------------------------------------
+      000083                        696 _spi_raw_read:
+                                    697 ;	main.c:25: unsigned char cnt=0, ret=0;
+      000083 7F 00            [12]  698 	mov	r7,#0x00
+                                    699 ;	main.c:27: for(cnt=0; cnt<8; cnt++){
+      000085 7E 00            [12]  700 	mov	r6,#0x00
+      000087                        701 00102$:
+                                    702 ;	main.c:28: SCL = 0;			
+      000087 C2 C0            [12]  703 	clr	_P40
+                                    704 ;	main.c:29: ret|= SDO;
+      000089 8F 05            [24]  705 	mov	ar5,r7
+      00008B A2 B7            [12]  706 	mov	c,_P37
+      00008D E4               [12]  707 	clr	a
+      00008E 33               [12]  708 	rlc	a
+      00008F FC               [12]  709 	mov	r4,a
+      000090 4D               [12]  710 	orl	a,r5
+                                    711 ;	main.c:30: ret<<= 1;
+      000091 25 E0            [12]  712 	add	a,acc
+      000093 FF               [12]  713 	mov	r7,a
+                                    714 ;	main.c:31: SCL = 1;
+      000094 D2 C0            [12]  715 	setb	_P40
+                                    716 ;	main.c:27: for(cnt=0; cnt<8; cnt++){
+      000096 0E               [12]  717 	inc	r6
+      000097 BE 08 00         [24]  718 	cjne	r6,#0x08,00113$
+      00009A                        719 00113$:
+      00009A 40 EB            [24]  720 	jc	00102$
+                                    721 ;	main.c:33: return ret;
+      00009C 8F 82            [24]  722 	mov	dpl,r7
+      00009E 22               [24]  723 	ret
+                                    724 ;------------------------------------------------------------
+                                    725 ;Allocation info for local variables in function 'spi_raw_write'
+                                    726 ;------------------------------------------------------------
+                                    727 ;val                       Allocated to registers r7 
+                                    728 ;cnt                       Allocated to registers r6 
+                                    729 ;------------------------------------------------------------
+                                    730 ;	main.c:36: void spi_raw_write(unsigned char val)
+                                    731 ;	-----------------------------------------
+                                    732 ;	 function spi_raw_write
+                                    733 ;	-----------------------------------------
+      00009F                        734 _spi_raw_write:
+      00009F AF 82            [24]  735 	mov	r7,dpl
+                                    736 ;	main.c:40: for(cnt=0; cnt<8; cnt++){
+      0000A1 7E 00            [12]  737 	mov	r6,#0x00
+      0000A3                        738 00105$:
+                                    739 ;	main.c:41: SCL = 0;			
+      0000A3 C2 C0            [12]  740 	clr	_P40
+                                    741 ;	main.c:42: if((val & 0x80) == 0x80){
+      0000A5 74 80            [12]  742 	mov	a,#0x80
+      0000A7 5F               [12]  743 	anl	a,r7
+      0000A8 FD               [12]  744 	mov	r5,a
+      0000A9 BD 80 04         [24]  745 	cjne	r5,#0x80,00102$
+                                    746 ;	main.c:43: SDI = 1;
+      0000AC D2 C1            [12]  747 	setb	_P41
+      0000AE 80 02            [24]  748 	sjmp	00103$
+      0000B0                        749 00102$:
+                                    750 ;	main.c:46: SDI = 0;
+      0000B0 C2 C1            [12]  751 	clr	_P41
+      0000B2                        752 00103$:
+                                    753 ;	main.c:48: val<<= 1;
+      0000B2 EF               [12]  754 	mov	a,r7
+      0000B3 2F               [12]  755 	add	a,r7
+      0000B4 FF               [12]  756 	mov	r7,a
+                                    757 ;	main.c:49: SCL = 1;
+      0000B5 D2 C0            [12]  758 	setb	_P40
+                                    759 ;	main.c:40: for(cnt=0; cnt<8; cnt++){
+      0000B7 0E               [12]  760 	inc	r6
+      0000B8 BE 08 00         [24]  761 	cjne	r6,#0x08,00118$
+      0000BB                        762 00118$:
+      0000BB 40 E6            [24]  763 	jc	00105$
+      0000BD 22               [24]  764 	ret
+                                    765 ;------------------------------------------------------------
+                                    766 ;Allocation info for local variables in function 'spi_cmd'
+                                    767 ;------------------------------------------------------------
+                                    768 ;cmd                       Allocated to registers r7 
+                                    769 ;------------------------------------------------------------
+                                    770 ;	main.c:53: void spi_cmd(unsigned char cmd)
+                                    771 ;	-----------------------------------------
+                                    772 ;	 function spi_cmd
+                                    773 ;	-----------------------------------------
+      0000BE                        774 _spi_cmd:
+      0000BE AF 82            [24]  775 	mov	r7,dpl
+                                    776 ;	main.c:55: spi_raw_write(0x20);
+      0000C0 75 82 20         [24]  777 	mov	dpl,#0x20
+      0000C3 C0 07            [24]  778 	push	ar7
+      0000C5 12 00 9F         [24]  779 	lcall	_spi_raw_write
+      0000C8 D0 07            [24]  780 	pop	ar7
+                                    781 ;	main.c:56: spi_raw_write(cmd);
+      0000CA 8F 82            [24]  782 	mov	dpl,r7
+      0000CC 12 00 9F         [24]  783 	lcall	_spi_raw_write
+                                    784 ;	main.c:57: spi_raw_write(0x00);
+      0000CF 75 82 00         [24]  785 	mov	dpl,#0x00
+      0000D2 12 00 9F         [24]  786 	lcall	_spi_raw_write
+                                    787 ;	main.c:58: spi_raw_write(0x00);
+      0000D5 75 82 00         [24]  788 	mov	dpl,#0x00
+      0000D8 02 00 9F         [24]  789 	ljmp	_spi_raw_write
+                                    790 ;------------------------------------------------------------
+                                    791 ;Allocation info for local variables in function 'spi_data'
+                                    792 ;------------------------------------------------------------
+                                    793 ;dat                       Allocated to registers r7 
+                                    794 ;------------------------------------------------------------
+                                    795 ;	main.c:61: void spi_data(unsigned char dat)
+                                    796 ;	-----------------------------------------
+                                    797 ;	 function spi_data
+                                    798 ;	-----------------------------------------
+      0000DB                        799 _spi_data:
+      0000DB AF 82            [24]  800 	mov	r7,dpl
+                                    801 ;	main.c:63: spi_raw_write(0x20);
+      0000DD 75 82 20         [24]  802 	mov	dpl,#0x20
+      0000E0 C0 07            [24]  803 	push	ar7
+      0000E2 12 00 9F         [24]  804 	lcall	_spi_raw_write
+      0000E5 D0 07            [24]  805 	pop	ar7
+                                    806 ;	main.c:64: spi_raw_write(dat);
+      0000E7 8F 82            [24]  807 	mov	dpl,r7
+      0000E9 02 00 9F         [24]  808 	ljmp	_spi_raw_write
+                                    809 ;------------------------------------------------------------
+                                    810 ;Allocation info for local variables in function 'spi'
+                                    811 ;------------------------------------------------------------
+                                    812 ;dat                       Allocated with name '_spi_PARM_2'
+                                    813 ;cmd                       Allocated to registers r7 
+                                    814 ;------------------------------------------------------------
+                                    815 ;	main.c:67: void spi(unsigned char cmd, unsigned char dat)
+                                    816 ;	-----------------------------------------
+                                    817 ;	 function spi
+                                    818 ;	-----------------------------------------
+      0000EC                        819 _spi:
+      0000EC AF 82            [24]  820 	mov	r7,dpl
+                                    821 ;	main.c:69: CSX = 0;
+      0000EE C2 C2            [12]  822 	clr	_P42
+                                    823 ;	main.c:70: spi_cmd(cmd);
+      0000F0 8F 82            [24]  824 	mov	dpl,r7
+      0000F2 12 00 BE         [24]  825 	lcall	_spi_cmd
+                                    826 ;	main.c:71: spi_data(dat);
+      0000F5 85 08 82         [24]  827 	mov	dpl,_spi_PARM_2
+      0000F8 12 00 DB         [24]  828 	lcall	_spi_data
+                                    829 ;	main.c:72: CSX = 1;
+      0000FB D2 C2            [12]  830 	setb	_P42
+      0000FD 22               [24]  831 	ret
+                                    832 ;------------------------------------------------------------
+                                    833 ;Allocation info for local variables in function 'reset'
+                                    834 ;------------------------------------------------------------
+                                    835 ;	main.c:75: void reset(void)
+                                    836 ;	-----------------------------------------
+                                    837 ;	 function reset
+                                    838 ;	-----------------------------------------
+      0000FE                        839 _reset:
+                                    840 ;	main.c:77: RST = 0;
+      0000FE C2 CC            [12]  841 	clr	_P54
+                                    842 ;	main.c:78: delayms(150);
+      000100 90 00 96         [24]  843 	mov	dptr,#0x0096
+      000103 12 00 62         [24]  844 	lcall	_delayms
+                                    845 ;	main.c:79: RST = 1;
+      000106 D2 CC            [12]  846 	setb	_P54
+                                    847 ;	main.c:80: delayms(150);
+      000108 90 00 96         [24]  848 	mov	dptr,#0x0096
+      00010B 02 00 62         [24]  849 	ljmp	_delayms
+                                    850 ;------------------------------------------------------------
+                                    851 ;Allocation info for local variables in function 'init_2'
+                                    852 ;------------------------------------------------------------
+                                    853 ;	main.c:83: void init_2(void)
+                                    854 ;	-----------------------------------------
+                                    855 ;	 function init_2
+                                    856 ;	-----------------------------------------
+      00010E                        857 _init_2:
+                                    858 ;	main.c:85: spi(0xfe, 0x04);
+      00010E 75 08 04         [24]  859 	mov	_spi_PARM_2,#0x04
+      000111 75 82 FE         [24]  860 	mov	dpl,#0xFE
+      000114 12 00 EC         [24]  861 	lcall	_spi
+                                    862 ;	main.c:86: spi(0x00, 0xdc);
+      000117 75 08 DC         [24]  863 	mov	_spi_PARM_2,#0xDC
+      00011A 75 82 00         [24]  864 	mov	dpl,#0x00
+      00011D 12 00 EC         [24]  865 	lcall	_spi
+                                    866 ;	main.c:87: spi(0x01, 0x00);
+      000120 75 08 00         [24]  867 	mov	_spi_PARM_2,#0x00
+      000123 75 82 01         [24]  868 	mov	dpl,#0x01
+      000126 12 00 EC         [24]  869 	lcall	_spi
+                                    870 ;	main.c:88: spi(0x02, 0x02);
+      000129 75 08 02         [24]  871 	mov	_spi_PARM_2,#0x02
+      00012C 75 82 02         [24]  872 	mov	dpl,#0x02
+      00012F 12 00 EC         [24]  873 	lcall	_spi
+                                    874 ;	main.c:89: spi(0x03, 0x00);
+      000132 75 08 00         [24]  875 	mov	_spi_PARM_2,#0x00
+      000135 75 82 03         [24]  876 	mov	dpl,#0x03
+      000138 12 00 EC         [24]  877 	lcall	_spi
+                                    878 ;	main.c:90: spi(0x04, 0x00);
+      00013B 75 08 00         [24]  879 	mov	_spi_PARM_2,#0x00
+      00013E 75 82 04         [24]  880 	mov	dpl,#0x04
+      000141 12 00 EC         [24]  881 	lcall	_spi
+                                    882 ;	main.c:91: spi(0x05, 0x03);
+      000144 75 08 03         [24]  883 	mov	_spi_PARM_2,#0x03
+      000147 75 82 05         [24]  884 	mov	dpl,#0x05
+      00014A 12 00 EC         [24]  885 	lcall	_spi
+                                    886 ;	main.c:92: spi(0x06, 0x16);
+      00014D 75 08 16         [24]  887 	mov	_spi_PARM_2,#0x16
+      000150 75 82 06         [24]  888 	mov	dpl,#0x06
+      000153 12 00 EC         [24]  889 	lcall	_spi
+                                    890 ;	main.c:93: spi(0x07, 0x13);
+      000156 75 08 13         [24]  891 	mov	_spi_PARM_2,#0x13
+      000159 75 82 07         [24]  892 	mov	dpl,#0x07
+      00015C 12 00 EC         [24]  893 	lcall	_spi
+                                    894 ;	main.c:94: spi(0x08, 0x08);
+      00015F 75 08 08         [24]  895 	mov	_spi_PARM_2,#0x08
+      000162 75 82 08         [24]  896 	mov	dpl,#0x08
+      000165 12 00 EC         [24]  897 	lcall	_spi
+                                    898 ;	main.c:95: spi(0x09, 0xdc);
+      000168 75 08 DC         [24]  899 	mov	_spi_PARM_2,#0xDC
+      00016B 75 82 09         [24]  900 	mov	dpl,#0x09
+      00016E 12 00 EC         [24]  901 	lcall	_spi
+                                    902 ;	main.c:96: spi(0x0a, 0x00);
+      000171 75 08 00         [24]  903 	mov	_spi_PARM_2,#0x00
+      000174 75 82 0A         [24]  904 	mov	dpl,#0x0A
+      000177 12 00 EC         [24]  905 	lcall	_spi
+                                    906 ;	main.c:97: spi(0x0b, 0x02);
+      00017A 75 08 02         [24]  907 	mov	_spi_PARM_2,#0x02
+      00017D 75 82 0B         [24]  908 	mov	dpl,#0x0B
+      000180 12 00 EC         [24]  909 	lcall	_spi
+                                    910 ;	main.c:98: spi(0x0c, 0x00);
+      000183 75 08 00         [24]  911 	mov	_spi_PARM_2,#0x00
+      000186 75 82 0C         [24]  912 	mov	dpl,#0x0C
+      000189 12 00 EC         [24]  913 	lcall	_spi
+                                    914 ;	main.c:99: spi(0x0d, 0x00);
+      00018C 75 08 00         [24]  915 	mov	_spi_PARM_2,#0x00
+      00018F 75 82 0D         [24]  916 	mov	dpl,#0x0D
+      000192 12 00 EC         [24]  917 	lcall	_spi
+                                    918 ;	main.c:100: spi(0x0e, 0x02);
+      000195 75 08 02         [24]  919 	mov	_spi_PARM_2,#0x02
+      000198 75 82 0E         [24]  920 	mov	dpl,#0x0E
+      00019B 12 00 EC         [24]  921 	lcall	_spi
+                                    922 ;	main.c:101: spi(0x0f, 0x16);
+      00019E 75 08 16         [24]  923 	mov	_spi_PARM_2,#0x16
+      0001A1 75 82 0F         [24]  924 	mov	dpl,#0x0F
+      0001A4 12 00 EC         [24]  925 	lcall	_spi
+                                    926 ;	main.c:102: spi(0x10, 0x18);
+      0001A7 75 08 18         [24]  927 	mov	_spi_PARM_2,#0x18
+      0001AA 75 82 10         [24]  928 	mov	dpl,#0x10
+      0001AD 12 00 EC         [24]  929 	lcall	_spi
+                                    930 ;	main.c:103: spi(0x11, 0x08);
+      0001B0 75 08 08         [24]  931 	mov	_spi_PARM_2,#0x08
+      0001B3 75 82 11         [24]  932 	mov	dpl,#0x11
+      0001B6 12 00 EC         [24]  933 	lcall	_spi
+                                    934 ;	main.c:104: spi(0x12, 0x92);
+      0001B9 75 08 92         [24]  935 	mov	_spi_PARM_2,#0x92
+      0001BC 75 82 12         [24]  936 	mov	dpl,#0x12
+      0001BF 12 00 EC         [24]  937 	lcall	_spi
+                                    938 ;	main.c:105: spi(0x13, 0x00);
+      0001C2 75 08 00         [24]  939 	mov	_spi_PARM_2,#0x00
+      0001C5 75 82 13         [24]  940 	mov	dpl,#0x13
+      0001C8 12 00 EC         [24]  941 	lcall	_spi
+                                    942 ;	main.c:106: spi(0x14, 0x02);
+      0001CB 75 08 02         [24]  943 	mov	_spi_PARM_2,#0x02
+      0001CE 75 82 14         [24]  944 	mov	dpl,#0x14
+      0001D1 12 00 EC         [24]  945 	lcall	_spi
+                                    946 ;	main.c:107: spi(0x15, 0x05);
+      0001D4 75 08 05         [24]  947 	mov	_spi_PARM_2,#0x05
+      0001D7 75 82 15         [24]  948 	mov	dpl,#0x15
+      0001DA 12 00 EC         [24]  949 	lcall	_spi
+                                    950 ;	main.c:108: spi(0x16, 0x40);
+      0001DD 75 08 40         [24]  951 	mov	_spi_PARM_2,#0x40
+      0001E0 75 82 16         [24]  952 	mov	dpl,#0x16
+      0001E3 12 00 EC         [24]  953 	lcall	_spi
+                                    954 ;	main.c:109: spi(0x17, 0x03);
+      0001E6 75 08 03         [24]  955 	mov	_spi_PARM_2,#0x03
+      0001E9 75 82 17         [24]  956 	mov	dpl,#0x17
+      0001EC 12 00 EC         [24]  957 	lcall	_spi
+                                    958 ;	main.c:110: spi(0x18, 0x16);
+      0001EF 75 08 16         [24]  959 	mov	_spi_PARM_2,#0x16
+      0001F2 75 82 18         [24]  960 	mov	dpl,#0x18
+      0001F5 12 00 EC         [24]  961 	lcall	_spi
+                                    962 ;	main.c:111: spi(0x19, 0xd7);
+      0001F8 75 08 D7         [24]  963 	mov	_spi_PARM_2,#0xD7
+      0001FB 75 82 19         [24]  964 	mov	dpl,#0x19
+      0001FE 12 00 EC         [24]  965 	lcall	_spi
+                                    966 ;	main.c:112: spi(0x1a, 0x01);
+      000201 75 08 01         [24]  967 	mov	_spi_PARM_2,#0x01
+      000204 75 82 1A         [24]  968 	mov	dpl,#0x1A
+      000207 12 00 EC         [24]  969 	lcall	_spi
+                                    970 ;	main.c:113: spi(0x1b, 0xdc);
+      00020A 75 08 DC         [24]  971 	mov	_spi_PARM_2,#0xDC
+      00020D 75 82 1B         [24]  972 	mov	dpl,#0x1B
+      000210 12 00 EC         [24]  973 	lcall	_spi
+                                    974 ;	main.c:114: spi(0x1c, 0x00);
+      000213 75 08 00         [24]  975 	mov	_spi_PARM_2,#0x00
+      000216 75 82 1C         [24]  976 	mov	dpl,#0x1C
+      000219 12 00 EC         [24]  977 	lcall	_spi
+                                    978 ;	main.c:115: spi(0x1d, 0x04);
+      00021C 75 08 04         [24]  979 	mov	_spi_PARM_2,#0x04
+      00021F 75 82 1D         [24]  980 	mov	dpl,#0x1D
+      000222 12 00 EC         [24]  981 	lcall	_spi
+                                    982 ;	main.c:116: spi(0x1e, 0x00);
+      000225 75 08 00         [24]  983 	mov	_spi_PARM_2,#0x00
+      000228 75 82 1E         [24]  984 	mov	dpl,#0x1E
+      00022B 12 00 EC         [24]  985 	lcall	_spi
+                                    986 ;	main.c:117: spi(0x1f, 0x00);
+      00022E 75 08 00         [24]  987 	mov	_spi_PARM_2,#0x00
+      000231 75 82 1F         [24]  988 	mov	dpl,#0x1F
+      000234 12 00 EC         [24]  989 	lcall	_spi
+                                    990 ;	main.c:118: spi(0x20, 0x03);
+      000237 75 08 03         [24]  991 	mov	_spi_PARM_2,#0x03
+      00023A 75 82 20         [24]  992 	mov	dpl,#0x20
+      00023D 12 00 EC         [24]  993 	lcall	_spi
+                                    994 ;	main.c:119: spi(0x21, 0x16);
+      000240 75 08 16         [24]  995 	mov	_spi_PARM_2,#0x16
+      000243 75 82 21         [24]  996 	mov	dpl,#0x21
+      000246 12 00 EC         [24]  997 	lcall	_spi
+                                    998 ;	main.c:120: spi(0x22, 0x18);
+      000249 75 08 18         [24]  999 	mov	_spi_PARM_2,#0x18
+      00024C 75 82 22         [24] 1000 	mov	dpl,#0x22
+      00024F 12 00 EC         [24] 1001 	lcall	_spi
+                                   1002 ;	main.c:121: spi(0x23, 0x08);
+      000252 75 08 08         [24] 1003 	mov	_spi_PARM_2,#0x08
+      000255 75 82 23         [24] 1004 	mov	dpl,#0x23
+      000258 12 00 EC         [24] 1005 	lcall	_spi
+                                   1006 ;	main.c:122: spi(0x24, 0xdc);
+      00025B 75 08 DC         [24] 1007 	mov	_spi_PARM_2,#0xDC
+      00025E 75 82 24         [24] 1008 	mov	dpl,#0x24
+      000261 12 00 EC         [24] 1009 	lcall	_spi
+                                   1010 ;	main.c:123: spi(0x25, 0x00);
+      000264 75 08 00         [24] 1011 	mov	_spi_PARM_2,#0x00
+      000267 75 82 25         [24] 1012 	mov	dpl,#0x25
+      00026A 12 00 EC         [24] 1013 	lcall	_spi
+                                   1014 ;	main.c:124: spi(0x26, 0x04);
+      00026D 75 08 04         [24] 1015 	mov	_spi_PARM_2,#0x04
+      000270 75 82 26         [24] 1016 	mov	dpl,#0x26
+      000273 12 00 EC         [24] 1017 	lcall	_spi
+                                   1018 ;	main.c:125: spi(0x27, 0x00);
+      000276 75 08 00         [24] 1019 	mov	_spi_PARM_2,#0x00
+      000279 75 82 27         [24] 1020 	mov	dpl,#0x27
+      00027C 12 00 EC         [24] 1021 	lcall	_spi
+                                   1022 ;	main.c:126: spi(0x28, 0x00);
+      00027F 75 08 00         [24] 1023 	mov	_spi_PARM_2,#0x00
+      000282 75 82 28         [24] 1024 	mov	dpl,#0x28
+      000285 12 00 EC         [24] 1025 	lcall	_spi
+                                   1026 ;	main.c:127: spi(0x29, 0x01);
+      000288 75 08 01         [24] 1027 	mov	_spi_PARM_2,#0x01
+      00028B 75 82 29         [24] 1028 	mov	dpl,#0x29
+      00028E 12 00 EC         [24] 1029 	lcall	_spi
+                                   1030 ;	main.c:128: spi(0x2a, 0x16);
+      000291 75 08 16         [24] 1031 	mov	_spi_PARM_2,#0x16
+      000294 75 82 2A         [24] 1032 	mov	dpl,#0x2A
+      000297 12 00 EC         [24] 1033 	lcall	_spi
+                                   1034 ;	main.c:129: spi(0x2b, 0x18);
+      00029A 75 08 18         [24] 1035 	mov	_spi_PARM_2,#0x18
+      00029D 75 82 2B         [24] 1036 	mov	dpl,#0x2B
+      0002A0 12 00 EC         [24] 1037 	lcall	_spi
+                                   1038 ;	main.c:130: spi(0x2d, 0x08);
+      0002A3 75 08 08         [24] 1039 	mov	_spi_PARM_2,#0x08
+      0002A6 75 82 2D         [24] 1040 	mov	dpl,#0x2D
+      0002A9 12 00 EC         [24] 1041 	lcall	_spi
+                                   1042 ;	main.c:131: spi(0x4c, 0x99);
+      0002AC 75 08 99         [24] 1043 	mov	_spi_PARM_2,#0x99
+      0002AF 75 82 4C         [24] 1044 	mov	dpl,#0x4C
+      0002B2 12 00 EC         [24] 1045 	lcall	_spi
+                                   1046 ;	main.c:132: spi(0x4d, 0x00);
+      0002B5 75 08 00         [24] 1047 	mov	_spi_PARM_2,#0x00
+      0002B8 75 82 4D         [24] 1048 	mov	dpl,#0x4D
+      0002BB 12 00 EC         [24] 1049 	lcall	_spi
+                                   1050 ;	main.c:133: spi(0x4e, 0x00);
+      0002BE 75 08 00         [24] 1051 	mov	_spi_PARM_2,#0x00
+      0002C1 75 82 4E         [24] 1052 	mov	dpl,#0x4E
+      0002C4 12 00 EC         [24] 1053 	lcall	_spi
+                                   1054 ;	main.c:134: spi(0x4f, 0x00);
+      0002C7 75 08 00         [24] 1055 	mov	_spi_PARM_2,#0x00
+      0002CA 75 82 4F         [24] 1056 	mov	dpl,#0x4F
+      0002CD 12 00 EC         [24] 1057 	lcall	_spi
+                                   1058 ;	main.c:135: spi(0x50, 0x01);
+      0002D0 75 08 01         [24] 1059 	mov	_spi_PARM_2,#0x01
+      0002D3 75 82 50         [24] 1060 	mov	dpl,#0x50
+      0002D6 12 00 EC         [24] 1061 	lcall	_spi
+                                   1062 ;	main.c:136: spi(0x51, 0x0a);
+      0002D9 75 08 0A         [24] 1063 	mov	_spi_PARM_2,#0x0A
+      0002DC 75 82 51         [24] 1064 	mov	dpl,#0x51
+      0002DF 12 00 EC         [24] 1065 	lcall	_spi
+                                   1066 ;	main.c:137: spi(0x52, 0x00);
+      0002E2 75 08 00         [24] 1067 	mov	_spi_PARM_2,#0x00
+      0002E5 75 82 52         [24] 1068 	mov	dpl,#0x52
+      0002E8 12 00 EC         [24] 1069 	lcall	_spi
+                                   1070 ;	main.c:138: spi(0x5a, 0xe4);
+      0002EB 75 08 E4         [24] 1071 	mov	_spi_PARM_2,#0xE4
+      0002EE 75 82 5A         [24] 1072 	mov	dpl,#0x5A
+      0002F1 12 00 EC         [24] 1073 	lcall	_spi
+                                   1074 ;	main.c:139: spi(0x5e, 0x77);
+      0002F4 75 08 77         [24] 1075 	mov	_spi_PARM_2,#0x77
+      0002F7 75 82 5E         [24] 1076 	mov	dpl,#0x5E
+      0002FA 12 00 EC         [24] 1077 	lcall	_spi
+                                   1078 ;	main.c:140: spi(0x5f, 0x77);
+      0002FD 75 08 77         [24] 1079 	mov	_spi_PARM_2,#0x77
+      000300 75 82 5F         [24] 1080 	mov	dpl,#0x5F
+      000303 12 00 EC         [24] 1081 	lcall	_spi
+                                   1082 ;	main.c:141: spi(0x60, 0x34);
+      000306 75 08 34         [24] 1083 	mov	_spi_PARM_2,#0x34
+      000309 75 82 60         [24] 1084 	mov	dpl,#0x60
+      00030C 12 00 EC         [24] 1085 	lcall	_spi
+                                   1086 ;	main.c:142: spi(0x61, 0x02);
+      00030F 75 08 02         [24] 1087 	mov	_spi_PARM_2,#0x02
+      000312 75 82 61         [24] 1088 	mov	dpl,#0x61
+      000315 12 00 EC         [24] 1089 	lcall	_spi
+                                   1090 ;	main.c:143: spi(0x62, 0x81);
+      000318 75 08 81         [24] 1091 	mov	_spi_PARM_2,#0x81
+      00031B 75 82 62         [24] 1092 	mov	dpl,#0x62
+      00031E 12 00 EC         [24] 1093 	lcall	_spi
+                                   1094 ;	main.c:144: spi(0xfe, 0x07);
+      000321 75 08 07         [24] 1095 	mov	_spi_PARM_2,#0x07
+      000324 75 82 FE         [24] 1096 	mov	dpl,#0xFE
+      000327 12 00 EC         [24] 1097 	lcall	_spi
+                                   1098 ;	main.c:145: spi(0x07, 0x4f);
+      00032A 75 08 4F         [24] 1099 	mov	_spi_PARM_2,#0x4F
+      00032D 75 82 07         [24] 1100 	mov	dpl,#0x07
+      000330 12 00 EC         [24] 1101 	lcall	_spi
+                                   1102 ;	main.c:146: spi(0xfe, 01);
+      000333 75 08 01         [24] 1103 	mov	_spi_PARM_2,#0x01
+      000336 75 82 FE         [24] 1104 	mov	dpl,#0xFE
+      000339 12 00 EC         [24] 1105 	lcall	_spi
+                                   1106 ;	main.c:147: spi(0x05, 0x15);
+      00033C 75 08 15         [24] 1107 	mov	_spi_PARM_2,#0x15
+      00033F 75 82 05         [24] 1108 	mov	dpl,#0x05
+      000342 12 00 EC         [24] 1109 	lcall	_spi
+                                   1110 ;	main.c:148: spi(0x0e, 0x84);
+      000345 75 08 84         [24] 1111 	mov	_spi_PARM_2,#0x84
+      000348 75 82 0E         [24] 1112 	mov	dpl,#0x0E
+      00034B 12 00 EC         [24] 1113 	lcall	_spi
+                                   1114 ;	main.c:149: spi(0x10, 0x51);
+      00034E 75 08 51         [24] 1115 	mov	_spi_PARM_2,#0x51
+      000351 75 82 10         [24] 1116 	mov	dpl,#0x10
+      000354 12 00 EC         [24] 1117 	lcall	_spi
+                                   1118 ;	main.c:150: spi(0x15, 0x82);
+      000357 75 08 82         [24] 1119 	mov	_spi_PARM_2,#0x82
+      00035A 75 82 15         [24] 1120 	mov	dpl,#0x15
+      00035D 12 00 EC         [24] 1121 	lcall	_spi
+                                   1122 ;	main.c:151: spi(0x18, 0x47);
+      000360 75 08 47         [24] 1123 	mov	_spi_PARM_2,#0x47
+      000363 75 82 18         [24] 1124 	mov	dpl,#0x18
+      000366 12 00 EC         [24] 1125 	lcall	_spi
+                                   1126 ;	main.c:152: spi(0x19, 0x36);
+      000369 75 08 36         [24] 1127 	mov	_spi_PARM_2,#0x36
+      00036C 75 82 19         [24] 1128 	mov	dpl,#0x19
+      00036F 12 00 EC         [24] 1129 	lcall	_spi
+                                   1130 ;	main.c:153: spi(0x1a, 0x10);
+      000372 75 08 10         [24] 1131 	mov	_spi_PARM_2,#0x10
+      000375 75 82 1A         [24] 1132 	mov	dpl,#0x1A
+      000378 12 00 EC         [24] 1133 	lcall	_spi
+                                   1134 ;	main.c:154: spi(0x1c, 0x77);
+      00037B 75 08 77         [24] 1135 	mov	_spi_PARM_2,#0x77
+      00037E 75 82 1C         [24] 1136 	mov	dpl,#0x1C
+      000381 12 00 EC         [24] 1137 	lcall	_spi
+                                   1138 ;	main.c:155: spi(0x21, 0x28);
+      000384 75 08 28         [24] 1139 	mov	_spi_PARM_2,#0x28
+      000387 75 82 21         [24] 1140 	mov	dpl,#0x21
+      00038A 12 00 EC         [24] 1141 	lcall	_spi
+                                   1142 ;	main.c:156: spi(0x22, 0x90);
+      00038D 75 08 90         [24] 1143 	mov	_spi_PARM_2,#0x90
+      000390 75 82 22         [24] 1144 	mov	dpl,#0x22
+      000393 12 00 EC         [24] 1145 	lcall	_spi
+                                   1146 ;	main.c:157: spi(0x23, 0x20);
+      000396 75 08 20         [24] 1147 	mov	_spi_PARM_2,#0x20
+      000399 75 82 23         [24] 1148 	mov	dpl,#0x23
+      00039C 12 00 EC         [24] 1149 	lcall	_spi
+                                   1150 ;	main.c:158: spi(0x25, 0x03);
+      00039F 75 08 03         [24] 1151 	mov	_spi_PARM_2,#0x03
+      0003A2 75 82 25         [24] 1152 	mov	dpl,#0x25
+      0003A5 12 00 EC         [24] 1153 	lcall	_spi
+                                   1154 ;	main.c:159: spi(0x26, 0x4a);
+      0003A8 75 08 4A         [24] 1155 	mov	_spi_PARM_2,#0x4A
+      0003AB 75 82 26         [24] 1156 	mov	dpl,#0x26
+      0003AE 12 00 EC         [24] 1157 	lcall	_spi
+                                   1158 ;	main.c:160: spi(0x2a, 0x03);
+      0003B1 75 08 03         [24] 1159 	mov	_spi_PARM_2,#0x03
+      0003B4 75 82 2A         [24] 1160 	mov	dpl,#0x2A
+      0003B7 12 00 EC         [24] 1161 	lcall	_spi
+                                   1162 ;	main.c:161: spi(0x37, 0x0c);
+      0003BA 75 08 0C         [24] 1163 	mov	_spi_PARM_2,#0x0C
+      0003BD 75 82 37         [24] 1164 	mov	dpl,#0x37
+      0003C0 12 00 EC         [24] 1165 	lcall	_spi
+                                   1166 ;	main.c:162: spi(0x3a, 0x00);
+      0003C3 75 08 00         [24] 1167 	mov	_spi_PARM_2,#0x00
+      0003C6 75 82 3A         [24] 1168 	mov	dpl,#0x3A
+      0003C9 12 00 EC         [24] 1169 	lcall	_spi
+                                   1170 ;	main.c:163: spi(0x3b, 0x40);
+      0003CC 75 08 40         [24] 1171 	mov	_spi_PARM_2,#0x40
+      0003CF 75 82 3B         [24] 1172 	mov	dpl,#0x3B
+      0003D2 12 00 EC         [24] 1173 	lcall	_spi
+                                   1174 ;	main.c:164: spi(0x3d, 0x01);
+      0003D5 75 08 01         [24] 1175 	mov	_spi_PARM_2,#0x01
+      0003D8 75 82 3D         [24] 1176 	mov	dpl,#0x3D
+      0003DB 12 00 EC         [24] 1177 	lcall	_spi
+                                   1178 ;	main.c:165: spi(0x3f, 0x38);
+      0003DE 75 08 38         [24] 1179 	mov	_spi_PARM_2,#0x38
+      0003E1 75 82 3F         [24] 1180 	mov	dpl,#0x3F
+      0003E4 12 00 EC         [24] 1181 	lcall	_spi
+                                   1182 ;	main.c:166: spi(0x40, 0x01);
+      0003E7 75 08 01         [24] 1183 	mov	_spi_PARM_2,#0x01
+      0003EA 75 82 40         [24] 1184 	mov	dpl,#0x40
+      0003ED 12 00 EC         [24] 1185 	lcall	_spi
+                                   1186 ;	main.c:167: spi(0x41, 0x01);
+      0003F0 75 08 01         [24] 1187 	mov	_spi_PARM_2,#0x01
+      0003F3 75 82 41         [24] 1188 	mov	dpl,#0x41
+      0003F6 12 00 EC         [24] 1189 	lcall	_spi
+                                   1190 ;	main.c:168: spi(0x42, 0x33);
+      0003F9 75 08 33         [24] 1191 	mov	_spi_PARM_2,#0x33
+      0003FC 75 82 42         [24] 1192 	mov	dpl,#0x42
+      0003FF 12 00 EC         [24] 1193 	lcall	_spi
+                                   1194 ;	main.c:169: spi(0x43, 0x66);
+      000402 75 08 66         [24] 1195 	mov	_spi_PARM_2,#0x66
+      000405 75 82 43         [24] 1196 	mov	dpl,#0x43
+      000408 12 00 EC         [24] 1197 	lcall	_spi
+                                   1198 ;	main.c:170: spi(0x44, 0x11);
+      00040B 75 08 11         [24] 1199 	mov	_spi_PARM_2,#0x11
+      00040E 75 82 44         [24] 1200 	mov	dpl,#0x44
+      000411 12 00 EC         [24] 1201 	lcall	_spi
+                                   1202 ;	main.c:171: spi(0x45, 0x44);
+      000414 75 08 44         [24] 1203 	mov	_spi_PARM_2,#0x44
+      000417 75 82 45         [24] 1204 	mov	dpl,#0x45
+      00041A 12 00 EC         [24] 1205 	lcall	_spi
+                                   1206 ;	main.c:172: spi(0x46, 0x22);
+      00041D 75 08 22         [24] 1207 	mov	_spi_PARM_2,#0x22
+      000420 75 82 46         [24] 1208 	mov	dpl,#0x46
+      000423 12 00 EC         [24] 1209 	lcall	_spi
+                                   1210 ;	main.c:173: spi(0x47, 0x55);
+      000426 75 08 55         [24] 1211 	mov	_spi_PARM_2,#0x55
+      000429 75 82 47         [24] 1212 	mov	dpl,#0x47
+      00042C 12 00 EC         [24] 1213 	lcall	_spi
+                                   1214 ;	main.c:174: spi(0x4c, 0x33);
+      00042F 75 08 33         [24] 1215 	mov	_spi_PARM_2,#0x33
+      000432 75 82 4C         [24] 1216 	mov	dpl,#0x4C
+      000435 12 00 EC         [24] 1217 	lcall	_spi
+                                   1218 ;	main.c:175: spi(0x4d, 0x66);
+      000438 75 08 66         [24] 1219 	mov	_spi_PARM_2,#0x66
+      00043B 75 82 4D         [24] 1220 	mov	dpl,#0x4D
+      00043E 12 00 EC         [24] 1221 	lcall	_spi
+                                   1222 ;	main.c:176: spi(0x4e, 0x11);
+      000441 75 08 11         [24] 1223 	mov	_spi_PARM_2,#0x11
+      000444 75 82 4E         [24] 1224 	mov	dpl,#0x4E
+      000447 12 00 EC         [24] 1225 	lcall	_spi
+                                   1226 ;	main.c:177: spi(0x4f, 0x44);
+      00044A 75 08 44         [24] 1227 	mov	_spi_PARM_2,#0x44
+      00044D 75 82 4F         [24] 1228 	mov	dpl,#0x4F
+      000450 12 00 EC         [24] 1229 	lcall	_spi
+                                   1230 ;	main.c:178: spi(0x50, 0x22);
+      000453 75 08 22         [24] 1231 	mov	_spi_PARM_2,#0x22
+      000456 75 82 50         [24] 1232 	mov	dpl,#0x50
+      000459 12 00 EC         [24] 1233 	lcall	_spi
+                                   1234 ;	main.c:179: spi(0x51, 0x55);
+      00045C 75 08 55         [24] 1235 	mov	_spi_PARM_2,#0x55
+      00045F 75 82 51         [24] 1236 	mov	dpl,#0x51
+      000462 12 00 EC         [24] 1237 	lcall	_spi
+                                   1238 ;	main.c:180: spi(0x56, 0x11);
+      000465 75 08 11         [24] 1239 	mov	_spi_PARM_2,#0x11
+      000468 75 82 56         [24] 1240 	mov	dpl,#0x56
+      00046B 12 00 EC         [24] 1241 	lcall	_spi
+                                   1242 ;	main.c:181: spi(0x58, 0x44);
+      00046E 75 08 44         [24] 1243 	mov	_spi_PARM_2,#0x44
+      000471 75 82 58         [24] 1244 	mov	dpl,#0x58
+      000474 12 00 EC         [24] 1245 	lcall	_spi
+                                   1246 ;	main.c:182: spi(0x59, 0x22);
+      000477 75 08 22         [24] 1247 	mov	_spi_PARM_2,#0x22
+      00047A 75 82 59         [24] 1248 	mov	dpl,#0x59
+      00047D 12 00 EC         [24] 1249 	lcall	_spi
+                                   1250 ;	main.c:183: spi(0x5a, 0x55);
+      000480 75 08 55         [24] 1251 	mov	_spi_PARM_2,#0x55
+      000483 75 82 5A         [24] 1252 	mov	dpl,#0x5A
+      000486 12 00 EC         [24] 1253 	lcall	_spi
+                                   1254 ;	main.c:184: spi(0x5b, 0x33);
+      000489 75 08 33         [24] 1255 	mov	_spi_PARM_2,#0x33
+      00048C 75 82 5B         [24] 1256 	mov	dpl,#0x5B
+      00048F 12 00 EC         [24] 1257 	lcall	_spi
+                                   1258 ;	main.c:185: spi(0x5c, 0x66);
+      000492 75 08 66         [24] 1259 	mov	_spi_PARM_2,#0x66
+      000495 75 82 5C         [24] 1260 	mov	dpl,#0x5C
+      000498 12 00 EC         [24] 1261 	lcall	_spi
+                                   1262 ;	main.c:186: spi(0x61, 0x11);
+      00049B 75 08 11         [24] 1263 	mov	_spi_PARM_2,#0x11
+      00049E 75 82 61         [24] 1264 	mov	dpl,#0x61
+      0004A1 12 00 EC         [24] 1265 	lcall	_spi
+                                   1266 ;	main.c:187: spi(0x62, 0x44);
+      0004A4 75 08 44         [24] 1267 	mov	_spi_PARM_2,#0x44
+      0004A7 75 82 62         [24] 1268 	mov	dpl,#0x62
+      0004AA 12 00 EC         [24] 1269 	lcall	_spi
+                                   1270 ;	main.c:188: spi(0x63, 0x22);
+      0004AD 75 08 22         [24] 1271 	mov	_spi_PARM_2,#0x22
+      0004B0 75 82 63         [24] 1272 	mov	dpl,#0x63
+      0004B3 12 00 EC         [24] 1273 	lcall	_spi
+                                   1274 ;	main.c:189: spi(0x64, 0x55);
+      0004B6 75 08 55         [24] 1275 	mov	_spi_PARM_2,#0x55
+      0004B9 75 82 64         [24] 1276 	mov	dpl,#0x64
+      0004BC 12 00 EC         [24] 1277 	lcall	_spi
+                                   1278 ;	main.c:190: spi(0x65, 0x33);
+      0004BF 75 08 33         [24] 1279 	mov	_spi_PARM_2,#0x33
+      0004C2 75 82 65         [24] 1280 	mov	dpl,#0x65
+      0004C5 12 00 EC         [24] 1281 	lcall	_spi
+                                   1282 ;	main.c:191: spi(0x66, 0x66);
+      0004C8 75 08 66         [24] 1283 	mov	_spi_PARM_2,#0x66
+      0004CB 75 82 66         [24] 1284 	mov	dpl,#0x66
+      0004CE 12 00 EC         [24] 1285 	lcall	_spi
+                                   1286 ;	main.c:192: spi(0x70, 0xa5);
+      0004D1 75 08 A5         [24] 1287 	mov	_spi_PARM_2,#0xA5
+      0004D4 75 82 70         [24] 1288 	mov	dpl,#0x70
+      0004D7 12 00 EC         [24] 1289 	lcall	_spi
+                                   1290 ;	main.c:193: spi(0xfe, 0x05);
+      0004DA 75 08 05         [24] 1291 	mov	_spi_PARM_2,#0x05
+      0004DD 75 82 FE         [24] 1292 	mov	dpl,#0xFE
+      0004E0 12 00 EC         [24] 1293 	lcall	_spi
+                                   1294 ;	main.c:194: spi(0x05, 0x08);
+      0004E3 75 08 08         [24] 1295 	mov	_spi_PARM_2,#0x08
+      0004E6 75 82 05         [24] 1296 	mov	dpl,#0x05
+      0004E9 12 00 EC         [24] 1297 	lcall	_spi
+                                   1298 ;	main.c:195: spi(0xfe, 0x0a);
+      0004EC 75 08 0A         [24] 1299 	mov	_spi_PARM_2,#0x0A
+      0004EF 75 82 FE         [24] 1300 	mov	dpl,#0xFE
+      0004F2 12 00 EC         [24] 1301 	lcall	_spi
+                                   1302 ;	main.c:196: spi(0x29, 0x10);
+      0004F5 75 08 10         [24] 1303 	mov	_spi_PARM_2,#0x10
+      0004F8 75 82 29         [24] 1304 	mov	dpl,#0x29
+      0004FB 12 00 EC         [24] 1305 	lcall	_spi
+                                   1306 ;	main.c:197: spi(0xfe, 0x00);
+      0004FE 75 08 00         [24] 1307 	mov	_spi_PARM_2,#0x00
+      000501 75 82 FE         [24] 1308 	mov	dpl,#0xFE
+      000504 12 00 EC         [24] 1309 	lcall	_spi
+                                   1310 ;	main.c:198: spi(0x35, 0x00);
+      000507 75 08 00         [24] 1311 	mov	_spi_PARM_2,#0x00
+      00050A 75 82 35         [24] 1312 	mov	dpl,#0x35
+      00050D 12 00 EC         [24] 1313 	lcall	_spi
+                                   1314 ;	main.c:199: spi(0x11, 0x00);
+      000510 75 08 00         [24] 1315 	mov	_spi_PARM_2,#0x00
+      000513 75 82 11         [24] 1316 	mov	dpl,#0x11
+      000516 12 00 EC         [24] 1317 	lcall	_spi
+                                   1318 ;	main.c:200: spi(0x36, 0x40);
+      000519 75 08 40         [24] 1319 	mov	_spi_PARM_2,#0x40
+      00051C 75 82 36         [24] 1320 	mov	dpl,#0x36
+      00051F 12 00 EC         [24] 1321 	lcall	_spi
+                                   1322 ;	main.c:201: spi(0x29, 0x00);
+      000522 75 08 00         [24] 1323 	mov	_spi_PARM_2,#0x00
+      000525 75 82 29         [24] 1324 	mov	dpl,#0x29
+      000528 02 00 EC         [24] 1325 	ljmp	_spi
+                                   1326 ;------------------------------------------------------------
+                                   1327 ;Allocation info for local variables in function 'init_1'
+                                   1328 ;------------------------------------------------------------
+                                   1329 ;	main.c:204: void init_1(void)
+                                   1330 ;	-----------------------------------------
+                                   1331 ;	 function init_1
+                                   1332 ;	-----------------------------------------
+      00052B                       1333 _init_1:
+                                   1334 ;	main.c:207: spi(0xfe, 0x01);
+      00052B 75 08 01         [24] 1335 	mov	_spi_PARM_2,#0x01
+      00052E 75 82 FE         [24] 1336 	mov	dpl,#0xFE
+      000531 12 00 EC         [24] 1337 	lcall	_spi
+                                   1338 ;	main.c:208: spi(0x05, 0x40);
+      000534 75 08 40         [24] 1339 	mov	_spi_PARM_2,#0x40
+      000537 75 82 05         [24] 1340 	mov	dpl,#0x05
+      00053A 12 00 EC         [24] 1341 	lcall	_spi
+                                   1342 ;	main.c:209: spi(0x06, 0x55);
+      00053D 75 08 55         [24] 1343 	mov	_spi_PARM_2,#0x55
+      000540 75 82 06         [24] 1344 	mov	dpl,#0x06
+      000543 12 00 EC         [24] 1345 	lcall	_spi
+                                   1346 ;	main.c:210: spi(0x10, 0x71);
+      000546 75 08 71         [24] 1347 	mov	_spi_PARM_2,#0x71
+      000549 75 82 10         [24] 1348 	mov	dpl,#0x10
+      00054C 12 00 EC         [24] 1349 	lcall	_spi
+                                   1350 ;	main.c:211: spi(0x0e, 0x80);
+      00054F 75 08 80         [24] 1351 	mov	_spi_PARM_2,#0x80
+      000552 75 82 0E         [24] 1352 	mov	dpl,#0x0E
+      000555 12 00 EC         [24] 1353 	lcall	_spi
+                                   1354 ;	main.c:212: spi(0x19, 0x55);
+      000558 75 08 55         [24] 1355 	mov	_spi_PARM_2,#0x55
+      00055B 75 82 19         [24] 1356 	mov	dpl,#0x19
+      00055E 12 00 EC         [24] 1357 	lcall	_spi
+                                   1358 ;	main.c:213: spi(0x18, 0x88);
+      000561 75 08 88         [24] 1359 	mov	_spi_PARM_2,#0x88
+      000564 75 82 18         [24] 1360 	mov	dpl,#0x18
+      000567 12 00 EC         [24] 1361 	lcall	_spi
+                                   1362 ;	main.c:214: spi(0x1a, 0x10);
+      00056A 75 08 10         [24] 1363 	mov	_spi_PARM_2,#0x10
+      00056D 75 82 1A         [24] 1364 	mov	dpl,#0x1A
+      000570 12 00 EC         [24] 1365 	lcall	_spi
+                                   1366 ;	main.c:215: spi(0x1c, 0x77);
+      000573 75 08 77         [24] 1367 	mov	_spi_PARM_2,#0x77
+      000576 75 82 1C         [24] 1368 	mov	dpl,#0x1C
+      000579 12 00 EC         [24] 1369 	lcall	_spi
+                                   1370 ;	main.c:216: spi(0x23, 0x21);
+      00057C 75 08 21         [24] 1371 	mov	_spi_PARM_2,#0x21
+      00057F 75 82 23         [24] 1372 	mov	dpl,#0x23
+      000582 12 00 EC         [24] 1373 	lcall	_spi
+                                   1374 ;	main.c:217: spi(0x21, 0x40);
+      000585 75 08 40         [24] 1375 	mov	_spi_PARM_2,#0x40
+      000588 75 82 21         [24] 1376 	mov	dpl,#0x21
+      00058B 12 00 EC         [24] 1377 	lcall	_spi
+                                   1378 ;	main.c:218: spi(0x22, 0xb7);
+      00058E 75 08 B7         [24] 1379 	mov	_spi_PARM_2,#0xB7
+      000591 75 82 22         [24] 1380 	mov	dpl,#0x22
+      000594 12 00 EC         [24] 1381 	lcall	_spi
+                                   1382 ;	main.c:219: spi(0x25, 0x05);
+      000597 75 08 05         [24] 1383 	mov	_spi_PARM_2,#0x05
+      00059A 75 82 25         [24] 1384 	mov	dpl,#0x25
+      00059D 12 00 EC         [24] 1385 	lcall	_spi
+                                   1386 ;	main.c:220: spi(0x26, 0xfc);
+      0005A0 75 08 FC         [24] 1387 	mov	_spi_PARM_2,#0xFC
+      0005A3 75 82 26         [24] 1388 	mov	dpl,#0x26
+      0005A6 12 00 EC         [24] 1389 	lcall	_spi
+                                   1390 ;	main.c:221: spi(0x70, 0xff);
+      0005A9 75 08 FF         [24] 1391 	mov	_spi_PARM_2,#0xFF
+      0005AC 75 82 70         [24] 1392 	mov	dpl,#0x70
+      0005AF 12 00 EC         [24] 1393 	lcall	_spi
+                                   1394 ;	main.c:224: spi(0xfe, 0x04);
+      0005B2 75 08 04         [24] 1395 	mov	_spi_PARM_2,#0x04
+      0005B5 75 82 FE         [24] 1396 	mov	dpl,#0xFE
+      0005B8 12 00 EC         [24] 1397 	lcall	_spi
+                                   1398 ;	main.c:225: spi(0x5d, 0x10);
+      0005BB 75 08 10         [24] 1399 	mov	_spi_PARM_2,#0x10
+      0005BE 75 82 5D         [24] 1400 	mov	dpl,#0x5D
+      0005C1 12 00 EC         [24] 1401 	lcall	_spi
+                                   1402 ;	main.c:226: spi(0x5a, 0xff);
+      0005C4 75 08 FF         [24] 1403 	mov	_spi_PARM_2,#0xFF
+      0005C7 75 82 5A         [24] 1404 	mov	dpl,#0x5A
+      0005CA 12 00 EC         [24] 1405 	lcall	_spi
+                                   1406 ;	main.c:229: spi(0xfe, 0x04);
+      0005CD 75 08 04         [24] 1407 	mov	_spi_PARM_2,#0x04
+      0005D0 75 82 FE         [24] 1408 	mov	dpl,#0xFE
+      0005D3 12 00 EC         [24] 1409 	lcall	_spi
+                                   1410 ;	main.c:230: spi(0x00, 0xcc);
+      0005D6 75 08 CC         [24] 1411 	mov	_spi_PARM_2,#0xCC
+      0005D9 75 82 00         [24] 1412 	mov	dpl,#0x00
+      0005DC 12 00 EC         [24] 1413 	lcall	_spi
+                                   1414 ;	main.c:231: spi(0x01, 0x00);
+      0005DF 75 08 00         [24] 1415 	mov	_spi_PARM_2,#0x00
+      0005E2 75 82 01         [24] 1416 	mov	dpl,#0x01
+      0005E5 12 00 EC         [24] 1417 	lcall	_spi
+                                   1418 ;	main.c:232: spi(0x02, 0x02);
+      0005E8 75 08 02         [24] 1419 	mov	_spi_PARM_2,#0x02
+      0005EB 75 82 02         [24] 1420 	mov	dpl,#0x02
+      0005EE 12 00 EC         [24] 1421 	lcall	_spi
+                                   1422 ;	main.c:233: spi(0x03, 0x00);
+      0005F1 75 08 00         [24] 1423 	mov	_spi_PARM_2,#0x00
+      0005F4 75 82 03         [24] 1424 	mov	dpl,#0x03
+      0005F7 12 00 EC         [24] 1425 	lcall	_spi
+                                   1426 ;	main.c:234: spi(0x04, 0xa8);
+      0005FA 75 08 A8         [24] 1427 	mov	_spi_PARM_2,#0xA8
+      0005FD 75 82 04         [24] 1428 	mov	dpl,#0x04
+      000600 12 00 EC         [24] 1429 	lcall	_spi
+                                   1430 ;	main.c:235: spi(0x05, 0x01);
+      000603 75 08 01         [24] 1431 	mov	_spi_PARM_2,#0x01
+      000606 75 82 05         [24] 1432 	mov	dpl,#0x05
+      000609 12 00 EC         [24] 1433 	lcall	_spi
+                                   1434 ;	main.c:236: spi(0x06, 0x8e);
+      00060C 75 08 8E         [24] 1435 	mov	_spi_PARM_2,#0x8E
+      00060F 75 82 06         [24] 1436 	mov	dpl,#0x06
+      000612 12 00 EC         [24] 1437 	lcall	_spi
+                                   1438 ;	main.c:237: spi(0x07, 0xfc);
+      000615 75 08 FC         [24] 1439 	mov	_spi_PARM_2,#0xFC
+      000618 75 82 07         [24] 1440 	mov	dpl,#0x07
+      00061B 12 00 EC         [24] 1441 	lcall	_spi
+                                   1442 ;	main.c:238: spi(0x08, 0x02);
+      00061E 75 08 02         [24] 1443 	mov	_spi_PARM_2,#0x02
+      000621 75 82 08         [24] 1444 	mov	dpl,#0x08
+      000624 12 00 EC         [24] 1445 	lcall	_spi
+                                   1446 ;	main.c:241: spi(0xfe, 0x04);
+      000627 75 08 04         [24] 1447 	mov	_spi_PARM_2,#0x04
+      00062A 75 82 FE         [24] 1448 	mov	dpl,#0xFE
+      00062D 12 00 EC         [24] 1449 	lcall	_spi
+                                   1450 ;	main.c:242: spi(0x09, 0xcc);
+      000630 75 08 CC         [24] 1451 	mov	_spi_PARM_2,#0xCC
+      000633 75 82 09         [24] 1452 	mov	dpl,#0x09
+      000636 12 00 EC         [24] 1453 	lcall	_spi
+                                   1454 ;	main.c:243: spi(0x0a, 0x00);
+      000639 75 08 00         [24] 1455 	mov	_spi_PARM_2,#0x00
+      00063C 75 82 0A         [24] 1456 	mov	dpl,#0x0A
+      00063F 12 00 EC         [24] 1457 	lcall	_spi
+                                   1458 ;	main.c:244: spi(0x0b, 0x04);
+      000642 75 08 04         [24] 1459 	mov	_spi_PARM_2,#0x04
+      000645 75 82 0B         [24] 1460 	mov	dpl,#0x0B
+      000648 12 00 EC         [24] 1461 	lcall	_spi
+                                   1462 ;	main.c:245: spi(0x0c, 0x00);
+      00064B 75 08 00         [24] 1463 	mov	_spi_PARM_2,#0x00
+      00064E 75 82 0C         [24] 1464 	mov	dpl,#0x0C
+      000651 12 00 EC         [24] 1465 	lcall	_spi
+                                   1466 ;	main.c:246: spi(0x0d, 0x80);
+      000654 75 08 80         [24] 1467 	mov	_spi_PARM_2,#0x80
+      000657 75 82 0D         [24] 1468 	mov	dpl,#0x0D
+      00065A 12 00 EC         [24] 1469 	lcall	_spi
+                                   1470 ;	main.c:247: spi(0x0e, 0x02);
+      00065D 75 08 02         [24] 1471 	mov	_spi_PARM_2,#0x02
+      000660 75 82 0E         [24] 1472 	mov	dpl,#0x0E
+      000663 12 00 EC         [24] 1473 	lcall	_spi
+                                   1474 ;	main.c:248: spi(0x0f, 0x01);
+      000666 75 08 01         [24] 1475 	mov	_spi_PARM_2,#0x01
+      000669 75 82 0F         [24] 1476 	mov	dpl,#0x0F
+      00066C 12 00 EC         [24] 1477 	lcall	_spi
+                                   1478 ;	main.c:249: spi(0x10, 0x00);
+      00066F 75 08 00         [24] 1479 	mov	_spi_PARM_2,#0x00
+      000672 75 82 10         [24] 1480 	mov	dpl,#0x10
+      000675 12 00 EC         [24] 1481 	lcall	_spi
+                                   1482 ;	main.c:250: spi(0x11, 0x02);
+      000678 75 08 02         [24] 1483 	mov	_spi_PARM_2,#0x02
+      00067B 75 82 11         [24] 1484 	mov	dpl,#0x11
+      00067E 12 00 EC         [24] 1485 	lcall	_spi
+                                   1486 ;	main.c:253: spi(0xfe, 0x04);
+      000681 75 08 04         [24] 1487 	mov	_spi_PARM_2,#0x04
+      000684 75 82 FE         [24] 1488 	mov	dpl,#0xFE
+      000687 12 00 EC         [24] 1489 	lcall	_spi
+                                   1490 ;	main.c:254: spi(0x12, 0x8c);
+      00068A 75 08 8C         [24] 1491 	mov	_spi_PARM_2,#0x8C
+      00068D 75 82 12         [24] 1492 	mov	dpl,#0x12
+      000690 12 00 EC         [24] 1493 	lcall	_spi
+                                   1494 ;	main.c:255: spi(0x13, 0x00);
+      000693 75 08 00         [24] 1495 	mov	_spi_PARM_2,#0x00
+      000696 75 82 13         [24] 1496 	mov	dpl,#0x13
+      000699 12 00 EC         [24] 1497 	lcall	_spi
+                                   1498 ;	main.c:256: spi(0x14, 0x02);
+      00069C 75 08 02         [24] 1499 	mov	_spi_PARM_2,#0x02
+      00069F 75 82 14         [24] 1500 	mov	dpl,#0x14
+      0006A2 12 00 EC         [24] 1501 	lcall	_spi
+                                   1502 ;	main.c:257: spi(0x15, 0x01);
+      0006A5 75 08 01         [24] 1503 	mov	_spi_PARM_2,#0x01
+      0006A8 75 82 15         [24] 1504 	mov	dpl,#0x15
+      0006AB 12 00 EC         [24] 1505 	lcall	_spi
+                                   1506 ;	main.c:258: spi(0x16, 0x08);
+      0006AE 75 08 08         [24] 1507 	mov	_spi_PARM_2,#0x08
+      0006B1 75 82 16         [24] 1508 	mov	dpl,#0x16
+      0006B4 12 00 EC         [24] 1509 	lcall	_spi
+                                   1510 ;	main.c:259: spi(0x17, 0x00);
+      0006B7 75 08 00         [24] 1511 	mov	_spi_PARM_2,#0x00
+      0006BA 75 82 17         [24] 1512 	mov	dpl,#0x17
+      0006BD 12 00 EC         [24] 1513 	lcall	_spi
+                                   1514 ;	main.c:260: spi(0x18, 0x8e);
+      0006C0 75 08 8E         [24] 1515 	mov	_spi_PARM_2,#0x8E
+      0006C3 75 82 18         [24] 1516 	mov	dpl,#0x18
+      0006C6 12 00 EC         [24] 1517 	lcall	_spi
+                                   1518 ;	main.c:261: spi(0x19, 0x36);
+      0006C9 75 08 36         [24] 1519 	mov	_spi_PARM_2,#0x36
+      0006CC 75 82 19         [24] 1520 	mov	dpl,#0x19
+      0006CF 12 00 EC         [24] 1521 	lcall	_spi
+                                   1522 ;	main.c:262: spi(0x1a, 0x02);
+      0006D2 75 08 02         [24] 1523 	mov	_spi_PARM_2,#0x02
+      0006D5 75 82 1A         [24] 1524 	mov	dpl,#0x1A
+      0006D8 12 00 EC         [24] 1525 	lcall	_spi
+                                   1526 ;	main.c:265: spi(0xfe, 0x04);
+      0006DB 75 08 04         [24] 1527 	mov	_spi_PARM_2,#0x04
+      0006DE 75 82 FE         [24] 1528 	mov	dpl,#0xFE
+      0006E1 12 00 EC         [24] 1529 	lcall	_spi
+                                   1530 ;	main.c:266: spi(0x1b, 0xcc);
+      0006E4 75 08 CC         [24] 1531 	mov	_spi_PARM_2,#0xCC
+      0006E7 75 82 1B         [24] 1532 	mov	dpl,#0x1B
+      0006EA 12 00 EC         [24] 1533 	lcall	_spi
+                                   1534 ;	main.c:267: spi(0x1c, 0x00);
+      0006ED 75 08 00         [24] 1535 	mov	_spi_PARM_2,#0x00
+      0006F0 75 82 1C         [24] 1536 	mov	dpl,#0x1C
+      0006F3 12 00 EC         [24] 1537 	lcall	_spi
+                                   1538 ;	main.c:268: spi(0x1d, 0x02);
+      0006F6 75 08 02         [24] 1539 	mov	_spi_PARM_2,#0x02
+      0006F9 75 82 1D         [24] 1540 	mov	dpl,#0x1D
+      0006FC 12 00 EC         [24] 1541 	lcall	_spi
+                                   1542 ;	main.c:269: spi(0x1e, 0x00);
+      0006FF 75 08 00         [24] 1543 	mov	_spi_PARM_2,#0x00
+      000702 75 82 1E         [24] 1544 	mov	dpl,#0x1E
+      000705 12 00 EC         [24] 1545 	lcall	_spi
+                                   1546 ;	main.c:270: spi(0x1f, 0x08);
+      000708 75 08 08         [24] 1547 	mov	_spi_PARM_2,#0x08
+      00070B 75 82 1F         [24] 1548 	mov	dpl,#0x1F
+      00070E 12 00 EC         [24] 1549 	lcall	_spi
+                                   1550 ;	main.c:271: spi(0x20, 0x00);
+      000711 75 08 00         [24] 1551 	mov	_spi_PARM_2,#0x00
+      000714 75 82 20         [24] 1552 	mov	dpl,#0x20
+      000717 12 00 EC         [24] 1553 	lcall	_spi
+                                   1554 ;	main.c:272: spi(0x21, 0x8e);
+      00071A 75 08 8E         [24] 1555 	mov	_spi_PARM_2,#0x8E
+      00071D 75 82 21         [24] 1556 	mov	dpl,#0x21
+      000720 12 00 EC         [24] 1557 	lcall	_spi
+                                   1558 ;	main.c:273: spi(0x22, 0x00);
+      000723 75 08 00         [24] 1559 	mov	_spi_PARM_2,#0x00
+      000726 75 82 22         [24] 1560 	mov	dpl,#0x22
+      000729 12 00 EC         [24] 1561 	lcall	_spi
+                                   1562 ;	main.c:274: spi(0x23, 0x02);
+      00072C 75 08 02         [24] 1563 	mov	_spi_PARM_2,#0x02
+      00072F 75 82 23         [24] 1564 	mov	dpl,#0x23
+      000732 12 00 EC         [24] 1565 	lcall	_spi
+                                   1566 ;	main.c:277: spi(0xfe, 0x04);
+      000735 75 08 04         [24] 1567 	mov	_spi_PARM_2,#0x04
+      000738 75 82 FE         [24] 1568 	mov	dpl,#0xFE
+      00073B 12 00 EC         [24] 1569 	lcall	_spi
+                                   1570 ;	main.c:278: spi(0x24, 0xcc);
+      00073E 75 08 CC         [24] 1571 	mov	_spi_PARM_2,#0xCC
+      000741 75 82 24         [24] 1572 	mov	dpl,#0x24
+      000744 12 00 EC         [24] 1573 	lcall	_spi
+                                   1574 ;	main.c:279: spi(0x25, 0x00);
+      000747 75 08 00         [24] 1575 	mov	_spi_PARM_2,#0x00
+      00074A 75 82 25         [24] 1576 	mov	dpl,#0x25
+      00074D 12 00 EC         [24] 1577 	lcall	_spi
+                                   1578 ;	main.c:280: spi(0x26, 0x02);
+      000750 75 08 02         [24] 1579 	mov	_spi_PARM_2,#0x02
+      000753 75 82 26         [24] 1580 	mov	dpl,#0x26
+      000756 12 00 EC         [24] 1581 	lcall	_spi
+                                   1582 ;	main.c:281: spi(0x27, 0x00);
+      000759 75 08 00         [24] 1583 	mov	_spi_PARM_2,#0x00
+      00075C 75 82 27         [24] 1584 	mov	dpl,#0x27
+      00075F 12 00 EC         [24] 1585 	lcall	_spi
+                                   1586 ;	main.c:282: spi(0x28, 0x08);
+      000762 75 08 08         [24] 1587 	mov	_spi_PARM_2,#0x08
+      000765 75 82 28         [24] 1588 	mov	dpl,#0x28
+      000768 12 00 EC         [24] 1589 	lcall	_spi
+                                   1590 ;	main.c:283: spi(0x29, 0x01);
+      00076B 75 08 01         [24] 1591 	mov	_spi_PARM_2,#0x01
+      00076E 75 82 29         [24] 1592 	mov	dpl,#0x29
+      000771 12 00 EC         [24] 1593 	lcall	_spi
+                                   1594 ;	main.c:284: spi(0x2a, 0x8e);
+      000774 75 08 8E         [24] 1595 	mov	_spi_PARM_2,#0x8E
+      000777 75 82 2A         [24] 1596 	mov	dpl,#0x2A
+      00077A 12 00 EC         [24] 1597 	lcall	_spi
+                                   1598 ;	main.c:285: spi(0x2b, 0x42);
+      00077D 75 08 42         [24] 1599 	mov	_spi_PARM_2,#0x42
+      000780 75 82 2B         [24] 1600 	mov	dpl,#0x2B
+      000783 12 00 EC         [24] 1601 	lcall	_spi
+                                   1602 ;	main.c:286: spi(0x2d, 0x02);
+      000786 75 08 02         [24] 1603 	mov	_spi_PARM_2,#0x02
+      000789 75 82 2D         [24] 1604 	mov	dpl,#0x2D
+      00078C 12 00 EC         [24] 1605 	lcall	_spi
+                                   1606 ;	main.c:289: spi(0xfe, 0x04);
+      00078F 75 08 04         [24] 1607 	mov	_spi_PARM_2,#0x04
+      000792 75 82 FE         [24] 1608 	mov	dpl,#0xFE
+      000795 12 00 EC         [24] 1609 	lcall	_spi
+                                   1610 ;	main.c:290: spi(0x2f, 0x8c);
+      000798 75 08 8C         [24] 1611 	mov	_spi_PARM_2,#0x8C
+      00079B 75 82 2F         [24] 1612 	mov	dpl,#0x2F
+      00079E 12 00 EC         [24] 1613 	lcall	_spi
+                                   1614 ;	main.c:291: spi(0x30, 0x00);
+      0007A1 75 08 00         [24] 1615 	mov	_spi_PARM_2,#0x00
+      0007A4 75 82 30         [24] 1616 	mov	dpl,#0x30
+      0007A7 12 00 EC         [24] 1617 	lcall	_spi
+                                   1618 ;	main.c:292: spi(0x31, 0x01);
+      0007AA 75 08 01         [24] 1619 	mov	_spi_PARM_2,#0x01
+      0007AD 75 82 31         [24] 1620 	mov	dpl,#0x31
+      0007B0 12 00 EC         [24] 1621 	lcall	_spi
+                                   1622 ;	main.c:293: spi(0x32, 0x03);
+      0007B3 75 08 03         [24] 1623 	mov	_spi_PARM_2,#0x03
+      0007B6 75 82 32         [24] 1624 	mov	dpl,#0x32
+      0007B9 12 00 EC         [24] 1625 	lcall	_spi
+                                   1626 ;	main.c:294: spi(0x33, 0x00);
+      0007BC 75 08 00         [24] 1627 	mov	_spi_PARM_2,#0x00
+      0007BF 75 82 33         [24] 1628 	mov	dpl,#0x33
+      0007C2 12 00 EC         [24] 1629 	lcall	_spi
+                                   1630 ;	main.c:295: spi(0x34, 0x00);
+      0007C5 75 08 00         [24] 1631 	mov	_spi_PARM_2,#0x00
+      0007C8 75 82 34         [24] 1632 	mov	dpl,#0x34
+      0007CB 12 00 EC         [24] 1633 	lcall	_spi
+                                   1634 ;	main.c:296: spi(0x35, 0x01);
+      0007CE 75 08 01         [24] 1635 	mov	_spi_PARM_2,#0x01
+      0007D1 75 82 35         [24] 1636 	mov	dpl,#0x35
+      0007D4 12 00 EC         [24] 1637 	lcall	_spi
+                                   1638 ;	main.c:297: spi(0x36, 0x43);
+      0007D7 75 08 43         [24] 1639 	mov	_spi_PARM_2,#0x43
+      0007DA 75 82 36         [24] 1640 	mov	dpl,#0x36
+      0007DD 12 00 EC         [24] 1641 	lcall	_spi
+                                   1642 ;	main.c:298: spi(0x37, 0x02);
+      0007E0 75 08 02         [24] 1643 	mov	_spi_PARM_2,#0x02
+      0007E3 75 82 37         [24] 1644 	mov	dpl,#0x37
+      0007E6 12 00 EC         [24] 1645 	lcall	_spi
+                                   1646 ;	main.c:301: spi(0xfe, 0x04);
+      0007E9 75 08 04         [24] 1647 	mov	_spi_PARM_2,#0x04
+      0007EC 75 82 FE         [24] 1648 	mov	dpl,#0xFE
+      0007EF 12 00 EC         [24] 1649 	lcall	_spi
+                                   1650 ;	main.c:302: spi(0x38, 0xcc);
+      0007F2 75 08 CC         [24] 1651 	mov	_spi_PARM_2,#0xCC
+      0007F5 75 82 38         [24] 1652 	mov	dpl,#0x38
+      0007F8 12 00 EC         [24] 1653 	lcall	_spi
+                                   1654 ;	main.c:303: spi(0x39, 0x00);
+      0007FB 75 08 00         [24] 1655 	mov	_spi_PARM_2,#0x00
+      0007FE 75 82 39         [24] 1656 	mov	dpl,#0x39
+      000801 12 00 EC         [24] 1657 	lcall	_spi
+                                   1658 ;	main.c:304: spi(0x3a, 0x02);
+      000804 75 08 02         [24] 1659 	mov	_spi_PARM_2,#0x02
+      000807 75 82 3A         [24] 1660 	mov	dpl,#0x3A
+      00080A 12 00 EC         [24] 1661 	lcall	_spi
+                                   1662 ;	main.c:305: spi(0x3b, 0x00);
+      00080D 75 08 00         [24] 1663 	mov	_spi_PARM_2,#0x00
+      000810 75 82 3B         [24] 1664 	mov	dpl,#0x3B
+      000813 12 00 EC         [24] 1665 	lcall	_spi
+                                   1666 ;	main.c:306: spi(0x3d, 0x20);
+      000816 75 08 20         [24] 1667 	mov	_spi_PARM_2,#0x20
+      000819 75 82 3D         [24] 1668 	mov	dpl,#0x3D
+      00081C 12 00 EC         [24] 1669 	lcall	_spi
+                                   1670 ;	main.c:307: spi(0x3f, 0x01);
+      00081F 75 08 01         [24] 1671 	mov	_spi_PARM_2,#0x01
+      000822 75 82 3F         [24] 1672 	mov	dpl,#0x3F
+      000825 12 00 EC         [24] 1673 	lcall	_spi
+                                   1674 ;	main.c:308: spi(0x40, 0xa4);
+      000828 75 08 A4         [24] 1675 	mov	_spi_PARM_2,#0xA4
+      00082B 75 82 40         [24] 1676 	mov	dpl,#0x40
+      00082E 12 00 EC         [24] 1677 	lcall	_spi
+                                   1678 ;	main.c:309: spi(0x41, 0x57);
+      000831 75 08 57         [24] 1679 	mov	_spi_PARM_2,#0x57
+      000834 75 82 41         [24] 1680 	mov	dpl,#0x41
+      000837 12 00 EC         [24] 1681 	lcall	_spi
+                                   1682 ;	main.c:310: spi(0x42, 0x02);
+      00083A 75 08 02         [24] 1683 	mov	_spi_PARM_2,#0x02
+      00083D 75 82 42         [24] 1684 	mov	dpl,#0x42
+      000840 12 00 EC         [24] 1685 	lcall	_spi
+                                   1686 ;	main.c:313: spi(0xfe, 0x04);
+      000843 75 08 04         [24] 1687 	mov	_spi_PARM_2,#0x04
+      000846 75 82 FE         [24] 1688 	mov	dpl,#0xFE
+      000849 12 00 EC         [24] 1689 	lcall	_spi
+                                   1690 ;	main.c:314: spi(0x43, 0xcc);
+      00084C 75 08 CC         [24] 1691 	mov	_spi_PARM_2,#0xCC
+      00084F 75 82 43         [24] 1692 	mov	dpl,#0x43
+      000852 12 00 EC         [24] 1693 	lcall	_spi
+                                   1694 ;	main.c:315: spi(0x44, 0x00);
+      000855 75 08 00         [24] 1695 	mov	_spi_PARM_2,#0x00
+      000858 75 82 44         [24] 1696 	mov	dpl,#0x44
+      00085B 12 00 EC         [24] 1697 	lcall	_spi
+                                   1698 ;	main.c:316: spi(0x45, 0x04);
+      00085E 75 08 04         [24] 1699 	mov	_spi_PARM_2,#0x04
+      000861 75 82 45         [24] 1700 	mov	dpl,#0x45
+      000864 12 00 EC         [24] 1701 	lcall	_spi
+                                   1702 ;	main.c:317: spi(0x46, 0x00);
+      000867 75 08 00         [24] 1703 	mov	_spi_PARM_2,#0x00
+      00086A 75 82 46         [24] 1704 	mov	dpl,#0x46
+      00086D 12 00 EC         [24] 1705 	lcall	_spi
+                                   1706 ;	main.c:318: spi(0x47, 0x00);
+      000870 75 08 00         [24] 1707 	mov	_spi_PARM_2,#0x00
+      000873 75 82 47         [24] 1708 	mov	dpl,#0x47
+      000876 12 00 EC         [24] 1709 	lcall	_spi
+                                   1710 ;	main.c:319: spi(0x48, 0x00);
+      000879 75 08 00         [24] 1711 	mov	_spi_PARM_2,#0x00
+      00087C 75 82 48         [24] 1712 	mov	dpl,#0x48
+      00087F 12 00 EC         [24] 1713 	lcall	_spi
+                                   1714 ;	main.c:320: spi(0x49, 0x01);
+      000882 75 08 01         [24] 1715 	mov	_spi_PARM_2,#0x01
+      000885 75 82 49         [24] 1716 	mov	dpl,#0x49
+      000888 12 00 EC         [24] 1717 	lcall	_spi
+                                   1718 ;	main.c:321: spi(0x4a, 0x00);
+      00088B 75 08 00         [24] 1719 	mov	_spi_PARM_2,#0x00
+      00088E 75 82 4A         [24] 1720 	mov	dpl,#0x4A
+      000891 12 00 EC         [24] 1721 	lcall	_spi
+                                   1722 ;	main.c:322: spi(0x4b, 0x02);
+      000894 75 08 02         [24] 1723 	mov	_spi_PARM_2,#0x02
+      000897 75 82 4B         [24] 1724 	mov	dpl,#0x4B
+      00089A 12 00 EC         [24] 1725 	lcall	_spi
+                                   1726 ;	main.c:325: spi(0xfe, 0x04);
+      00089D 75 08 04         [24] 1727 	mov	_spi_PARM_2,#0x04
+      0008A0 75 82 FE         [24] 1728 	mov	dpl,#0xFE
+      0008A3 12 00 EC         [24] 1729 	lcall	_spi
+                                   1730 ;	main.c:326: spi(0x4c, 0x88);
+      0008A6 75 08 88         [24] 1731 	mov	_spi_PARM_2,#0x88
+      0008A9 75 82 4C         [24] 1732 	mov	dpl,#0x4C
+      0008AC 12 00 EC         [24] 1733 	lcall	_spi
+                                   1734 ;	main.c:327: spi(0x4d, 0x00);
+      0008AF 75 08 00         [24] 1735 	mov	_spi_PARM_2,#0x00
+      0008B2 75 82 4D         [24] 1736 	mov	dpl,#0x4D
+      0008B5 12 00 EC         [24] 1737 	lcall	_spi
+                                   1738 ;	main.c:328: spi(0x4e, 0x01);
+      0008B8 75 08 01         [24] 1739 	mov	_spi_PARM_2,#0x01
+      0008BB 75 82 4E         [24] 1740 	mov	dpl,#0x4E
+      0008BE 12 00 EC         [24] 1741 	lcall	_spi
+                                   1742 ;	main.c:329: spi(0x4f, 0x08);
+      0008C1 75 08 08         [24] 1743 	mov	_spi_PARM_2,#0x08
+      0008C4 75 82 4F         [24] 1744 	mov	dpl,#0x4F
+      0008C7 12 00 EC         [24] 1745 	lcall	_spi
+                                   1746 ;	main.c:330: spi(0x50, 0x01);
+      0008CA 75 08 01         [24] 1747 	mov	_spi_PARM_2,#0x01
+      0008CD 75 82 50         [24] 1748 	mov	dpl,#0x50
+      0008D0 12 00 EC         [24] 1749 	lcall	_spi
+                                   1750 ;	main.c:331: spi(0x51, 0x8e);
+      0008D3 75 08 8E         [24] 1751 	mov	_spi_PARM_2,#0x8E
+      0008D6 75 82 51         [24] 1752 	mov	dpl,#0x51
+      0008D9 12 00 EC         [24] 1753 	lcall	_spi
+                                   1754 ;	main.c:332: spi(0x52, 0x36);
+      0008DC 75 08 36         [24] 1755 	mov	_spi_PARM_2,#0x36
+      0008DF 75 82 52         [24] 1756 	mov	dpl,#0x52
+      0008E2 12 00 EC         [24] 1757 	lcall	_spi
+                                   1758 ;	main.c:335: spi(0xfe, 0x01);
+      0008E5 75 08 01         [24] 1759 	mov	_spi_PARM_2,#0x01
+      0008E8 75 82 FE         [24] 1760 	mov	dpl,#0xFE
+      0008EB 12 00 EC         [24] 1761 	lcall	_spi
+                                   1762 ;	main.c:336: spi(0x3a, 0x00);
+      0008EE 75 08 00         [24] 1763 	mov	_spi_PARM_2,#0x00
+      0008F1 75 82 3A         [24] 1764 	mov	dpl,#0x3A
+      0008F4 12 00 EC         [24] 1765 	lcall	_spi
+                                   1766 ;	main.c:337: spi(0x3b, 0x00);
+      0008F7 75 08 00         [24] 1767 	mov	_spi_PARM_2,#0x00
+      0008FA 75 82 3B         [24] 1768 	mov	dpl,#0x3B
+      0008FD 12 00 EC         [24] 1769 	lcall	_spi
+                                   1770 ;	main.c:338: spi(0x3d, 0x10);
+      000900 75 08 10         [24] 1771 	mov	_spi_PARM_2,#0x10
+      000903 75 82 3D         [24] 1772 	mov	dpl,#0x3D
+      000906 12 00 EC         [24] 1773 	lcall	_spi
+                                   1774 ;	main.c:339: spi(0x3f, 0x2f);
+      000909 75 08 2F         [24] 1775 	mov	_spi_PARM_2,#0x2F
+      00090C 75 82 3F         [24] 1776 	mov	dpl,#0x3F
+      00090F 12 00 EC         [24] 1777 	lcall	_spi
+                                   1778 ;	main.c:340: spi(0x40, 0x10);
+      000912 75 08 10         [24] 1779 	mov	_spi_PARM_2,#0x10
+      000915 75 82 40         [24] 1780 	mov	dpl,#0x40
+      000918 12 00 EC         [24] 1781 	lcall	_spi
+                                   1782 ;	main.c:341: spi(0x41, 0x0a);
+      00091B 75 08 0A         [24] 1783 	mov	_spi_PARM_2,#0x0A
+      00091E 75 82 41         [24] 1784 	mov	dpl,#0x41
+      000921 12 00 EC         [24] 1785 	lcall	_spi
+                                   1786 ;	main.c:342: spi(0x37, 0x10);
+      000924 75 08 10         [24] 1787 	mov	_spi_PARM_2,#0x10
+      000927 75 82 37         [24] 1788 	mov	dpl,#0x37
+      00092A 12 00 EC         [24] 1789 	lcall	_spi
+                                   1790 ;	main.c:345: spi(0xfe, 0x04);
+      00092D 75 08 04         [24] 1791 	mov	_spi_PARM_2,#0x04
+      000930 75 82 FE         [24] 1792 	mov	dpl,#0xFE
+      000933 12 00 EC         [24] 1793 	lcall	_spi
+                                   1794 ;	main.c:346: spi(0x5e, 0x30);
+      000936 75 08 30         [24] 1795 	mov	_spi_PARM_2,#0x30
+      000939 75 82 5E         [24] 1796 	mov	dpl,#0x5E
+      00093C 12 00 EC         [24] 1797 	lcall	_spi
+                                   1798 ;	main.c:347: spi(0x5f, 0x32);
+      00093F 75 08 32         [24] 1799 	mov	_spi_PARM_2,#0x32
+      000942 75 82 5F         [24] 1800 	mov	dpl,#0x5F
+      000945 12 00 EC         [24] 1801 	lcall	_spi
+                                   1802 ;	main.c:348: spi(0x60, 0x84);
+      000948 75 08 84         [24] 1803 	mov	_spi_PARM_2,#0x84
+      00094B 75 82 60         [24] 1804 	mov	dpl,#0x60
+      00094E 12 00 EC         [24] 1805 	lcall	_spi
+                                   1806 ;	main.c:349: spi(0x61, 0x76);
+      000951 75 08 76         [24] 1807 	mov	_spi_PARM_2,#0x76
+      000954 75 82 61         [24] 1808 	mov	dpl,#0x61
+      000957 12 00 EC         [24] 1809 	lcall	_spi
+                                   1810 ;	main.c:350: spi(0x62, 0x51);
+      00095A 75 08 51         [24] 1811 	mov	_spi_PARM_2,#0x51
+      00095D 75 82 62         [24] 1812 	mov	dpl,#0x62
+      000960 12 00 EC         [24] 1813 	lcall	_spi
+                                   1814 ;	main.c:353: spi(0xfe, 0x05);
+      000963 75 08 05         [24] 1815 	mov	_spi_PARM_2,#0x05
+      000966 75 82 FE         [24] 1816 	mov	dpl,#0xFE
+      000969 12 00 EC         [24] 1817 	lcall	_spi
+                                   1818 ;	main.c:354: spi(0x05, 0x11);
+      00096C 75 08 11         [24] 1819 	mov	_spi_PARM_2,#0x11
+      00096F 75 82 05         [24] 1820 	mov	dpl,#0x05
+      000972 12 00 EC         [24] 1821 	lcall	_spi
+                                   1822 ;	main.c:355: spi(0x2a, 0x00);
+      000975 75 08 00         [24] 1823 	mov	_spi_PARM_2,#0x00
+      000978 75 82 2A         [24] 1824 	mov	dpl,#0x2A
+      00097B 12 00 EC         [24] 1825 	lcall	_spi
+                                   1826 ;	main.c:356: spi(0x91, 0x00);
+      00097E 75 08 00         [24] 1827 	mov	_spi_PARM_2,#0x00
+      000981 75 82 91         [24] 1828 	mov	dpl,#0x91
+      000984 12 00 EC         [24] 1829 	lcall	_spi
+                                   1830 ;	main.c:359: spi(0xfe, 0x01);
+      000987 75 08 01         [24] 1831 	mov	_spi_PARM_2,#0x01
+      00098A 75 82 FE         [24] 1832 	mov	dpl,#0xFE
+      00098D 12 00 EC         [24] 1833 	lcall	_spi
+                                   1834 ;	main.c:360: spi(0x42, 0x33);
+      000990 75 08 33         [24] 1835 	mov	_spi_PARM_2,#0x33
+      000993 75 82 42         [24] 1836 	mov	dpl,#0x42
+      000996 12 00 EC         [24] 1837 	lcall	_spi
+                                   1838 ;	main.c:361: spi(0x43, 0x22);
+      000999 75 08 22         [24] 1839 	mov	_spi_PARM_2,#0x22
+      00099C 75 82 43         [24] 1840 	mov	dpl,#0x43
+      00099F 12 00 EC         [24] 1841 	lcall	_spi
+                                   1842 ;	main.c:362: spi(0x44, 0x11);
+      0009A2 75 08 11         [24] 1843 	mov	_spi_PARM_2,#0x11
+      0009A5 75 82 44         [24] 1844 	mov	dpl,#0x44
+      0009A8 12 00 EC         [24] 1845 	lcall	_spi
+                                   1846 ;	main.c:363: spi(0x45, 0x66);
+      0009AB 75 08 66         [24] 1847 	mov	_spi_PARM_2,#0x66
+      0009AE 75 82 45         [24] 1848 	mov	dpl,#0x45
+      0009B1 12 00 EC         [24] 1849 	lcall	_spi
+                                   1850 ;	main.c:364: spi(0x46, 0x55);
+      0009B4 75 08 55         [24] 1851 	mov	_spi_PARM_2,#0x55
+      0009B7 75 82 46         [24] 1852 	mov	dpl,#0x46
+      0009BA 12 00 EC         [24] 1853 	lcall	_spi
+                                   1854 ;	main.c:365: spi(0x47, 0x44);
+      0009BD 75 08 44         [24] 1855 	mov	_spi_PARM_2,#0x44
+      0009C0 75 82 47         [24] 1856 	mov	dpl,#0x47
+      0009C3 12 00 EC         [24] 1857 	lcall	_spi
+                                   1858 ;	main.c:366: spi(0x4c, 0x33);
+      0009C6 75 08 33         [24] 1859 	mov	_spi_PARM_2,#0x33
+      0009C9 75 82 4C         [24] 1860 	mov	dpl,#0x4C
+      0009CC 12 00 EC         [24] 1861 	lcall	_spi
+                                   1862 ;	main.c:367: spi(0x4d, 0x22);
+      0009CF 75 08 22         [24] 1863 	mov	_spi_PARM_2,#0x22
+      0009D2 75 82 4D         [24] 1864 	mov	dpl,#0x4D
+      0009D5 12 00 EC         [24] 1865 	lcall	_spi
+                                   1866 ;	main.c:368: spi(0x4e, 0x11);
+      0009D8 75 08 11         [24] 1867 	mov	_spi_PARM_2,#0x11
+      0009DB 75 82 4E         [24] 1868 	mov	dpl,#0x4E
+      0009DE 12 00 EC         [24] 1869 	lcall	_spi
+                                   1870 ;	main.c:369: spi(0x4f, 0x66);
+      0009E1 75 08 66         [24] 1871 	mov	_spi_PARM_2,#0x66
+      0009E4 75 82 4F         [24] 1872 	mov	dpl,#0x4F
+      0009E7 12 00 EC         [24] 1873 	lcall	_spi
+                                   1874 ;	main.c:370: spi(0x50, 0x55);
+      0009EA 75 08 55         [24] 1875 	mov	_spi_PARM_2,#0x55
+      0009ED 75 82 50         [24] 1876 	mov	dpl,#0x50
+      0009F0 12 00 EC         [24] 1877 	lcall	_spi
+                                   1878 ;	main.c:371: spi(0x51, 0x44);
+      0009F3 75 08 44         [24] 1879 	mov	_spi_PARM_2,#0x44
+      0009F6 75 82 51         [24] 1880 	mov	dpl,#0x51
+      0009F9 12 00 EC         [24] 1881 	lcall	_spi
+                                   1882 ;	main.c:372: spi(0x56, 0x11);
+      0009FC 75 08 11         [24] 1883 	mov	_spi_PARM_2,#0x11
+      0009FF 75 82 56         [24] 1884 	mov	dpl,#0x56
+      000A02 12 00 EC         [24] 1885 	lcall	_spi
+                                   1886 ;	main.c:373: spi(0x58, 0x22);
+      000A05 75 08 22         [24] 1887 	mov	_spi_PARM_2,#0x22
+      000A08 75 82 58         [24] 1888 	mov	dpl,#0x58
+      000A0B 12 00 EC         [24] 1889 	lcall	_spi
+                                   1890 ;	main.c:374: spi(0x59, 0x33);
+      000A0E 75 08 33         [24] 1891 	mov	_spi_PARM_2,#0x33
+      000A11 75 82 59         [24] 1892 	mov	dpl,#0x59
+      000A14 12 00 EC         [24] 1893 	lcall	_spi
+                                   1894 ;	main.c:375: spi(0x5a, 0x44);
+      000A17 75 08 44         [24] 1895 	mov	_spi_PARM_2,#0x44
+      000A1A 75 82 5A         [24] 1896 	mov	dpl,#0x5A
+      000A1D 12 00 EC         [24] 1897 	lcall	_spi
+                                   1898 ;	main.c:376: spi(0x5b, 0x55);
+      000A20 75 08 55         [24] 1899 	mov	_spi_PARM_2,#0x55
+      000A23 75 82 5B         [24] 1900 	mov	dpl,#0x5B
+      000A26 12 00 EC         [24] 1901 	lcall	_spi
+                                   1902 ;	main.c:377: spi(0x5c, 0x66);
+      000A29 75 08 66         [24] 1903 	mov	_spi_PARM_2,#0x66
+      000A2C 75 82 5C         [24] 1904 	mov	dpl,#0x5C
+      000A2F 12 00 EC         [24] 1905 	lcall	_spi
+                                   1906 ;	main.c:378: spi(0x61, 0x11);
+      000A32 75 08 11         [24] 1907 	mov	_spi_PARM_2,#0x11
+      000A35 75 82 61         [24] 1908 	mov	dpl,#0x61
+      000A38 12 00 EC         [24] 1909 	lcall	_spi
+                                   1910 ;	main.c:379: spi(0x62, 0x22);
+      000A3B 75 08 22         [24] 1911 	mov	_spi_PARM_2,#0x22
+      000A3E 75 82 62         [24] 1912 	mov	dpl,#0x62
+      000A41 12 00 EC         [24] 1913 	lcall	_spi
+                                   1914 ;	main.c:380: spi(0x63, 0x33);
+      000A44 75 08 33         [24] 1915 	mov	_spi_PARM_2,#0x33
+      000A47 75 82 63         [24] 1916 	mov	dpl,#0x63
+      000A4A 12 00 EC         [24] 1917 	lcall	_spi
+                                   1918 ;	main.c:381: spi(0x64, 0x44);
+      000A4D 75 08 44         [24] 1919 	mov	_spi_PARM_2,#0x44
+      000A50 75 82 64         [24] 1920 	mov	dpl,#0x64
+      000A53 12 00 EC         [24] 1921 	lcall	_spi
+                                   1922 ;	main.c:382: spi(0x65, 0x55);
+      000A56 75 08 55         [24] 1923 	mov	_spi_PARM_2,#0x55
+      000A59 75 82 65         [24] 1924 	mov	dpl,#0x65
+      000A5C 12 00 EC         [24] 1925 	lcall	_spi
+                                   1926 ;	main.c:383: spi(0x66, 0x66);
+      000A5F 75 08 66         [24] 1927 	mov	_spi_PARM_2,#0x66
+      000A62 75 82 66         [24] 1928 	mov	dpl,#0x66
+      000A65 12 00 EC         [24] 1929 	lcall	_spi
+                                   1930 ;	main.c:386: spi(0xfe, 0x00);
+      000A68 75 08 00         [24] 1931 	mov	_spi_PARM_2,#0x00
+      000A6B 75 82 FE         [24] 1932 	mov	dpl,#0xFE
+      000A6E 12 00 EC         [24] 1933 	lcall	_spi
+                                   1934 ;	main.c:387: spi(0x35, 0x00);
+      000A71 75 08 00         [24] 1935 	mov	_spi_PARM_2,#0x00
+      000A74 75 82 35         [24] 1936 	mov	dpl,#0x35
+      000A77 12 00 EC         [24] 1937 	lcall	_spi
+                                   1938 ;	main.c:390: spi_cmd(0x11);
+      000A7A 75 82 11         [24] 1939 	mov	dpl,#0x11
+      000A7D 12 00 BE         [24] 1940 	lcall	_spi_cmd
+                                   1941 ;	main.c:391: delayms(150);
+      000A80 90 00 96         [24] 1942 	mov	dptr,#0x0096
+      000A83 12 00 62         [24] 1943 	lcall	_delayms
+                                   1944 ;	main.c:394: spi_cmd(0x29);
+      000A86 75 82 29         [24] 1945 	mov	dpl,#0x29
+      000A89 02 00 BE         [24] 1946 	ljmp	_spi_cmd
+                                   1947 ;------------------------------------------------------------
+                                   1948 ;Allocation info for local variables in function 'color'
+                                   1949 ;------------------------------------------------------------
+                                   1950 ;x                         Allocated to registers r4 r5 
+                                   1951 ;y                         Allocated to registers r6 r7 
+                                   1952 ;------------------------------------------------------------
+                                   1953 ;	main.c:397: void color(void)
+                                   1954 ;	-----------------------------------------
+                                   1955 ;	 function color
+                                   1956 ;	-----------------------------------------
+      000A8C                       1957 _color:
+                                   1958 ;	main.c:401: spi(0x51, 0x20);
+      000A8C 75 08 20         [24] 1959 	mov	_spi_PARM_2,#0x20
+      000A8F 75 82 51         [24] 1960 	mov	dpl,#0x51
+      000A92 12 00 EC         [24] 1961 	lcall	_spi
+                                   1962 ;	main.c:403: spi_cmd(0x2c);
+      000A95 75 82 2C         [24] 1963 	mov	dpl,#0x2C
+      000A98 12 00 BE         [24] 1964 	lcall	_spi_cmd
+                                   1965 ;	main.c:404: for(y=0; y<272; y++){
+      000A9B 7E 00            [12] 1966 	mov	r6,#0x00
+      000A9D 7F 00            [12] 1967 	mov	r7,#0x00
+                                   1968 ;	main.c:405: for(x=0; x<340; x++){
+      000A9F                       1969 00109$:
+      000A9F 7C 00            [12] 1970 	mov	r4,#0x00
+      000AA1 7D 00            [12] 1971 	mov	r5,#0x00
+      000AA3                       1972 00103$:
+                                   1973 ;	main.c:406: spi_data(0xff);
+      000AA3 75 82 FF         [24] 1974 	mov	dpl,#0xFF
+      000AA6 C0 07            [24] 1975 	push	ar7
+      000AA8 C0 06            [24] 1976 	push	ar6
+      000AAA C0 05            [24] 1977 	push	ar5
+      000AAC C0 04            [24] 1978 	push	ar4
+      000AAE 12 00 DB         [24] 1979 	lcall	_spi_data
+                                   1980 ;	main.c:407: spi_data(0x00);
+      000AB1 75 82 00         [24] 1981 	mov	dpl,#0x00
+      000AB4 12 00 DB         [24] 1982 	lcall	_spi_data
+                                   1983 ;	main.c:408: spi_data(0x00);
+      000AB7 75 82 00         [24] 1984 	mov	dpl,#0x00
+      000ABA 12 00 DB         [24] 1985 	lcall	_spi_data
+      000ABD D0 04            [24] 1986 	pop	ar4
+      000ABF D0 05            [24] 1987 	pop	ar5
+      000AC1 D0 06            [24] 1988 	pop	ar6
+      000AC3 D0 07            [24] 1989 	pop	ar7
+                                   1990 ;	main.c:405: for(x=0; x<340; x++){
+      000AC5 0C               [12] 1991 	inc	r4
+      000AC6 BC 00 01         [24] 1992 	cjne	r4,#0x00,00120$
+      000AC9 0D               [12] 1993 	inc	r5
+      000ACA                       1994 00120$:
+      000ACA C3               [12] 1995 	clr	c
+      000ACB EC               [12] 1996 	mov	a,r4
+      000ACC 94 54            [12] 1997 	subb	a,#0x54
+      000ACE ED               [12] 1998 	mov	a,r5
+      000ACF 94 01            [12] 1999 	subb	a,#0x01
+      000AD1 40 D0            [24] 2000 	jc	00103$
+                                   2001 ;	main.c:404: for(y=0; y<272; y++){
+      000AD3 0E               [12] 2002 	inc	r6
+      000AD4 BE 00 01         [24] 2003 	cjne	r6,#0x00,00122$
+      000AD7 0F               [12] 2004 	inc	r7
+      000AD8                       2005 00122$:
+      000AD8 C3               [12] 2006 	clr	c
+      000AD9 EE               [12] 2007 	mov	a,r6
+      000ADA 94 10            [12] 2008 	subb	a,#0x10
+      000ADC EF               [12] 2009 	mov	a,r7
+      000ADD 94 01            [12] 2010 	subb	a,#0x01
+      000ADF 40 BE            [24] 2011 	jc	00109$
+      000AE1 22               [24] 2012 	ret
+                                   2013 ;------------------------------------------------------------
+                                   2014 ;Allocation info for local variables in function 'gpio_init'
+                                   2015 ;------------------------------------------------------------
+                                   2016 ;	main.c:413: void gpio_init(void)
+                                   2017 ;	-----------------------------------------
+                                   2018 ;	 function gpio_init
+                                   2019 ;	-----------------------------------------
+      000AE2                       2020 _gpio_init:
+                                   2021 ;	main.c:415: P0M0 = 0x00;
+      000AE2 75 94 00         [24] 2022 	mov	_P0M0,#0x00
+                                   2023 ;	main.c:416: P0M1 = 0x00;
+      000AE5 75 93 00         [24] 2024 	mov	_P0M1,#0x00
+                                   2025 ;	main.c:417: P1M0 = 0x00;
+      000AE8 75 92 00         [24] 2026 	mov	_P1M0,#0x00
+                                   2027 ;	main.c:418: P1M1 = 0x00;
+      000AEB 75 91 00         [24] 2028 	mov	_P1M1,#0x00
+                                   2029 ;	main.c:419: P2M0 = 0x00;
+      000AEE 75 96 00         [24] 2030 	mov	_P2M0,#0x00
+                                   2031 ;	main.c:420: P2M1 = 0x00;
+      000AF1 75 95 00         [24] 2032 	mov	_P2M1,#0x00
+                                   2033 ;	main.c:421: P3M0 = 0x00;
+      000AF4 75 B2 00         [24] 2034 	mov	_P3M0,#0x00
+                                   2035 ;	main.c:422: P3M1 = 0x00;
+      000AF7 75 B1 00         [24] 2036 	mov	_P3M1,#0x00
+                                   2037 ;	main.c:423: P4M0 = 0x00;
+      000AFA 75 B4 00         [24] 2038 	mov	_P4M0,#0x00
+                                   2039 ;	main.c:424: P4M1 = 0x00;
+      000AFD 75 B3 00         [24] 2040 	mov	_P4M1,#0x00
+                                   2041 ;	main.c:425: P5M0 = 0x00;
+      000B00 75 CA 00         [24] 2042 	mov	_P5M0,#0x00
+                                   2043 ;	main.c:426: P5M1 = 0x00;
+      000B03 75 C9 00         [24] 2044 	mov	_P5M1,#0x00
+      000B06 22               [24] 2045 	ret
+                                   2046 ;------------------------------------------------------------
+                                   2047 ;Allocation info for local variables in function 'uart_init'
+                                   2048 ;------------------------------------------------------------
+                                   2049 ;	main.c:429: void uart_init(void)		//9600bps@11.0592MHz
+                                   2050 ;	-----------------------------------------
+                                   2051 ;	 function uart_init
+                                   2052 ;	-----------------------------------------
+      000B07                       2053 _uart_init:
+                                   2054 ;	main.c:431: SCON = 0x50;		//8bit and variable baudrate
+      000B07 75 98 50         [24] 2055 	mov	_SCON,#0x50
+                                   2056 ;	main.c:432: AUXR |= 0x40;		//Timer1's clock is Fosc (1T)
+      000B0A 43 8E 40         [24] 2057 	orl	_AUXR,#0x40
+                                   2058 ;	main.c:433: AUXR &= 0xFE;		//Use Timer1 as baudrate generator
+      000B0D 53 8E FE         [24] 2059 	anl	_AUXR,#0xFE
+                                   2060 ;	main.c:434: TMOD &= 0x0F;		//Set Timer1 as 16-bit auto reload mode
+      000B10 53 89 0F         [24] 2061 	anl	_TMOD,#0x0F
+                                   2062 ;	main.c:435: TL1 = 0xE0;		//Initial timer value
+      000B13 75 8B E0         [24] 2063 	mov	_TL1,#0xE0
+                                   2064 ;	main.c:436: TH1 = 0xFE;		//Initial timer value
+      000B16 75 8D FE         [24] 2065 	mov	_TH1,#0xFE
+                                   2066 ;	main.c:437: ET1 = 0;		//Disable Timer1 interrupt
+      000B19 C2 AB            [12] 2067 	clr	_ET1
+                                   2068 ;	main.c:438: TR1 = 1;		//Timer1 running
+      000B1B D2 8E            [12] 2069 	setb	_TR1
+      000B1D 22               [24] 2070 	ret
+                                   2071 ;------------------------------------------------------------
+                                   2072 ;Allocation info for local variables in function 'uart_send'
+                                   2073 ;------------------------------------------------------------
+                                   2074 ;val                       Allocated to registers 
+                                   2075 ;------------------------------------------------------------
+                                   2076 ;	main.c:441: void uart_send(unsigned char val)
+                                   2077 ;	-----------------------------------------
+                                   2078 ;	 function uart_send
+                                   2079 ;	-----------------------------------------
+      000B1E                       2080 _uart_send:
+      000B1E 85 82 99         [24] 2081 	mov	_SBUF,dpl
+                                   2082 ;	main.c:444: while (TI == 0); //判斷TI是否等於1(傳送完畢), 否則停在此行
+      000B21                       2083 00101$:
+                                   2084 ;	main.c:445: TI = 0;          //清除串列傳送完畢旗號
+      000B21 10 99 02         [24] 2085 	jbc	_TI,00112$
+      000B24 80 FB            [24] 2086 	sjmp	00101$
+      000B26                       2087 00112$:
+      000B26 22               [24] 2088 	ret
+                                   2089 ;------------------------------------------------------------
+                                   2090 ;Allocation info for local variables in function 'main'
+                                   2091 ;------------------------------------------------------------
+                                   2092 ;ret                       Allocated to registers 
+                                   2093 ;------------------------------------------------------------
+                                   2094 ;	main.c:448: void main(void)
+                                   2095 ;	-----------------------------------------
+                                   2096 ;	 function main
+                                   2097 ;	-----------------------------------------
+      000B27                       2098 _main:
+                                   2099 ;	main.c:452: gpio_init();
+      000B27 12 0A E2         [24] 2100 	lcall	_gpio_init
+                                   2101 ;	main.c:453: uart_init();
+      000B2A 12 0B 07         [24] 2102 	lcall	_uart_init
+                                   2103 ;	main.c:454: AUXR|= 0x80;
+      000B2D 43 8E 80         [24] 2104 	orl	_AUXR,#0x80
+                                   2105 ;	main.c:456: reset();
+      000B30 12 00 FE         [24] 2106 	lcall	_reset
+                                   2107 ;	main.c:460: delayms(3000);
+      000B33 90 0B B8         [24] 2108 	mov	dptr,#0x0BB8
+      000B36 12 00 62         [24] 2109 	lcall	_delayms
+                                   2110 ;	main.c:461: uart_send(0xaa);
+      000B39 75 82 AA         [24] 2111 	mov	dpl,#0xAA
+      000B3C 12 0B 1E         [24] 2112 	lcall	_uart_send
+                                   2113 ;	main.c:462: uart_send(0xbb);
+      000B3F 75 82 BB         [24] 2114 	mov	dpl,#0xBB
+      000B42 12 0B 1E         [24] 2115 	lcall	_uart_send
+                                   2116 ;	main.c:463: uart_send(0xcc);
+      000B45 75 82 CC         [24] 2117 	mov	dpl,#0xCC
+      000B48 12 0B 1E         [24] 2118 	lcall	_uart_send
+                                   2119 ;	main.c:465: CSX = 0;
+      000B4B C2 C2            [12] 2120 	clr	_P42
+                                   2121 ;	main.c:466: spi_raw_write(0x20);
+      000B4D 75 82 20         [24] 2122 	mov	dpl,#0x20
+      000B50 12 00 9F         [24] 2123 	lcall	_spi_raw_write
+                                   2124 ;	main.c:467: spi_raw_write(0x00);
+      000B53 75 82 00         [24] 2125 	mov	dpl,#0x00
+      000B56 12 00 9F         [24] 2126 	lcall	_spi_raw_write
+                                   2127 ;	main.c:468: spi_raw_write(0x00);
+      000B59 75 82 00         [24] 2128 	mov	dpl,#0x00
+      000B5C 12 00 9F         [24] 2129 	lcall	_spi_raw_write
+                                   2130 ;	main.c:469: spi_raw_write(0x00);
+      000B5F 75 82 00         [24] 2131 	mov	dpl,#0x00
+      000B62 12 00 9F         [24] 2132 	lcall	_spi_raw_write
+                                   2133 ;	main.c:470: spi_raw_write(0xc0);
+      000B65 75 82 C0         [24] 2134 	mov	dpl,#0xC0
+      000B68 12 00 9F         [24] 2135 	lcall	_spi_raw_write
+                                   2136 ;	main.c:471: ret = spi_raw_read();
+      000B6B 12 00 83         [24] 2137 	lcall	_spi_raw_read
+                                   2138 ;	main.c:472: CSX = 1;
+      000B6E D2 C2            [12] 2139 	setb	_P42
+                                   2140 ;	main.c:473: while(1){
+      000B70                       2141 00102$:
+                                   2142 ;	main.c:474: P55 = 0;
+      000B70 C2 CD            [12] 2143 	clr	_P55
+                                   2144 ;	main.c:475: delayms(1000);
+      000B72 90 03 E8         [24] 2145 	mov	dptr,#0x03E8
+      000B75 12 00 62         [24] 2146 	lcall	_delayms
+                                   2147 ;	main.c:476: P55 = 1;
+      000B78 D2 CD            [12] 2148 	setb	_P55
+                                   2149 ;	main.c:477: delayms(1000);
+      000B7A 90 03 E8         [24] 2150 	mov	dptr,#0x03E8
+      000B7D 12 00 62         [24] 2151 	lcall	_delayms
+      000B80 80 EE            [24] 2152 	sjmp	00102$
+                                   2153 	.area CSEG    (CODE)
+                                   2154 	.area CONST   (CODE)
+                                   2155 	.area XINIT   (CODE)
+                                   2156 	.area CABS    (ABS,CODE)
