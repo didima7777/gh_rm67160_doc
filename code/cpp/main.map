@@ -52,8 +52,8 @@ C:   00000008  l_REG_BANK_0
 C:   00000008  s_REG_BANK_1                    
 C:   00000009  s_GSINIT1                       
 C:   00000009  s_GSINIT2                       
-C:   00000009  s_SSEG                          
 C:   0000000A  l_GSINIT2                       
+C:   0000000A  s_SSEG                          
 C:   00000010  s_REG_BANK_2                    
 C:   00000013  s_GSINIT3                       
 C:   00000018  s_BIT_BANK                      
@@ -78,11 +78,11 @@ C:   0000005F  s_GSINIT
 C:   0000005F  s_GSINIT5                       
 C:   00000062  s_CSEG                          
 C:   00000080  l_DSEG                          
-C:   000000F7  l_SSEG                          
+C:   000000F6  l_SSEG                          
 C:   00000100  l_IRAM                          
-C:   00000B24  l_CSEG                          
-C:   00000B86  s_CONST                         
-C:   00000B86  s_XINIT                         
+C:   00000B79  l_CSEG                          
+C:   00000BDB  s_CONST                         
+C:   00000BDB  s_XINIT                         
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
 Hexadecimal  [32-Bits]
@@ -411,18 +411,19 @@ DSEG                                00000000    00000080 =         128. bytes (R
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     00000008  _spi_PARM_2                        main
+     00000008  _spi_write_9bit_PARM_2             main
+     00000009  _spi_write_PARM_2                  main
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 11.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-SSEG                                00000009    000000F7 =         247. bytes (REL,OVR)
+SSEG                                0000000A    000000F6 =         246. bytes (REL,OVR)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     00000009  __start__stack                     main
+     0000000A  __start__stack                     main
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 12.
 Hexadecimal  [32-Bits]
@@ -492,25 +493,25 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                00000062    00000B24 =        2852. bytes (REL,CON,CODE)
+CSEG                                00000062    00000B79 =        2937. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
 C:   00000062  _delayms                           main
 C:   00000083  _spi_raw_read                      main
-C:   0000009F  _spi_raw_write                     main
-C:   000000BE  _spi_cmd                           main
-C:   000000DB  _spi_data                          main
-C:   000000EC  _spi                               main
-C:   000000FE  _reset                             main
-C:   0000010E  _init_2                            main
-C:   0000052B  _init_1                            main
-C:   00000A8C  _color                             main
-C:   00000AE2  _gpio_init                         main
-C:   00000B07  _uart_init                         main
-C:   00000B1E  _uart_send                         main
-C:   00000B27  _main                              main
-C:   00000B82  __sdcc_external_startup            _startup
+C:   000000CB  _spi_raw_write                     main
+C:   000000EA  _spi_write_9bit                    main
+C:   000000FB  _spi_read                          main
+C:   00000107  _spi_write                         main
+C:   00000119  _reset                             main
+C:   0000012C  _init_2                            main
+C:   00000549  _init_1                            main
+C:   00000AB0  _color                             main
+C:   00000B32  _gpio_init                         main
+C:   00000B57  _uart_init                         main
+C:   00000B6E  _uart_send                         main
+C:   00000B77  _main                              main
+C:   00000BD7  __sdcc_external_startup            _startup
 ASxxxx Linker V03.00 + NoICE + sdld,  page 19.
 
 Files Linked                              [ module(s) ]

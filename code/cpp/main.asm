@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.4.0 #8981 (Jul  5 2014) (Linux)
-; This file was generated Sat Apr 22 23:46:25 2017
+; This file was generated Sun Apr 23 10:48:36 2017
 ;--------------------------------------------------------
 	.module main
 	.optsdcc -mmcs51 --model-small
@@ -17,9 +17,9 @@
 	.globl _init_1
 	.globl _init_2
 	.globl _reset
-	.globl _spi
-	.globl _spi_data
-	.globl _spi_cmd
+	.globl _spi_write
+	.globl _spi_read
+	.globl _spi_write_9bit
 	.globl _spi_raw_write
 	.globl _spi_raw_read
 	.globl _delayms
@@ -276,7 +276,8 @@
 	.globl _PSW
 	.globl _B
 	.globl _ACC
-	.globl _spi_PARM_2
+	.globl _spi_write_PARM_2
+	.globl _spi_write_9bit_PARM_2
 ;--------------------------------------------------------
 ; special function registers
 ;--------------------------------------------------------
@@ -549,7 +550,9 @@ _CCF0	=	0x00d8
 ; internal ram data
 ;--------------------------------------------------------
 	.area DSEG    (DATA)
-_spi_PARM_2:
+_spi_write_9bit_PARM_2:
+	.ds 1
+_spi_write_PARM_2:
 	.ds 1
 ;--------------------------------------------------------
 ; overlayable items in internal ram 
@@ -686,40 +689,74 @@ _delayms:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'spi_raw_read'
 ;------------------------------------------------------------
-;cnt                       Allocated to registers r6 
-;ret                       Allocated to registers r7 
+;cnt                       Allocated to registers r4 r5 
+;ret                       Allocated to registers r6 r7 
 ;------------------------------------------------------------
-;	main.c:23: unsigned char spi_raw_read(void)
+;	main.c:23: unsigned int spi_raw_read(void)
 ;	-----------------------------------------
 ;	 function spi_raw_read
 ;	-----------------------------------------
 _spi_raw_read:
-;	main.c:25: unsigned char cnt=0, ret=0;
+;	main.c:25: unsigned int cnt=0, ret=0;
+	mov	r6,#0x00
 	mov	r7,#0x00
 ;	main.c:27: for(cnt=0; cnt<8; cnt++){
-	mov	r6,#0x00
-00102$:
+	mov	r4,#0x00
+	mov	r5,#0x00
+00103$:
 ;	main.c:28: SCL = 0;			
 	clr	_P40
-;	main.c:29: ret|= SDO;
-	mov	ar5,r7
+;	main.c:29: SCL = 1;
+	setb	_P40
+;	main.c:27: for(cnt=0; cnt<8; cnt++){
+	inc	r4
+	cjne	r4,#0x00,00123$
+	inc	r5
+00123$:
+	clr	c
+	mov	a,r4
+	subb	a,#0x08
+	mov	a,r5
+	subb	a,#0x00
+	jc	00103$
+;	main.c:32: for(cnt=0; cnt<16; cnt++){
+	mov	r4,#0x00
+	mov	r5,#0x00
+00105$:
+;	main.c:33: SCL = 0;			
+	clr	_P40
+;	main.c:34: SCL = 1;
+	setb	_P40
+;	main.c:35: ret<<= 1;
+	mov	a,r7
+	xch	a,r6
+	add	a,acc
+	xch	a,r6
+	rlc	a
+	mov	r7,a
+;	main.c:36: ret|= SDO;
 	mov	c,_P37
 	clr	a
 	rlc	a
-	mov	r4,a
-	orl	a,r5
-;	main.c:30: ret<<= 1;
-	add	a,acc
-	mov	r7,a
-;	main.c:31: SCL = 1;
-	setb	_P40
-;	main.c:27: for(cnt=0; cnt<8; cnt++){
-	inc	r6
-	cjne	r6,#0x08,00113$
-00113$:
-	jc	00102$
-;	main.c:33: return ret;
-	mov	dpl,r7
+	mov	r2,a
+	mov	r3,#0x00
+	orl	ar6,a
+	mov	a,r3
+	orl	ar7,a
+;	main.c:32: for(cnt=0; cnt<16; cnt++){
+	inc	r4
+	cjne	r4,#0x00,00125$
+	inc	r5
+00125$:
+	clr	c
+	mov	a,r4
+	subb	a,#0x10
+	mov	a,r5
+	subb	a,#0x00
+	jc	00105$
+;	main.c:38: return ret;
+	mov	dpl,r6
+	mov	dph,r7
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'spi_raw_write'
@@ -727,1267 +764,1283 @@ _spi_raw_read:
 ;val                       Allocated to registers r7 
 ;cnt                       Allocated to registers r6 
 ;------------------------------------------------------------
-;	main.c:36: void spi_raw_write(unsigned char val)
+;	main.c:41: void spi_raw_write(unsigned char val)
 ;	-----------------------------------------
 ;	 function spi_raw_write
 ;	-----------------------------------------
 _spi_raw_write:
 	mov	r7,dpl
-;	main.c:40: for(cnt=0; cnt<8; cnt++){
+;	main.c:45: for(cnt=0; cnt<8; cnt++){
 	mov	r6,#0x00
 00105$:
-;	main.c:41: SCL = 0;			
+;	main.c:46: SCL = 0;			
 	clr	_P40
-;	main.c:42: if((val & 0x80) == 0x80){
+;	main.c:47: if((val & 0x80) == 0x80){
 	mov	a,#0x80
 	anl	a,r7
 	mov	r5,a
 	cjne	r5,#0x80,00102$
-;	main.c:43: SDI = 1;
+;	main.c:48: SDI = 1;
 	setb	_P41
 	sjmp	00103$
 00102$:
-;	main.c:46: SDI = 0;
+;	main.c:51: SDI = 0;
 	clr	_P41
 00103$:
-;	main.c:48: val<<= 1;
+;	main.c:53: val<<= 1;
 	mov	a,r7
 	add	a,r7
 	mov	r7,a
-;	main.c:49: SCL = 1;
+;	main.c:54: SCL = 1;
 	setb	_P40
-;	main.c:40: for(cnt=0; cnt<8; cnt++){
+;	main.c:45: for(cnt=0; cnt<8; cnt++){
 	inc	r6
 	cjne	r6,#0x08,00118$
 00118$:
 	jc	00105$
 	ret
 ;------------------------------------------------------------
-;Allocation info for local variables in function 'spi_cmd'
+;Allocation info for local variables in function 'spi_write_9bit'
 ;------------------------------------------------------------
-;cmd                       Allocated to registers r7 
+;val                       Allocated with name '_spi_write_9bit_PARM_2'
+;flag                      Allocated to registers r7 
 ;------------------------------------------------------------
-;	main.c:53: void spi_cmd(unsigned char cmd)
+;	main.c:58: void spi_write_9bit(unsigned char flag, unsigned char val)
 ;	-----------------------------------------
-;	 function spi_cmd
+;	 function spi_write_9bit
 ;	-----------------------------------------
-_spi_cmd:
+_spi_write_9bit:
 	mov	r7,dpl
-;	main.c:55: spi_raw_write(0x20);
-	mov	dpl,#0x20
-	push	ar7
-	lcall	_spi_raw_write
-	pop	ar7
-;	main.c:56: spi_raw_write(cmd);
-	mov	dpl,r7
-	lcall	_spi_raw_write
-;	main.c:57: spi_raw_write(0x00);
-	mov	dpl,#0x00
-	lcall	_spi_raw_write
-;	main.c:58: spi_raw_write(0x00);
-	mov	dpl,#0x00
+;	main.c:60: SCL = 0;
+	clr	_P40
+;	main.c:61: SDI = flag;
+	mov	a,r7
+	add	a,#0xff
+	mov	_P41,c
+;	main.c:62: SCL = 1;
+	setb	_P40
+;	main.c:63: spi_raw_write(val);
+	mov	dpl,_spi_write_9bit_PARM_2
 	ljmp	_spi_raw_write
 ;------------------------------------------------------------
-;Allocation info for local variables in function 'spi_data'
+;Allocation info for local variables in function 'spi_read'
 ;------------------------------------------------------------
-;dat                       Allocated to registers r7 
+;cmd                       Allocated to registers 
 ;------------------------------------------------------------
-;	main.c:61: void spi_data(unsigned char dat)
+;	main.c:66: unsigned char spi_read(unsigned char cmd)
 ;	-----------------------------------------
-;	 function spi_data
+;	 function spi_read
 ;	-----------------------------------------
-_spi_data:
-	mov	r7,dpl
-;	main.c:63: spi_raw_write(0x20);
-	mov	dpl,#0x20
-	push	ar7
-	lcall	_spi_raw_write
-	pop	ar7
-;	main.c:64: spi_raw_write(dat);
-	mov	dpl,r7
-	ljmp	_spi_raw_write
+_spi_read:
+	mov	_spi_write_9bit_PARM_2,dpl
+;	main.c:68: spi_write_9bit(0, cmd);
+	mov	dpl,#0x00
+	lcall	_spi_write_9bit
+;	main.c:69: return spi_raw_read();
+	ljmp	_spi_raw_read
 ;------------------------------------------------------------
-;Allocation info for local variables in function 'spi'
+;Allocation info for local variables in function 'spi_write'
 ;------------------------------------------------------------
-;dat                       Allocated with name '_spi_PARM_2'
-;cmd                       Allocated to registers r7 
+;dat                       Allocated with name '_spi_write_PARM_2'
+;cmd                       Allocated to registers 
 ;------------------------------------------------------------
-;	main.c:67: void spi(unsigned char cmd, unsigned char dat)
+;	main.c:72: void spi_write(unsigned char cmd, unsigned char dat)
 ;	-----------------------------------------
-;	 function spi
+;	 function spi_write
 ;	-----------------------------------------
-_spi:
-	mov	r7,dpl
-;	main.c:69: CSX = 0;
-	clr	_P42
-;	main.c:70: spi_cmd(cmd);
-	mov	dpl,r7
-	lcall	_spi_cmd
-;	main.c:71: spi_data(dat);
-	mov	dpl,_spi_PARM_2
-	lcall	_spi_data
-;	main.c:72: CSX = 1;
-	setb	_P42
-	ret
+_spi_write:
+	mov	_spi_write_9bit_PARM_2,dpl
+;	main.c:74: spi_write_9bit(0, cmd);
+	mov	dpl,#0x00
+	lcall	_spi_write_9bit
+;	main.c:75: spi_write_9bit(1, dat);
+	mov	_spi_write_9bit_PARM_2,_spi_write_PARM_2
+	mov	dpl,#0x01
+	ljmp	_spi_write_9bit
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'reset'
 ;------------------------------------------------------------
-;	main.c:75: void reset(void)
+;	main.c:78: void reset(void)
 ;	-----------------------------------------
 ;	 function reset
 ;	-----------------------------------------
 _reset:
-;	main.c:77: RST = 0;
+;	main.c:80: RST = 0;
 	clr	_P54
-;	main.c:78: delayms(150);
+;	main.c:81: delayms(150);
 	mov	dptr,#0x0096
 	lcall	_delayms
-;	main.c:79: RST = 1;
+;	main.c:82: RST = 1;
 	setb	_P54
-;	main.c:80: delayms(150);
+;	main.c:83: delayms(150);
 	mov	dptr,#0x0096
-	ljmp	_delayms
+	lcall	_delayms
+;	main.c:84: CSX = 0;
+	clr	_P42
+	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'init_2'
 ;------------------------------------------------------------
-;	main.c:83: void init_2(void)
+;	main.c:87: void init_2(void)
 ;	-----------------------------------------
 ;	 function init_2
 ;	-----------------------------------------
 _init_2:
-;	main.c:85: spi(0xfe, 0x04);
-	mov	_spi_PARM_2,#0x04
+;	main.c:89: spi_write(0xfe, 0x04);
+	mov	_spi_write_PARM_2,#0x04
 	mov	dpl,#0xFE
-	lcall	_spi
-;	main.c:86: spi(0x00, 0xdc);
-	mov	_spi_PARM_2,#0xDC
+	lcall	_spi_write
+;	main.c:90: spi_write(0x00, 0xdc);
+	mov	_spi_write_PARM_2,#0xDC
 	mov	dpl,#0x00
-	lcall	_spi
-;	main.c:87: spi(0x01, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:91: spi_write(0x01, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x01
-	lcall	_spi
-;	main.c:88: spi(0x02, 0x02);
-	mov	_spi_PARM_2,#0x02
+	lcall	_spi_write
+;	main.c:92: spi_write(0x02, 0x02);
+	mov	_spi_write_PARM_2,#0x02
 	mov	dpl,#0x02
-	lcall	_spi
-;	main.c:89: spi(0x03, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:93: spi_write(0x03, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x03
-	lcall	_spi
-;	main.c:90: spi(0x04, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:94: spi_write(0x04, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x04
-	lcall	_spi
-;	main.c:91: spi(0x05, 0x03);
-	mov	_spi_PARM_2,#0x03
+	lcall	_spi_write
+;	main.c:95: spi_write(0x05, 0x03);
+	mov	_spi_write_PARM_2,#0x03
 	mov	dpl,#0x05
-	lcall	_spi
-;	main.c:92: spi(0x06, 0x16);
-	mov	_spi_PARM_2,#0x16
+	lcall	_spi_write
+;	main.c:96: spi_write(0x06, 0x16);
+	mov	_spi_write_PARM_2,#0x16
 	mov	dpl,#0x06
-	lcall	_spi
-;	main.c:93: spi(0x07, 0x13);
-	mov	_spi_PARM_2,#0x13
+	lcall	_spi_write
+;	main.c:97: spi_write(0x07, 0x13);
+	mov	_spi_write_PARM_2,#0x13
 	mov	dpl,#0x07
-	lcall	_spi
-;	main.c:94: spi(0x08, 0x08);
-	mov	_spi_PARM_2,#0x08
+	lcall	_spi_write
+;	main.c:98: spi_write(0x08, 0x08);
+	mov	_spi_write_PARM_2,#0x08
 	mov	dpl,#0x08
-	lcall	_spi
-;	main.c:95: spi(0x09, 0xdc);
-	mov	_spi_PARM_2,#0xDC
+	lcall	_spi_write
+;	main.c:99: spi_write(0x09, 0xdc);
+	mov	_spi_write_PARM_2,#0xDC
 	mov	dpl,#0x09
-	lcall	_spi
-;	main.c:96: spi(0x0a, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:100: spi_write(0x0a, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x0A
-	lcall	_spi
-;	main.c:97: spi(0x0b, 0x02);
-	mov	_spi_PARM_2,#0x02
+	lcall	_spi_write
+;	main.c:101: spi_write(0x0b, 0x02);
+	mov	_spi_write_PARM_2,#0x02
 	mov	dpl,#0x0B
-	lcall	_spi
-;	main.c:98: spi(0x0c, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:102: spi_write(0x0c, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x0C
-	lcall	_spi
-;	main.c:99: spi(0x0d, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:103: spi_write(0x0d, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x0D
-	lcall	_spi
-;	main.c:100: spi(0x0e, 0x02);
-	mov	_spi_PARM_2,#0x02
+	lcall	_spi_write
+;	main.c:104: spi_write(0x0e, 0x02);
+	mov	_spi_write_PARM_2,#0x02
 	mov	dpl,#0x0E
-	lcall	_spi
-;	main.c:101: spi(0x0f, 0x16);
-	mov	_spi_PARM_2,#0x16
+	lcall	_spi_write
+;	main.c:105: spi_write(0x0f, 0x16);
+	mov	_spi_write_PARM_2,#0x16
 	mov	dpl,#0x0F
-	lcall	_spi
-;	main.c:102: spi(0x10, 0x18);
-	mov	_spi_PARM_2,#0x18
+	lcall	_spi_write
+;	main.c:106: spi_write(0x10, 0x18);
+	mov	_spi_write_PARM_2,#0x18
 	mov	dpl,#0x10
-	lcall	_spi
-;	main.c:103: spi(0x11, 0x08);
-	mov	_spi_PARM_2,#0x08
+	lcall	_spi_write
+;	main.c:107: spi_write(0x11, 0x08);
+	mov	_spi_write_PARM_2,#0x08
 	mov	dpl,#0x11
-	lcall	_spi
-;	main.c:104: spi(0x12, 0x92);
-	mov	_spi_PARM_2,#0x92
+	lcall	_spi_write
+;	main.c:108: spi_write(0x12, 0x92);
+	mov	_spi_write_PARM_2,#0x92
 	mov	dpl,#0x12
-	lcall	_spi
-;	main.c:105: spi(0x13, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:109: spi_write(0x13, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x13
-	lcall	_spi
-;	main.c:106: spi(0x14, 0x02);
-	mov	_spi_PARM_2,#0x02
+	lcall	_spi_write
+;	main.c:110: spi_write(0x14, 0x02);
+	mov	_spi_write_PARM_2,#0x02
 	mov	dpl,#0x14
-	lcall	_spi
-;	main.c:107: spi(0x15, 0x05);
-	mov	_spi_PARM_2,#0x05
+	lcall	_spi_write
+;	main.c:111: spi_write(0x15, 0x05);
+	mov	_spi_write_PARM_2,#0x05
 	mov	dpl,#0x15
-	lcall	_spi
-;	main.c:108: spi(0x16, 0x40);
-	mov	_spi_PARM_2,#0x40
+	lcall	_spi_write
+;	main.c:112: spi_write(0x16, 0x40);
+	mov	_spi_write_PARM_2,#0x40
 	mov	dpl,#0x16
-	lcall	_spi
-;	main.c:109: spi(0x17, 0x03);
-	mov	_spi_PARM_2,#0x03
+	lcall	_spi_write
+;	main.c:113: spi_write(0x17, 0x03);
+	mov	_spi_write_PARM_2,#0x03
 	mov	dpl,#0x17
-	lcall	_spi
-;	main.c:110: spi(0x18, 0x16);
-	mov	_spi_PARM_2,#0x16
+	lcall	_spi_write
+;	main.c:114: spi_write(0x18, 0x16);
+	mov	_spi_write_PARM_2,#0x16
 	mov	dpl,#0x18
-	lcall	_spi
-;	main.c:111: spi(0x19, 0xd7);
-	mov	_spi_PARM_2,#0xD7
+	lcall	_spi_write
+;	main.c:115: spi_write(0x19, 0xd7);
+	mov	_spi_write_PARM_2,#0xD7
 	mov	dpl,#0x19
-	lcall	_spi
-;	main.c:112: spi(0x1a, 0x01);
-	mov	_spi_PARM_2,#0x01
+	lcall	_spi_write
+;	main.c:116: spi_write(0x1a, 0x01);
+	mov	_spi_write_PARM_2,#0x01
 	mov	dpl,#0x1A
-	lcall	_spi
-;	main.c:113: spi(0x1b, 0xdc);
-	mov	_spi_PARM_2,#0xDC
+	lcall	_spi_write
+;	main.c:117: spi_write(0x1b, 0xdc);
+	mov	_spi_write_PARM_2,#0xDC
 	mov	dpl,#0x1B
-	lcall	_spi
-;	main.c:114: spi(0x1c, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:118: spi_write(0x1c, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x1C
-	lcall	_spi
-;	main.c:115: spi(0x1d, 0x04);
-	mov	_spi_PARM_2,#0x04
+	lcall	_spi_write
+;	main.c:119: spi_write(0x1d, 0x04);
+	mov	_spi_write_PARM_2,#0x04
 	mov	dpl,#0x1D
-	lcall	_spi
-;	main.c:116: spi(0x1e, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:120: spi_write(0x1e, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x1E
-	lcall	_spi
-;	main.c:117: spi(0x1f, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:121: spi_write(0x1f, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x1F
-	lcall	_spi
-;	main.c:118: spi(0x20, 0x03);
-	mov	_spi_PARM_2,#0x03
+	lcall	_spi_write
+;	main.c:122: spi_write(0x20, 0x03);
+	mov	_spi_write_PARM_2,#0x03
 	mov	dpl,#0x20
-	lcall	_spi
-;	main.c:119: spi(0x21, 0x16);
-	mov	_spi_PARM_2,#0x16
+	lcall	_spi_write
+;	main.c:123: spi_write(0x21, 0x16);
+	mov	_spi_write_PARM_2,#0x16
 	mov	dpl,#0x21
-	lcall	_spi
-;	main.c:120: spi(0x22, 0x18);
-	mov	_spi_PARM_2,#0x18
+	lcall	_spi_write
+;	main.c:124: spi_write(0x22, 0x18);
+	mov	_spi_write_PARM_2,#0x18
 	mov	dpl,#0x22
-	lcall	_spi
-;	main.c:121: spi(0x23, 0x08);
-	mov	_spi_PARM_2,#0x08
+	lcall	_spi_write
+;	main.c:125: spi_write(0x23, 0x08);
+	mov	_spi_write_PARM_2,#0x08
 	mov	dpl,#0x23
-	lcall	_spi
-;	main.c:122: spi(0x24, 0xdc);
-	mov	_spi_PARM_2,#0xDC
+	lcall	_spi_write
+;	main.c:126: spi_write(0x24, 0xdc);
+	mov	_spi_write_PARM_2,#0xDC
 	mov	dpl,#0x24
-	lcall	_spi
-;	main.c:123: spi(0x25, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:127: spi_write(0x25, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x25
-	lcall	_spi
-;	main.c:124: spi(0x26, 0x04);
-	mov	_spi_PARM_2,#0x04
+	lcall	_spi_write
+;	main.c:128: spi_write(0x26, 0x04);
+	mov	_spi_write_PARM_2,#0x04
 	mov	dpl,#0x26
-	lcall	_spi
-;	main.c:125: spi(0x27, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:129: spi_write(0x27, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x27
-	lcall	_spi
-;	main.c:126: spi(0x28, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:130: spi_write(0x28, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x28
-	lcall	_spi
-;	main.c:127: spi(0x29, 0x01);
-	mov	_spi_PARM_2,#0x01
+	lcall	_spi_write
+;	main.c:131: spi_write(0x29, 0x01);
+	mov	_spi_write_PARM_2,#0x01
 	mov	dpl,#0x29
-	lcall	_spi
-;	main.c:128: spi(0x2a, 0x16);
-	mov	_spi_PARM_2,#0x16
+	lcall	_spi_write
+;	main.c:132: spi_write(0x2a, 0x16);
+	mov	_spi_write_PARM_2,#0x16
 	mov	dpl,#0x2A
-	lcall	_spi
-;	main.c:129: spi(0x2b, 0x18);
-	mov	_spi_PARM_2,#0x18
+	lcall	_spi_write
+;	main.c:133: spi_write(0x2b, 0x18);
+	mov	_spi_write_PARM_2,#0x18
 	mov	dpl,#0x2B
-	lcall	_spi
-;	main.c:130: spi(0x2d, 0x08);
-	mov	_spi_PARM_2,#0x08
+	lcall	_spi_write
+;	main.c:134: spi_write(0x2d, 0x08);
+	mov	_spi_write_PARM_2,#0x08
 	mov	dpl,#0x2D
-	lcall	_spi
-;	main.c:131: spi(0x4c, 0x99);
-	mov	_spi_PARM_2,#0x99
+	lcall	_spi_write
+;	main.c:135: spi_write(0x4c, 0x99);
+	mov	_spi_write_PARM_2,#0x99
 	mov	dpl,#0x4C
-	lcall	_spi
-;	main.c:132: spi(0x4d, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:136: spi_write(0x4d, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x4D
-	lcall	_spi
-;	main.c:133: spi(0x4e, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:137: spi_write(0x4e, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x4E
-	lcall	_spi
-;	main.c:134: spi(0x4f, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:138: spi_write(0x4f, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x4F
-	lcall	_spi
-;	main.c:135: spi(0x50, 0x01);
-	mov	_spi_PARM_2,#0x01
+	lcall	_spi_write
+;	main.c:139: spi_write(0x50, 0x01);
+	mov	_spi_write_PARM_2,#0x01
 	mov	dpl,#0x50
-	lcall	_spi
-;	main.c:136: spi(0x51, 0x0a);
-	mov	_spi_PARM_2,#0x0A
+	lcall	_spi_write
+;	main.c:140: spi_write(0x51, 0x0a);
+	mov	_spi_write_PARM_2,#0x0A
 	mov	dpl,#0x51
-	lcall	_spi
-;	main.c:137: spi(0x52, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:141: spi_write(0x52, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x52
-	lcall	_spi
-;	main.c:138: spi(0x5a, 0xe4);
-	mov	_spi_PARM_2,#0xE4
+	lcall	_spi_write
+;	main.c:142: spi_write(0x5a, 0xe4);
+	mov	_spi_write_PARM_2,#0xE4
 	mov	dpl,#0x5A
-	lcall	_spi
-;	main.c:139: spi(0x5e, 0x77);
-	mov	_spi_PARM_2,#0x77
+	lcall	_spi_write
+;	main.c:143: spi_write(0x5e, 0x77);
+	mov	_spi_write_PARM_2,#0x77
 	mov	dpl,#0x5E
-	lcall	_spi
-;	main.c:140: spi(0x5f, 0x77);
-	mov	_spi_PARM_2,#0x77
+	lcall	_spi_write
+;	main.c:144: spi_write(0x5f, 0x77);
+	mov	_spi_write_PARM_2,#0x77
 	mov	dpl,#0x5F
-	lcall	_spi
-;	main.c:141: spi(0x60, 0x34);
-	mov	_spi_PARM_2,#0x34
+	lcall	_spi_write
+;	main.c:145: spi_write(0x60, 0x34);
+	mov	_spi_write_PARM_2,#0x34
 	mov	dpl,#0x60
-	lcall	_spi
-;	main.c:142: spi(0x61, 0x02);
-	mov	_spi_PARM_2,#0x02
+	lcall	_spi_write
+;	main.c:146: spi_write(0x61, 0x02);
+	mov	_spi_write_PARM_2,#0x02
 	mov	dpl,#0x61
-	lcall	_spi
-;	main.c:143: spi(0x62, 0x81);
-	mov	_spi_PARM_2,#0x81
+	lcall	_spi_write
+;	main.c:147: spi_write(0x62, 0x81);
+	mov	_spi_write_PARM_2,#0x81
 	mov	dpl,#0x62
-	lcall	_spi
-;	main.c:144: spi(0xfe, 0x07);
-	mov	_spi_PARM_2,#0x07
+	lcall	_spi_write
+;	main.c:148: spi_write(0xfe, 0x07);
+	mov	_spi_write_PARM_2,#0x07
 	mov	dpl,#0xFE
-	lcall	_spi
-;	main.c:145: spi(0x07, 0x4f);
-	mov	_spi_PARM_2,#0x4F
+	lcall	_spi_write
+;	main.c:149: spi_write(0x07, 0x4f);
+	mov	_spi_write_PARM_2,#0x4F
 	mov	dpl,#0x07
-	lcall	_spi
-;	main.c:146: spi(0xfe, 01);
-	mov	_spi_PARM_2,#0x01
+	lcall	_spi_write
+;	main.c:150: spi_write(0xfe, 01);
+	mov	_spi_write_PARM_2,#0x01
 	mov	dpl,#0xFE
-	lcall	_spi
-;	main.c:147: spi(0x05, 0x15);
-	mov	_spi_PARM_2,#0x15
+	lcall	_spi_write
+;	main.c:151: spi_write(0x05, 0x15);
+	mov	_spi_write_PARM_2,#0x15
 	mov	dpl,#0x05
-	lcall	_spi
-;	main.c:148: spi(0x0e, 0x84);
-	mov	_spi_PARM_2,#0x84
+	lcall	_spi_write
+;	main.c:152: spi_write(0x0e, 0x84);
+	mov	_spi_write_PARM_2,#0x84
 	mov	dpl,#0x0E
-	lcall	_spi
-;	main.c:149: spi(0x10, 0x51);
-	mov	_spi_PARM_2,#0x51
+	lcall	_spi_write
+;	main.c:153: spi_write(0x10, 0x51);
+	mov	_spi_write_PARM_2,#0x51
 	mov	dpl,#0x10
-	lcall	_spi
-;	main.c:150: spi(0x15, 0x82);
-	mov	_spi_PARM_2,#0x82
+	lcall	_spi_write
+;	main.c:154: spi_write(0x15, 0x82);
+	mov	_spi_write_PARM_2,#0x82
 	mov	dpl,#0x15
-	lcall	_spi
-;	main.c:151: spi(0x18, 0x47);
-	mov	_spi_PARM_2,#0x47
+	lcall	_spi_write
+;	main.c:155: spi_write(0x18, 0x47);
+	mov	_spi_write_PARM_2,#0x47
 	mov	dpl,#0x18
-	lcall	_spi
-;	main.c:152: spi(0x19, 0x36);
-	mov	_spi_PARM_2,#0x36
+	lcall	_spi_write
+;	main.c:156: spi_write(0x19, 0x36);
+	mov	_spi_write_PARM_2,#0x36
 	mov	dpl,#0x19
-	lcall	_spi
-;	main.c:153: spi(0x1a, 0x10);
-	mov	_spi_PARM_2,#0x10
+	lcall	_spi_write
+;	main.c:157: spi_write(0x1a, 0x10);
+	mov	_spi_write_PARM_2,#0x10
 	mov	dpl,#0x1A
-	lcall	_spi
-;	main.c:154: spi(0x1c, 0x77);
-	mov	_spi_PARM_2,#0x77
+	lcall	_spi_write
+;	main.c:158: spi_write(0x1c, 0x77);
+	mov	_spi_write_PARM_2,#0x77
 	mov	dpl,#0x1C
-	lcall	_spi
-;	main.c:155: spi(0x21, 0x28);
-	mov	_spi_PARM_2,#0x28
+	lcall	_spi_write
+;	main.c:159: spi_write(0x21, 0x28);
+	mov	_spi_write_PARM_2,#0x28
 	mov	dpl,#0x21
-	lcall	_spi
-;	main.c:156: spi(0x22, 0x90);
-	mov	_spi_PARM_2,#0x90
+	lcall	_spi_write
+;	main.c:160: spi_write(0x22, 0x90);
+	mov	_spi_write_PARM_2,#0x90
 	mov	dpl,#0x22
-	lcall	_spi
-;	main.c:157: spi(0x23, 0x20);
-	mov	_spi_PARM_2,#0x20
+	lcall	_spi_write
+;	main.c:161: spi_write(0x23, 0x20);
+	mov	_spi_write_PARM_2,#0x20
 	mov	dpl,#0x23
-	lcall	_spi
-;	main.c:158: spi(0x25, 0x03);
-	mov	_spi_PARM_2,#0x03
+	lcall	_spi_write
+;	main.c:162: spi_write(0x25, 0x03);
+	mov	_spi_write_PARM_2,#0x03
 	mov	dpl,#0x25
-	lcall	_spi
-;	main.c:159: spi(0x26, 0x4a);
-	mov	_spi_PARM_2,#0x4A
+	lcall	_spi_write
+;	main.c:163: spi_write(0x26, 0x4a);
+	mov	_spi_write_PARM_2,#0x4A
 	mov	dpl,#0x26
-	lcall	_spi
-;	main.c:160: spi(0x2a, 0x03);
-	mov	_spi_PARM_2,#0x03
+	lcall	_spi_write
+;	main.c:164: spi_write(0x2a, 0x03);
+	mov	_spi_write_PARM_2,#0x03
 	mov	dpl,#0x2A
-	lcall	_spi
-;	main.c:161: spi(0x37, 0x0c);
-	mov	_spi_PARM_2,#0x0C
+	lcall	_spi_write
+;	main.c:165: spi_write(0x37, 0x0c);
+	mov	_spi_write_PARM_2,#0x0C
 	mov	dpl,#0x37
-	lcall	_spi
-;	main.c:162: spi(0x3a, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:166: spi_write(0x3a, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x3A
-	lcall	_spi
-;	main.c:163: spi(0x3b, 0x40);
-	mov	_spi_PARM_2,#0x40
+	lcall	_spi_write
+;	main.c:167: spi_write(0x3b, 0x40);
+	mov	_spi_write_PARM_2,#0x40
 	mov	dpl,#0x3B
-	lcall	_spi
-;	main.c:164: spi(0x3d, 0x01);
-	mov	_spi_PARM_2,#0x01
+	lcall	_spi_write
+;	main.c:168: spi_write(0x3d, 0x01);
+	mov	_spi_write_PARM_2,#0x01
 	mov	dpl,#0x3D
-	lcall	_spi
-;	main.c:165: spi(0x3f, 0x38);
-	mov	_spi_PARM_2,#0x38
+	lcall	_spi_write
+;	main.c:169: spi_write(0x3f, 0x38);
+	mov	_spi_write_PARM_2,#0x38
 	mov	dpl,#0x3F
-	lcall	_spi
-;	main.c:166: spi(0x40, 0x01);
-	mov	_spi_PARM_2,#0x01
+	lcall	_spi_write
+;	main.c:170: spi_write(0x40, 0x01);
+	mov	_spi_write_PARM_2,#0x01
 	mov	dpl,#0x40
-	lcall	_spi
-;	main.c:167: spi(0x41, 0x01);
-	mov	_spi_PARM_2,#0x01
+	lcall	_spi_write
+;	main.c:171: spi_write(0x41, 0x01);
+	mov	_spi_write_PARM_2,#0x01
 	mov	dpl,#0x41
-	lcall	_spi
-;	main.c:168: spi(0x42, 0x33);
-	mov	_spi_PARM_2,#0x33
+	lcall	_spi_write
+;	main.c:172: spi_write(0x42, 0x33);
+	mov	_spi_write_PARM_2,#0x33
 	mov	dpl,#0x42
-	lcall	_spi
-;	main.c:169: spi(0x43, 0x66);
-	mov	_spi_PARM_2,#0x66
+	lcall	_spi_write
+;	main.c:173: spi_write(0x43, 0x66);
+	mov	_spi_write_PARM_2,#0x66
 	mov	dpl,#0x43
-	lcall	_spi
-;	main.c:170: spi(0x44, 0x11);
-	mov	_spi_PARM_2,#0x11
+	lcall	_spi_write
+;	main.c:174: spi_write(0x44, 0x11);
+	mov	_spi_write_PARM_2,#0x11
 	mov	dpl,#0x44
-	lcall	_spi
-;	main.c:171: spi(0x45, 0x44);
-	mov	_spi_PARM_2,#0x44
+	lcall	_spi_write
+;	main.c:175: spi_write(0x45, 0x44);
+	mov	_spi_write_PARM_2,#0x44
 	mov	dpl,#0x45
-	lcall	_spi
-;	main.c:172: spi(0x46, 0x22);
-	mov	_spi_PARM_2,#0x22
+	lcall	_spi_write
+;	main.c:176: spi_write(0x46, 0x22);
+	mov	_spi_write_PARM_2,#0x22
 	mov	dpl,#0x46
-	lcall	_spi
-;	main.c:173: spi(0x47, 0x55);
-	mov	_spi_PARM_2,#0x55
+	lcall	_spi_write
+;	main.c:177: spi_write(0x47, 0x55);
+	mov	_spi_write_PARM_2,#0x55
 	mov	dpl,#0x47
-	lcall	_spi
-;	main.c:174: spi(0x4c, 0x33);
-	mov	_spi_PARM_2,#0x33
+	lcall	_spi_write
+;	main.c:178: spi_write(0x4c, 0x33);
+	mov	_spi_write_PARM_2,#0x33
 	mov	dpl,#0x4C
-	lcall	_spi
-;	main.c:175: spi(0x4d, 0x66);
-	mov	_spi_PARM_2,#0x66
+	lcall	_spi_write
+;	main.c:179: spi_write(0x4d, 0x66);
+	mov	_spi_write_PARM_2,#0x66
 	mov	dpl,#0x4D
-	lcall	_spi
-;	main.c:176: spi(0x4e, 0x11);
-	mov	_spi_PARM_2,#0x11
+	lcall	_spi_write
+;	main.c:180: spi_write(0x4e, 0x11);
+	mov	_spi_write_PARM_2,#0x11
 	mov	dpl,#0x4E
-	lcall	_spi
-;	main.c:177: spi(0x4f, 0x44);
-	mov	_spi_PARM_2,#0x44
+	lcall	_spi_write
+;	main.c:181: spi_write(0x4f, 0x44);
+	mov	_spi_write_PARM_2,#0x44
 	mov	dpl,#0x4F
-	lcall	_spi
-;	main.c:178: spi(0x50, 0x22);
-	mov	_spi_PARM_2,#0x22
+	lcall	_spi_write
+;	main.c:182: spi_write(0x50, 0x22);
+	mov	_spi_write_PARM_2,#0x22
 	mov	dpl,#0x50
-	lcall	_spi
-;	main.c:179: spi(0x51, 0x55);
-	mov	_spi_PARM_2,#0x55
+	lcall	_spi_write
+;	main.c:183: spi_write(0x51, 0x55);
+	mov	_spi_write_PARM_2,#0x55
 	mov	dpl,#0x51
-	lcall	_spi
-;	main.c:180: spi(0x56, 0x11);
-	mov	_spi_PARM_2,#0x11
+	lcall	_spi_write
+;	main.c:184: spi_write(0x56, 0x11);
+	mov	_spi_write_PARM_2,#0x11
 	mov	dpl,#0x56
-	lcall	_spi
-;	main.c:181: spi(0x58, 0x44);
-	mov	_spi_PARM_2,#0x44
+	lcall	_spi_write
+;	main.c:185: spi_write(0x58, 0x44);
+	mov	_spi_write_PARM_2,#0x44
 	mov	dpl,#0x58
-	lcall	_spi
-;	main.c:182: spi(0x59, 0x22);
-	mov	_spi_PARM_2,#0x22
+	lcall	_spi_write
+;	main.c:186: spi_write(0x59, 0x22);
+	mov	_spi_write_PARM_2,#0x22
 	mov	dpl,#0x59
-	lcall	_spi
-;	main.c:183: spi(0x5a, 0x55);
-	mov	_spi_PARM_2,#0x55
+	lcall	_spi_write
+;	main.c:187: spi_write(0x5a, 0x55);
+	mov	_spi_write_PARM_2,#0x55
 	mov	dpl,#0x5A
-	lcall	_spi
-;	main.c:184: spi(0x5b, 0x33);
-	mov	_spi_PARM_2,#0x33
+	lcall	_spi_write
+;	main.c:188: spi_write(0x5b, 0x33);
+	mov	_spi_write_PARM_2,#0x33
 	mov	dpl,#0x5B
-	lcall	_spi
-;	main.c:185: spi(0x5c, 0x66);
-	mov	_spi_PARM_2,#0x66
+	lcall	_spi_write
+;	main.c:189: spi_write(0x5c, 0x66);
+	mov	_spi_write_PARM_2,#0x66
 	mov	dpl,#0x5C
-	lcall	_spi
-;	main.c:186: spi(0x61, 0x11);
-	mov	_spi_PARM_2,#0x11
+	lcall	_spi_write
+;	main.c:190: spi_write(0x61, 0x11);
+	mov	_spi_write_PARM_2,#0x11
 	mov	dpl,#0x61
-	lcall	_spi
-;	main.c:187: spi(0x62, 0x44);
-	mov	_spi_PARM_2,#0x44
+	lcall	_spi_write
+;	main.c:191: spi_write(0x62, 0x44);
+	mov	_spi_write_PARM_2,#0x44
 	mov	dpl,#0x62
-	lcall	_spi
-;	main.c:188: spi(0x63, 0x22);
-	mov	_spi_PARM_2,#0x22
+	lcall	_spi_write
+;	main.c:192: spi_write(0x63, 0x22);
+	mov	_spi_write_PARM_2,#0x22
 	mov	dpl,#0x63
-	lcall	_spi
-;	main.c:189: spi(0x64, 0x55);
-	mov	_spi_PARM_2,#0x55
+	lcall	_spi_write
+;	main.c:193: spi_write(0x64, 0x55);
+	mov	_spi_write_PARM_2,#0x55
 	mov	dpl,#0x64
-	lcall	_spi
-;	main.c:190: spi(0x65, 0x33);
-	mov	_spi_PARM_2,#0x33
+	lcall	_spi_write
+;	main.c:194: spi_write(0x65, 0x33);
+	mov	_spi_write_PARM_2,#0x33
 	mov	dpl,#0x65
-	lcall	_spi
-;	main.c:191: spi(0x66, 0x66);
-	mov	_spi_PARM_2,#0x66
+	lcall	_spi_write
+;	main.c:195: spi_write(0x66, 0x66);
+	mov	_spi_write_PARM_2,#0x66
 	mov	dpl,#0x66
-	lcall	_spi
-;	main.c:192: spi(0x70, 0xa5);
-	mov	_spi_PARM_2,#0xA5
+	lcall	_spi_write
+;	main.c:196: spi_write(0x70, 0xa5);
+	mov	_spi_write_PARM_2,#0xA5
 	mov	dpl,#0x70
-	lcall	_spi
-;	main.c:193: spi(0xfe, 0x05);
-	mov	_spi_PARM_2,#0x05
+	lcall	_spi_write
+;	main.c:197: spi_write(0xfe, 0x05);
+	mov	_spi_write_PARM_2,#0x05
 	mov	dpl,#0xFE
-	lcall	_spi
-;	main.c:194: spi(0x05, 0x08);
-	mov	_spi_PARM_2,#0x08
+	lcall	_spi_write
+;	main.c:198: spi_write(0x05, 0x08);
+	mov	_spi_write_PARM_2,#0x08
 	mov	dpl,#0x05
-	lcall	_spi
-;	main.c:195: spi(0xfe, 0x0a);
-	mov	_spi_PARM_2,#0x0A
+	lcall	_spi_write
+;	main.c:199: spi_write(0xfe, 0x0a);
+	mov	_spi_write_PARM_2,#0x0A
 	mov	dpl,#0xFE
-	lcall	_spi
-;	main.c:196: spi(0x29, 0x10);
-	mov	_spi_PARM_2,#0x10
+	lcall	_spi_write
+;	main.c:200: spi_write(0x29, 0x10);
+	mov	_spi_write_PARM_2,#0x10
 	mov	dpl,#0x29
-	lcall	_spi
-;	main.c:197: spi(0xfe, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:201: spi_write(0xfe, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0xFE
-	lcall	_spi
-;	main.c:198: spi(0x35, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:202: spi_write(0x35, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x35
-	lcall	_spi
-;	main.c:199: spi(0x11, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:203: spi_write(0x11, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x11
-	lcall	_spi
-;	main.c:200: spi(0x36, 0x40);
-	mov	_spi_PARM_2,#0x40
+	lcall	_spi_write
+;	main.c:204: spi_write(0x36, 0x40);
+	mov	_spi_write_PARM_2,#0x40
 	mov	dpl,#0x36
-	lcall	_spi
-;	main.c:201: spi(0x29, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:205: spi_write(0x29, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x29
-	ljmp	_spi
+	ljmp	_spi_write
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'init_1'
 ;------------------------------------------------------------
-;	main.c:204: void init_1(void)
+;	main.c:208: void init_1(void)
 ;	-----------------------------------------
 ;	 function init_1
 ;	-----------------------------------------
 _init_1:
-;	main.c:207: spi(0xfe, 0x01);
-	mov	_spi_PARM_2,#0x01
+;	main.c:211: spi_write(0xfe, 0x01);
+	mov	_spi_write_PARM_2,#0x01
 	mov	dpl,#0xFE
-	lcall	_spi
-;	main.c:208: spi(0x05, 0x40);
-	mov	_spi_PARM_2,#0x40
+	lcall	_spi_write
+;	main.c:212: spi_write(0x05, 0x40);
+	mov	_spi_write_PARM_2,#0x40
 	mov	dpl,#0x05
-	lcall	_spi
-;	main.c:209: spi(0x06, 0x55);
-	mov	_spi_PARM_2,#0x55
+	lcall	_spi_write
+;	main.c:213: spi_write(0x06, 0x55);
+	mov	_spi_write_PARM_2,#0x55
 	mov	dpl,#0x06
-	lcall	_spi
-;	main.c:210: spi(0x10, 0x71);
-	mov	_spi_PARM_2,#0x71
+	lcall	_spi_write
+;	main.c:214: spi_write(0x10, 0x71);
+	mov	_spi_write_PARM_2,#0x71
 	mov	dpl,#0x10
-	lcall	_spi
-;	main.c:211: spi(0x0e, 0x80);
-	mov	_spi_PARM_2,#0x80
+	lcall	_spi_write
+;	main.c:215: spi_write(0x0e, 0x80);
+	mov	_spi_write_PARM_2,#0x80
 	mov	dpl,#0x0E
-	lcall	_spi
-;	main.c:212: spi(0x19, 0x55);
-	mov	_spi_PARM_2,#0x55
+	lcall	_spi_write
+;	main.c:216: spi_write(0x19, 0x55);
+	mov	_spi_write_PARM_2,#0x55
 	mov	dpl,#0x19
-	lcall	_spi
-;	main.c:213: spi(0x18, 0x88);
-	mov	_spi_PARM_2,#0x88
+	lcall	_spi_write
+;	main.c:217: spi_write(0x18, 0x88);
+	mov	_spi_write_PARM_2,#0x88
 	mov	dpl,#0x18
-	lcall	_spi
-;	main.c:214: spi(0x1a, 0x10);
-	mov	_spi_PARM_2,#0x10
+	lcall	_spi_write
+;	main.c:218: spi_write(0x1a, 0x10);
+	mov	_spi_write_PARM_2,#0x10
 	mov	dpl,#0x1A
-	lcall	_spi
-;	main.c:215: spi(0x1c, 0x77);
-	mov	_spi_PARM_2,#0x77
+	lcall	_spi_write
+;	main.c:219: spi_write(0x1c, 0x77);
+	mov	_spi_write_PARM_2,#0x77
 	mov	dpl,#0x1C
-	lcall	_spi
-;	main.c:216: spi(0x23, 0x21);
-	mov	_spi_PARM_2,#0x21
+	lcall	_spi_write
+;	main.c:220: spi_write(0x23, 0x21);
+	mov	_spi_write_PARM_2,#0x21
 	mov	dpl,#0x23
-	lcall	_spi
-;	main.c:217: spi(0x21, 0x40);
-	mov	_spi_PARM_2,#0x40
+	lcall	_spi_write
+;	main.c:221: spi_write(0x21, 0x40);
+	mov	_spi_write_PARM_2,#0x40
 	mov	dpl,#0x21
-	lcall	_spi
-;	main.c:218: spi(0x22, 0xb7);
-	mov	_spi_PARM_2,#0xB7
+	lcall	_spi_write
+;	main.c:222: spi_write(0x22, 0xb7);
+	mov	_spi_write_PARM_2,#0xB7
 	mov	dpl,#0x22
-	lcall	_spi
-;	main.c:219: spi(0x25, 0x05);
-	mov	_spi_PARM_2,#0x05
+	lcall	_spi_write
+;	main.c:223: spi_write(0x25, 0x05);
+	mov	_spi_write_PARM_2,#0x05
 	mov	dpl,#0x25
-	lcall	_spi
-;	main.c:220: spi(0x26, 0xfc);
-	mov	_spi_PARM_2,#0xFC
+	lcall	_spi_write
+;	main.c:224: spi_write(0x26, 0xfc);
+	mov	_spi_write_PARM_2,#0xFC
 	mov	dpl,#0x26
-	lcall	_spi
-;	main.c:221: spi(0x70, 0xff);
-	mov	_spi_PARM_2,#0xFF
+	lcall	_spi_write
+;	main.c:225: spi_write(0x70, 0xff);
+	mov	_spi_write_PARM_2,#0xFF
 	mov	dpl,#0x70
-	lcall	_spi
-;	main.c:224: spi(0xfe, 0x04);
-	mov	_spi_PARM_2,#0x04
+	lcall	_spi_write
+;	main.c:228: spi_write(0xfe, 0x04);
+	mov	_spi_write_PARM_2,#0x04
 	mov	dpl,#0xFE
-	lcall	_spi
-;	main.c:225: spi(0x5d, 0x10);
-	mov	_spi_PARM_2,#0x10
+	lcall	_spi_write
+;	main.c:229: spi_write(0x5d, 0x10);
+	mov	_spi_write_PARM_2,#0x10
 	mov	dpl,#0x5D
-	lcall	_spi
-;	main.c:226: spi(0x5a, 0xff);
-	mov	_spi_PARM_2,#0xFF
+	lcall	_spi_write
+;	main.c:230: spi_write(0x5a, 0xff);
+	mov	_spi_write_PARM_2,#0xFF
 	mov	dpl,#0x5A
-	lcall	_spi
-;	main.c:229: spi(0xfe, 0x04);
-	mov	_spi_PARM_2,#0x04
+	lcall	_spi_write
+;	main.c:233: spi_write(0xfe, 0x04);
+	mov	_spi_write_PARM_2,#0x04
 	mov	dpl,#0xFE
-	lcall	_spi
-;	main.c:230: spi(0x00, 0xcc);
-	mov	_spi_PARM_2,#0xCC
+	lcall	_spi_write
+;	main.c:234: spi_write(0x00, 0xcc);
+	mov	_spi_write_PARM_2,#0xCC
 	mov	dpl,#0x00
-	lcall	_spi
-;	main.c:231: spi(0x01, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:235: spi_write(0x01, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x01
-	lcall	_spi
-;	main.c:232: spi(0x02, 0x02);
-	mov	_spi_PARM_2,#0x02
+	lcall	_spi_write
+;	main.c:236: spi_write(0x02, 0x02);
+	mov	_spi_write_PARM_2,#0x02
 	mov	dpl,#0x02
-	lcall	_spi
-;	main.c:233: spi(0x03, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:237: spi_write(0x03, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x03
-	lcall	_spi
-;	main.c:234: spi(0x04, 0xa8);
-	mov	_spi_PARM_2,#0xA8
+	lcall	_spi_write
+;	main.c:238: spi_write(0x04, 0xa8);
+	mov	_spi_write_PARM_2,#0xA8
 	mov	dpl,#0x04
-	lcall	_spi
-;	main.c:235: spi(0x05, 0x01);
-	mov	_spi_PARM_2,#0x01
+	lcall	_spi_write
+;	main.c:239: spi_write(0x05, 0x01);
+	mov	_spi_write_PARM_2,#0x01
 	mov	dpl,#0x05
-	lcall	_spi
-;	main.c:236: spi(0x06, 0x8e);
-	mov	_spi_PARM_2,#0x8E
+	lcall	_spi_write
+;	main.c:240: spi_write(0x06, 0x8e);
+	mov	_spi_write_PARM_2,#0x8E
 	mov	dpl,#0x06
-	lcall	_spi
-;	main.c:237: spi(0x07, 0xfc);
-	mov	_spi_PARM_2,#0xFC
+	lcall	_spi_write
+;	main.c:241: spi_write(0x07, 0xfc);
+	mov	_spi_write_PARM_2,#0xFC
 	mov	dpl,#0x07
-	lcall	_spi
-;	main.c:238: spi(0x08, 0x02);
-	mov	_spi_PARM_2,#0x02
+	lcall	_spi_write
+;	main.c:242: spi_write(0x08, 0x02);
+	mov	_spi_write_PARM_2,#0x02
 	mov	dpl,#0x08
-	lcall	_spi
-;	main.c:241: spi(0xfe, 0x04);
-	mov	_spi_PARM_2,#0x04
+	lcall	_spi_write
+;	main.c:245: spi_write(0xfe, 0x04);
+	mov	_spi_write_PARM_2,#0x04
 	mov	dpl,#0xFE
-	lcall	_spi
-;	main.c:242: spi(0x09, 0xcc);
-	mov	_spi_PARM_2,#0xCC
+	lcall	_spi_write
+;	main.c:246: spi_write(0x09, 0xcc);
+	mov	_spi_write_PARM_2,#0xCC
 	mov	dpl,#0x09
-	lcall	_spi
-;	main.c:243: spi(0x0a, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:247: spi_write(0x0a, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x0A
-	lcall	_spi
-;	main.c:244: spi(0x0b, 0x04);
-	mov	_spi_PARM_2,#0x04
+	lcall	_spi_write
+;	main.c:248: spi_write(0x0b, 0x04);
+	mov	_spi_write_PARM_2,#0x04
 	mov	dpl,#0x0B
-	lcall	_spi
-;	main.c:245: spi(0x0c, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:249: spi_write(0x0c, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x0C
-	lcall	_spi
-;	main.c:246: spi(0x0d, 0x80);
-	mov	_spi_PARM_2,#0x80
+	lcall	_spi_write
+;	main.c:250: spi_write(0x0d, 0x80);
+	mov	_spi_write_PARM_2,#0x80
 	mov	dpl,#0x0D
-	lcall	_spi
-;	main.c:247: spi(0x0e, 0x02);
-	mov	_spi_PARM_2,#0x02
+	lcall	_spi_write
+;	main.c:251: spi_write(0x0e, 0x02);
+	mov	_spi_write_PARM_2,#0x02
 	mov	dpl,#0x0E
-	lcall	_spi
-;	main.c:248: spi(0x0f, 0x01);
-	mov	_spi_PARM_2,#0x01
+	lcall	_spi_write
+;	main.c:252: spi_write(0x0f, 0x01);
+	mov	_spi_write_PARM_2,#0x01
 	mov	dpl,#0x0F
-	lcall	_spi
-;	main.c:249: spi(0x10, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:253: spi_write(0x10, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x10
-	lcall	_spi
-;	main.c:250: spi(0x11, 0x02);
-	mov	_spi_PARM_2,#0x02
+	lcall	_spi_write
+;	main.c:254: spi_write(0x11, 0x02);
+	mov	_spi_write_PARM_2,#0x02
 	mov	dpl,#0x11
-	lcall	_spi
-;	main.c:253: spi(0xfe, 0x04);
-	mov	_spi_PARM_2,#0x04
+	lcall	_spi_write
+;	main.c:257: spi_write(0xfe, 0x04);
+	mov	_spi_write_PARM_2,#0x04
 	mov	dpl,#0xFE
-	lcall	_spi
-;	main.c:254: spi(0x12, 0x8c);
-	mov	_spi_PARM_2,#0x8C
+	lcall	_spi_write
+;	main.c:258: spi_write(0x12, 0x8c);
+	mov	_spi_write_PARM_2,#0x8C
 	mov	dpl,#0x12
-	lcall	_spi
-;	main.c:255: spi(0x13, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:259: spi_write(0x13, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x13
-	lcall	_spi
-;	main.c:256: spi(0x14, 0x02);
-	mov	_spi_PARM_2,#0x02
+	lcall	_spi_write
+;	main.c:260: spi_write(0x14, 0x02);
+	mov	_spi_write_PARM_2,#0x02
 	mov	dpl,#0x14
-	lcall	_spi
-;	main.c:257: spi(0x15, 0x01);
-	mov	_spi_PARM_2,#0x01
+	lcall	_spi_write
+;	main.c:261: spi_write(0x15, 0x01);
+	mov	_spi_write_PARM_2,#0x01
 	mov	dpl,#0x15
-	lcall	_spi
-;	main.c:258: spi(0x16, 0x08);
-	mov	_spi_PARM_2,#0x08
+	lcall	_spi_write
+;	main.c:262: spi_write(0x16, 0x08);
+	mov	_spi_write_PARM_2,#0x08
 	mov	dpl,#0x16
-	lcall	_spi
-;	main.c:259: spi(0x17, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:263: spi_write(0x17, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x17
-	lcall	_spi
-;	main.c:260: spi(0x18, 0x8e);
-	mov	_spi_PARM_2,#0x8E
+	lcall	_spi_write
+;	main.c:264: spi_write(0x18, 0x8e);
+	mov	_spi_write_PARM_2,#0x8E
 	mov	dpl,#0x18
-	lcall	_spi
-;	main.c:261: spi(0x19, 0x36);
-	mov	_spi_PARM_2,#0x36
+	lcall	_spi_write
+;	main.c:265: spi_write(0x19, 0x36);
+	mov	_spi_write_PARM_2,#0x36
 	mov	dpl,#0x19
-	lcall	_spi
-;	main.c:262: spi(0x1a, 0x02);
-	mov	_spi_PARM_2,#0x02
+	lcall	_spi_write
+;	main.c:266: spi_write(0x1a, 0x02);
+	mov	_spi_write_PARM_2,#0x02
 	mov	dpl,#0x1A
-	lcall	_spi
-;	main.c:265: spi(0xfe, 0x04);
-	mov	_spi_PARM_2,#0x04
+	lcall	_spi_write
+;	main.c:269: spi_write(0xfe, 0x04);
+	mov	_spi_write_PARM_2,#0x04
 	mov	dpl,#0xFE
-	lcall	_spi
-;	main.c:266: spi(0x1b, 0xcc);
-	mov	_spi_PARM_2,#0xCC
+	lcall	_spi_write
+;	main.c:270: spi_write(0x1b, 0xcc);
+	mov	_spi_write_PARM_2,#0xCC
 	mov	dpl,#0x1B
-	lcall	_spi
-;	main.c:267: spi(0x1c, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:271: spi_write(0x1c, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x1C
-	lcall	_spi
-;	main.c:268: spi(0x1d, 0x02);
-	mov	_spi_PARM_2,#0x02
+	lcall	_spi_write
+;	main.c:272: spi_write(0x1d, 0x02);
+	mov	_spi_write_PARM_2,#0x02
 	mov	dpl,#0x1D
-	lcall	_spi
-;	main.c:269: spi(0x1e, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:273: spi_write(0x1e, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x1E
-	lcall	_spi
-;	main.c:270: spi(0x1f, 0x08);
-	mov	_spi_PARM_2,#0x08
+	lcall	_spi_write
+;	main.c:274: spi_write(0x1f, 0x08);
+	mov	_spi_write_PARM_2,#0x08
 	mov	dpl,#0x1F
-	lcall	_spi
-;	main.c:271: spi(0x20, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:275: spi_write(0x20, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x20
-	lcall	_spi
-;	main.c:272: spi(0x21, 0x8e);
-	mov	_spi_PARM_2,#0x8E
+	lcall	_spi_write
+;	main.c:276: spi_write(0x21, 0x8e);
+	mov	_spi_write_PARM_2,#0x8E
 	mov	dpl,#0x21
-	lcall	_spi
-;	main.c:273: spi(0x22, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:277: spi_write(0x22, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x22
-	lcall	_spi
-;	main.c:274: spi(0x23, 0x02);
-	mov	_spi_PARM_2,#0x02
+	lcall	_spi_write
+;	main.c:278: spi_write(0x23, 0x02);
+	mov	_spi_write_PARM_2,#0x02
 	mov	dpl,#0x23
-	lcall	_spi
-;	main.c:277: spi(0xfe, 0x04);
-	mov	_spi_PARM_2,#0x04
+	lcall	_spi_write
+;	main.c:281: spi_write(0xfe, 0x04);
+	mov	_spi_write_PARM_2,#0x04
 	mov	dpl,#0xFE
-	lcall	_spi
-;	main.c:278: spi(0x24, 0xcc);
-	mov	_spi_PARM_2,#0xCC
+	lcall	_spi_write
+;	main.c:282: spi_write(0x24, 0xcc);
+	mov	_spi_write_PARM_2,#0xCC
 	mov	dpl,#0x24
-	lcall	_spi
-;	main.c:279: spi(0x25, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:283: spi_write(0x25, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x25
-	lcall	_spi
-;	main.c:280: spi(0x26, 0x02);
-	mov	_spi_PARM_2,#0x02
+	lcall	_spi_write
+;	main.c:284: spi_write(0x26, 0x02);
+	mov	_spi_write_PARM_2,#0x02
 	mov	dpl,#0x26
-	lcall	_spi
-;	main.c:281: spi(0x27, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:285: spi_write(0x27, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x27
-	lcall	_spi
-;	main.c:282: spi(0x28, 0x08);
-	mov	_spi_PARM_2,#0x08
+	lcall	_spi_write
+;	main.c:286: spi_write(0x28, 0x08);
+	mov	_spi_write_PARM_2,#0x08
 	mov	dpl,#0x28
-	lcall	_spi
-;	main.c:283: spi(0x29, 0x01);
-	mov	_spi_PARM_2,#0x01
+	lcall	_spi_write
+;	main.c:287: spi_write(0x29, 0x01);
+	mov	_spi_write_PARM_2,#0x01
 	mov	dpl,#0x29
-	lcall	_spi
-;	main.c:284: spi(0x2a, 0x8e);
-	mov	_spi_PARM_2,#0x8E
+	lcall	_spi_write
+;	main.c:288: spi_write(0x2a, 0x8e);
+	mov	_spi_write_PARM_2,#0x8E
 	mov	dpl,#0x2A
-	lcall	_spi
-;	main.c:285: spi(0x2b, 0x42);
-	mov	_spi_PARM_2,#0x42
+	lcall	_spi_write
+;	main.c:289: spi_write(0x2b, 0x42);
+	mov	_spi_write_PARM_2,#0x42
 	mov	dpl,#0x2B
-	lcall	_spi
-;	main.c:286: spi(0x2d, 0x02);
-	mov	_spi_PARM_2,#0x02
+	lcall	_spi_write
+;	main.c:290: spi_write(0x2d, 0x02);
+	mov	_spi_write_PARM_2,#0x02
 	mov	dpl,#0x2D
-	lcall	_spi
-;	main.c:289: spi(0xfe, 0x04);
-	mov	_spi_PARM_2,#0x04
+	lcall	_spi_write
+;	main.c:293: spi_write(0xfe, 0x04);
+	mov	_spi_write_PARM_2,#0x04
 	mov	dpl,#0xFE
-	lcall	_spi
-;	main.c:290: spi(0x2f, 0x8c);
-	mov	_spi_PARM_2,#0x8C
+	lcall	_spi_write
+;	main.c:294: spi_write(0x2f, 0x8c);
+	mov	_spi_write_PARM_2,#0x8C
 	mov	dpl,#0x2F
-	lcall	_spi
-;	main.c:291: spi(0x30, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:295: spi_write(0x30, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x30
-	lcall	_spi
-;	main.c:292: spi(0x31, 0x01);
-	mov	_spi_PARM_2,#0x01
+	lcall	_spi_write
+;	main.c:296: spi_write(0x31, 0x01);
+	mov	_spi_write_PARM_2,#0x01
 	mov	dpl,#0x31
-	lcall	_spi
-;	main.c:293: spi(0x32, 0x03);
-	mov	_spi_PARM_2,#0x03
+	lcall	_spi_write
+;	main.c:297: spi_write(0x32, 0x03);
+	mov	_spi_write_PARM_2,#0x03
 	mov	dpl,#0x32
-	lcall	_spi
-;	main.c:294: spi(0x33, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:298: spi_write(0x33, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x33
-	lcall	_spi
-;	main.c:295: spi(0x34, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:299: spi_write(0x34, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x34
-	lcall	_spi
-;	main.c:296: spi(0x35, 0x01);
-	mov	_spi_PARM_2,#0x01
+	lcall	_spi_write
+;	main.c:300: spi_write(0x35, 0x01);
+	mov	_spi_write_PARM_2,#0x01
 	mov	dpl,#0x35
-	lcall	_spi
-;	main.c:297: spi(0x36, 0x43);
-	mov	_spi_PARM_2,#0x43
+	lcall	_spi_write
+;	main.c:301: spi_write(0x36, 0x43);
+	mov	_spi_write_PARM_2,#0x43
 	mov	dpl,#0x36
-	lcall	_spi
-;	main.c:298: spi(0x37, 0x02);
-	mov	_spi_PARM_2,#0x02
+	lcall	_spi_write
+;	main.c:302: spi_write(0x37, 0x02);
+	mov	_spi_write_PARM_2,#0x02
 	mov	dpl,#0x37
-	lcall	_spi
-;	main.c:301: spi(0xfe, 0x04);
-	mov	_spi_PARM_2,#0x04
+	lcall	_spi_write
+;	main.c:305: spi_write(0xfe, 0x04);
+	mov	_spi_write_PARM_2,#0x04
 	mov	dpl,#0xFE
-	lcall	_spi
-;	main.c:302: spi(0x38, 0xcc);
-	mov	_spi_PARM_2,#0xCC
+	lcall	_spi_write
+;	main.c:306: spi_write(0x38, 0xcc);
+	mov	_spi_write_PARM_2,#0xCC
 	mov	dpl,#0x38
-	lcall	_spi
-;	main.c:303: spi(0x39, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:307: spi_write(0x39, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x39
-	lcall	_spi
-;	main.c:304: spi(0x3a, 0x02);
-	mov	_spi_PARM_2,#0x02
+	lcall	_spi_write
+;	main.c:308: spi_write(0x3a, 0x02);
+	mov	_spi_write_PARM_2,#0x02
 	mov	dpl,#0x3A
-	lcall	_spi
-;	main.c:305: spi(0x3b, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:309: spi_write(0x3b, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x3B
-	lcall	_spi
-;	main.c:306: spi(0x3d, 0x20);
-	mov	_spi_PARM_2,#0x20
+	lcall	_spi_write
+;	main.c:310: spi_write(0x3d, 0x20);
+	mov	_spi_write_PARM_2,#0x20
 	mov	dpl,#0x3D
-	lcall	_spi
-;	main.c:307: spi(0x3f, 0x01);
-	mov	_spi_PARM_2,#0x01
+	lcall	_spi_write
+;	main.c:311: spi_write(0x3f, 0x01);
+	mov	_spi_write_PARM_2,#0x01
 	mov	dpl,#0x3F
-	lcall	_spi
-;	main.c:308: spi(0x40, 0xa4);
-	mov	_spi_PARM_2,#0xA4
+	lcall	_spi_write
+;	main.c:312: spi_write(0x40, 0xa4);
+	mov	_spi_write_PARM_2,#0xA4
 	mov	dpl,#0x40
-	lcall	_spi
-;	main.c:309: spi(0x41, 0x57);
-	mov	_spi_PARM_2,#0x57
+	lcall	_spi_write
+;	main.c:313: spi_write(0x41, 0x57);
+	mov	_spi_write_PARM_2,#0x57
 	mov	dpl,#0x41
-	lcall	_spi
-;	main.c:310: spi(0x42, 0x02);
-	mov	_spi_PARM_2,#0x02
+	lcall	_spi_write
+;	main.c:314: spi_write(0x42, 0x02);
+	mov	_spi_write_PARM_2,#0x02
 	mov	dpl,#0x42
-	lcall	_spi
-;	main.c:313: spi(0xfe, 0x04);
-	mov	_spi_PARM_2,#0x04
+	lcall	_spi_write
+;	main.c:317: spi_write(0xfe, 0x04);
+	mov	_spi_write_PARM_2,#0x04
 	mov	dpl,#0xFE
-	lcall	_spi
-;	main.c:314: spi(0x43, 0xcc);
-	mov	_spi_PARM_2,#0xCC
+	lcall	_spi_write
+;	main.c:318: spi_write(0x43, 0xcc);
+	mov	_spi_write_PARM_2,#0xCC
 	mov	dpl,#0x43
-	lcall	_spi
-;	main.c:315: spi(0x44, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:319: spi_write(0x44, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x44
-	lcall	_spi
-;	main.c:316: spi(0x45, 0x04);
-	mov	_spi_PARM_2,#0x04
+	lcall	_spi_write
+;	main.c:320: spi_write(0x45, 0x04);
+	mov	_spi_write_PARM_2,#0x04
 	mov	dpl,#0x45
-	lcall	_spi
-;	main.c:317: spi(0x46, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:321: spi_write(0x46, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x46
-	lcall	_spi
-;	main.c:318: spi(0x47, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:322: spi_write(0x47, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x47
-	lcall	_spi
-;	main.c:319: spi(0x48, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:323: spi_write(0x48, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x48
-	lcall	_spi
-;	main.c:320: spi(0x49, 0x01);
-	mov	_spi_PARM_2,#0x01
+	lcall	_spi_write
+;	main.c:324: spi_write(0x49, 0x01);
+	mov	_spi_write_PARM_2,#0x01
 	mov	dpl,#0x49
-	lcall	_spi
-;	main.c:321: spi(0x4a, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:325: spi_write(0x4a, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x4A
-	lcall	_spi
-;	main.c:322: spi(0x4b, 0x02);
-	mov	_spi_PARM_2,#0x02
+	lcall	_spi_write
+;	main.c:326: spi_write(0x4b, 0x02);
+	mov	_spi_write_PARM_2,#0x02
 	mov	dpl,#0x4B
-	lcall	_spi
-;	main.c:325: spi(0xfe, 0x04);
-	mov	_spi_PARM_2,#0x04
+	lcall	_spi_write
+;	main.c:329: spi_write(0xfe, 0x04);
+	mov	_spi_write_PARM_2,#0x04
 	mov	dpl,#0xFE
-	lcall	_spi
-;	main.c:326: spi(0x4c, 0x88);
-	mov	_spi_PARM_2,#0x88
+	lcall	_spi_write
+;	main.c:330: spi_write(0x4c, 0x88);
+	mov	_spi_write_PARM_2,#0x88
 	mov	dpl,#0x4C
-	lcall	_spi
-;	main.c:327: spi(0x4d, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:331: spi_write(0x4d, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x4D
-	lcall	_spi
-;	main.c:328: spi(0x4e, 0x01);
-	mov	_spi_PARM_2,#0x01
+	lcall	_spi_write
+;	main.c:332: spi_write(0x4e, 0x01);
+	mov	_spi_write_PARM_2,#0x01
 	mov	dpl,#0x4E
-	lcall	_spi
-;	main.c:329: spi(0x4f, 0x08);
-	mov	_spi_PARM_2,#0x08
+	lcall	_spi_write
+;	main.c:333: spi_write(0x4f, 0x08);
+	mov	_spi_write_PARM_2,#0x08
 	mov	dpl,#0x4F
-	lcall	_spi
-;	main.c:330: spi(0x50, 0x01);
-	mov	_spi_PARM_2,#0x01
+	lcall	_spi_write
+;	main.c:334: spi_write(0x50, 0x01);
+	mov	_spi_write_PARM_2,#0x01
 	mov	dpl,#0x50
-	lcall	_spi
-;	main.c:331: spi(0x51, 0x8e);
-	mov	_spi_PARM_2,#0x8E
+	lcall	_spi_write
+;	main.c:335: spi_write(0x51, 0x8e);
+	mov	_spi_write_PARM_2,#0x8E
 	mov	dpl,#0x51
-	lcall	_spi
-;	main.c:332: spi(0x52, 0x36);
-	mov	_spi_PARM_2,#0x36
+	lcall	_spi_write
+;	main.c:336: spi_write(0x52, 0x36);
+	mov	_spi_write_PARM_2,#0x36
 	mov	dpl,#0x52
-	lcall	_spi
-;	main.c:335: spi(0xfe, 0x01);
-	mov	_spi_PARM_2,#0x01
+	lcall	_spi_write
+;	main.c:339: spi_write(0xfe, 0x01);
+	mov	_spi_write_PARM_2,#0x01
 	mov	dpl,#0xFE
-	lcall	_spi
-;	main.c:336: spi(0x3a, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:340: spi_write(0x3a, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x3A
-	lcall	_spi
-;	main.c:337: spi(0x3b, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:341: spi_write(0x3b, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x3B
-	lcall	_spi
-;	main.c:338: spi(0x3d, 0x10);
-	mov	_spi_PARM_2,#0x10
+	lcall	_spi_write
+;	main.c:342: spi_write(0x3d, 0x10);
+	mov	_spi_write_PARM_2,#0x10
 	mov	dpl,#0x3D
-	lcall	_spi
-;	main.c:339: spi(0x3f, 0x2f);
-	mov	_spi_PARM_2,#0x2F
+	lcall	_spi_write
+;	main.c:343: spi_write(0x3f, 0x2f);
+	mov	_spi_write_PARM_2,#0x2F
 	mov	dpl,#0x3F
-	lcall	_spi
-;	main.c:340: spi(0x40, 0x10);
-	mov	_spi_PARM_2,#0x10
+	lcall	_spi_write
+;	main.c:344: spi_write(0x40, 0x10);
+	mov	_spi_write_PARM_2,#0x10
 	mov	dpl,#0x40
-	lcall	_spi
-;	main.c:341: spi(0x41, 0x0a);
-	mov	_spi_PARM_2,#0x0A
+	lcall	_spi_write
+;	main.c:345: spi_write(0x41, 0x0a);
+	mov	_spi_write_PARM_2,#0x0A
 	mov	dpl,#0x41
-	lcall	_spi
-;	main.c:342: spi(0x37, 0x10);
-	mov	_spi_PARM_2,#0x10
+	lcall	_spi_write
+;	main.c:346: spi_write(0x37, 0x10);
+	mov	_spi_write_PARM_2,#0x10
 	mov	dpl,#0x37
-	lcall	_spi
-;	main.c:345: spi(0xfe, 0x04);
-	mov	_spi_PARM_2,#0x04
+	lcall	_spi_write
+;	main.c:349: spi_write(0xfe, 0x04);
+	mov	_spi_write_PARM_2,#0x04
 	mov	dpl,#0xFE
-	lcall	_spi
-;	main.c:346: spi(0x5e, 0x30);
-	mov	_spi_PARM_2,#0x30
+	lcall	_spi_write
+;	main.c:350: spi_write(0x5e, 0x30);
+	mov	_spi_write_PARM_2,#0x30
 	mov	dpl,#0x5E
-	lcall	_spi
-;	main.c:347: spi(0x5f, 0x32);
-	mov	_spi_PARM_2,#0x32
+	lcall	_spi_write
+;	main.c:351: spi_write(0x5f, 0x32);
+	mov	_spi_write_PARM_2,#0x32
 	mov	dpl,#0x5F
-	lcall	_spi
-;	main.c:348: spi(0x60, 0x84);
-	mov	_spi_PARM_2,#0x84
+	lcall	_spi_write
+;	main.c:352: spi_write(0x60, 0x84);
+	mov	_spi_write_PARM_2,#0x84
 	mov	dpl,#0x60
-	lcall	_spi
-;	main.c:349: spi(0x61, 0x76);
-	mov	_spi_PARM_2,#0x76
+	lcall	_spi_write
+;	main.c:353: spi_write(0x61, 0x76);
+	mov	_spi_write_PARM_2,#0x76
 	mov	dpl,#0x61
-	lcall	_spi
-;	main.c:350: spi(0x62, 0x51);
-	mov	_spi_PARM_2,#0x51
+	lcall	_spi_write
+;	main.c:354: spi_write(0x62, 0x51);
+	mov	_spi_write_PARM_2,#0x51
 	mov	dpl,#0x62
-	lcall	_spi
-;	main.c:353: spi(0xfe, 0x05);
-	mov	_spi_PARM_2,#0x05
+	lcall	_spi_write
+;	main.c:357: spi_write(0xfe, 0x05);
+	mov	_spi_write_PARM_2,#0x05
 	mov	dpl,#0xFE
-	lcall	_spi
-;	main.c:354: spi(0x05, 0x11);
-	mov	_spi_PARM_2,#0x11
+	lcall	_spi_write
+;	main.c:358: spi_write(0x05, 0x11);
+	mov	_spi_write_PARM_2,#0x11
 	mov	dpl,#0x05
-	lcall	_spi
-;	main.c:355: spi(0x2a, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:359: spi_write(0x2a, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x2A
-	lcall	_spi
-;	main.c:356: spi(0x91, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:360: spi_write(0x91, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x91
-	lcall	_spi
-;	main.c:359: spi(0xfe, 0x01);
-	mov	_spi_PARM_2,#0x01
+	lcall	_spi_write
+;	main.c:363: spi_write(0xfe, 0x01);
+	mov	_spi_write_PARM_2,#0x01
 	mov	dpl,#0xFE
-	lcall	_spi
-;	main.c:360: spi(0x42, 0x33);
-	mov	_spi_PARM_2,#0x33
+	lcall	_spi_write
+;	main.c:364: spi_write(0x42, 0x33);
+	mov	_spi_write_PARM_2,#0x33
 	mov	dpl,#0x42
-	lcall	_spi
-;	main.c:361: spi(0x43, 0x22);
-	mov	_spi_PARM_2,#0x22
+	lcall	_spi_write
+;	main.c:365: spi_write(0x43, 0x22);
+	mov	_spi_write_PARM_2,#0x22
 	mov	dpl,#0x43
-	lcall	_spi
-;	main.c:362: spi(0x44, 0x11);
-	mov	_spi_PARM_2,#0x11
+	lcall	_spi_write
+;	main.c:366: spi_write(0x44, 0x11);
+	mov	_spi_write_PARM_2,#0x11
 	mov	dpl,#0x44
-	lcall	_spi
-;	main.c:363: spi(0x45, 0x66);
-	mov	_spi_PARM_2,#0x66
+	lcall	_spi_write
+;	main.c:367: spi_write(0x45, 0x66);
+	mov	_spi_write_PARM_2,#0x66
 	mov	dpl,#0x45
-	lcall	_spi
-;	main.c:364: spi(0x46, 0x55);
-	mov	_spi_PARM_2,#0x55
+	lcall	_spi_write
+;	main.c:368: spi_write(0x46, 0x55);
+	mov	_spi_write_PARM_2,#0x55
 	mov	dpl,#0x46
-	lcall	_spi
-;	main.c:365: spi(0x47, 0x44);
-	mov	_spi_PARM_2,#0x44
+	lcall	_spi_write
+;	main.c:369: spi_write(0x47, 0x44);
+	mov	_spi_write_PARM_2,#0x44
 	mov	dpl,#0x47
-	lcall	_spi
-;	main.c:366: spi(0x4c, 0x33);
-	mov	_spi_PARM_2,#0x33
+	lcall	_spi_write
+;	main.c:370: spi_write(0x4c, 0x33);
+	mov	_spi_write_PARM_2,#0x33
 	mov	dpl,#0x4C
-	lcall	_spi
-;	main.c:367: spi(0x4d, 0x22);
-	mov	_spi_PARM_2,#0x22
+	lcall	_spi_write
+;	main.c:371: spi_write(0x4d, 0x22);
+	mov	_spi_write_PARM_2,#0x22
 	mov	dpl,#0x4D
-	lcall	_spi
-;	main.c:368: spi(0x4e, 0x11);
-	mov	_spi_PARM_2,#0x11
+	lcall	_spi_write
+;	main.c:372: spi_write(0x4e, 0x11);
+	mov	_spi_write_PARM_2,#0x11
 	mov	dpl,#0x4E
-	lcall	_spi
-;	main.c:369: spi(0x4f, 0x66);
-	mov	_spi_PARM_2,#0x66
+	lcall	_spi_write
+;	main.c:373: spi_write(0x4f, 0x66);
+	mov	_spi_write_PARM_2,#0x66
 	mov	dpl,#0x4F
-	lcall	_spi
-;	main.c:370: spi(0x50, 0x55);
-	mov	_spi_PARM_2,#0x55
+	lcall	_spi_write
+;	main.c:374: spi_write(0x50, 0x55);
+	mov	_spi_write_PARM_2,#0x55
 	mov	dpl,#0x50
-	lcall	_spi
-;	main.c:371: spi(0x51, 0x44);
-	mov	_spi_PARM_2,#0x44
+	lcall	_spi_write
+;	main.c:375: spi_write(0x51, 0x44);
+	mov	_spi_write_PARM_2,#0x44
 	mov	dpl,#0x51
-	lcall	_spi
-;	main.c:372: spi(0x56, 0x11);
-	mov	_spi_PARM_2,#0x11
+	lcall	_spi_write
+;	main.c:376: spi_write(0x56, 0x11);
+	mov	_spi_write_PARM_2,#0x11
 	mov	dpl,#0x56
-	lcall	_spi
-;	main.c:373: spi(0x58, 0x22);
-	mov	_spi_PARM_2,#0x22
+	lcall	_spi_write
+;	main.c:377: spi_write(0x58, 0x22);
+	mov	_spi_write_PARM_2,#0x22
 	mov	dpl,#0x58
-	lcall	_spi
-;	main.c:374: spi(0x59, 0x33);
-	mov	_spi_PARM_2,#0x33
+	lcall	_spi_write
+;	main.c:378: spi_write(0x59, 0x33);
+	mov	_spi_write_PARM_2,#0x33
 	mov	dpl,#0x59
-	lcall	_spi
-;	main.c:375: spi(0x5a, 0x44);
-	mov	_spi_PARM_2,#0x44
+	lcall	_spi_write
+;	main.c:379: spi_write(0x5a, 0x44);
+	mov	_spi_write_PARM_2,#0x44
 	mov	dpl,#0x5A
-	lcall	_spi
-;	main.c:376: spi(0x5b, 0x55);
-	mov	_spi_PARM_2,#0x55
+	lcall	_spi_write
+;	main.c:380: spi_write(0x5b, 0x55);
+	mov	_spi_write_PARM_2,#0x55
 	mov	dpl,#0x5B
-	lcall	_spi
-;	main.c:377: spi(0x5c, 0x66);
-	mov	_spi_PARM_2,#0x66
+	lcall	_spi_write
+;	main.c:381: spi_write(0x5c, 0x66);
+	mov	_spi_write_PARM_2,#0x66
 	mov	dpl,#0x5C
-	lcall	_spi
-;	main.c:378: spi(0x61, 0x11);
-	mov	_spi_PARM_2,#0x11
+	lcall	_spi_write
+;	main.c:382: spi_write(0x61, 0x11);
+	mov	_spi_write_PARM_2,#0x11
 	mov	dpl,#0x61
-	lcall	_spi
-;	main.c:379: spi(0x62, 0x22);
-	mov	_spi_PARM_2,#0x22
+	lcall	_spi_write
+;	main.c:383: spi_write(0x62, 0x22);
+	mov	_spi_write_PARM_2,#0x22
 	mov	dpl,#0x62
-	lcall	_spi
-;	main.c:380: spi(0x63, 0x33);
-	mov	_spi_PARM_2,#0x33
+	lcall	_spi_write
+;	main.c:384: spi_write(0x63, 0x33);
+	mov	_spi_write_PARM_2,#0x33
 	mov	dpl,#0x63
-	lcall	_spi
-;	main.c:381: spi(0x64, 0x44);
-	mov	_spi_PARM_2,#0x44
+	lcall	_spi_write
+;	main.c:385: spi_write(0x64, 0x44);
+	mov	_spi_write_PARM_2,#0x44
 	mov	dpl,#0x64
-	lcall	_spi
-;	main.c:382: spi(0x65, 0x55);
-	mov	_spi_PARM_2,#0x55
+	lcall	_spi_write
+;	main.c:386: spi_write(0x65, 0x55);
+	mov	_spi_write_PARM_2,#0x55
 	mov	dpl,#0x65
-	lcall	_spi
-;	main.c:383: spi(0x66, 0x66);
-	mov	_spi_PARM_2,#0x66
+	lcall	_spi_write
+;	main.c:387: spi_write(0x66, 0x66);
+	mov	_spi_write_PARM_2,#0x66
 	mov	dpl,#0x66
-	lcall	_spi
-;	main.c:386: spi(0xfe, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:390: spi_write(0xfe, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0xFE
-	lcall	_spi
-;	main.c:387: spi(0x35, 0x00);
-	mov	_spi_PARM_2,#0x00
+	lcall	_spi_write
+;	main.c:391: spi_write(0x35, 0x00);
+	mov	_spi_write_PARM_2,#0x00
 	mov	dpl,#0x35
-	lcall	_spi
-;	main.c:390: spi_cmd(0x11);
-	mov	dpl,#0x11
-	lcall	_spi_cmd
-;	main.c:391: delayms(150);
+	lcall	_spi_write
+;	main.c:394: spi_write_9bit(0, 0x11);
+	mov	_spi_write_9bit_PARM_2,#0x11
+	mov	dpl,#0x00
+	lcall	_spi_write_9bit
+;	main.c:395: delayms(150);
 	mov	dptr,#0x0096
 	lcall	_delayms
-;	main.c:394: spi_cmd(0x29);
-	mov	dpl,#0x29
-	ljmp	_spi_cmd
+;	main.c:398: spi_write_9bit(0, 0x29);
+	mov	_spi_write_9bit_PARM_2,#0x29
+	mov	dpl,#0x00
+	ljmp	_spi_write_9bit
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'color'
 ;------------------------------------------------------------
 ;x                         Allocated to registers r4 r5 
 ;y                         Allocated to registers r6 r7 
 ;------------------------------------------------------------
-;	main.c:397: void color(void)
+;	main.c:401: void color(void)
 ;	-----------------------------------------
 ;	 function color
 ;	-----------------------------------------
 _color:
-;	main.c:401: spi(0x51, 0x20);
-	mov	_spi_PARM_2,#0x20
+;	main.c:405: spi_write(0x51, 0x20);
+	mov	_spi_write_PARM_2,#0x20
 	mov	dpl,#0x51
-	lcall	_spi
-;	main.c:403: spi_cmd(0x2c);
-	mov	dpl,#0x2C
-	lcall	_spi_cmd
-;	main.c:404: for(y=0; y<272; y++){
+	lcall	_spi_write
+;	main.c:407: spi_write_9bit(0, 0x2c);
+	mov	_spi_write_9bit_PARM_2,#0x2C
+	mov	dpl,#0x00
+	lcall	_spi_write_9bit
+;	main.c:408: for(y=0; y<272; y++){
 	mov	r6,#0x00
 	mov	r7,#0x00
-;	main.c:405: for(x=0; x<340; x++){
+;	main.c:409: for(x=0; x<340; x++){
 00109$:
 	mov	r4,#0x00
 	mov	r5,#0x00
 00103$:
-;	main.c:406: spi_data(0xff);
-	mov	dpl,#0xFF
+;	main.c:410: spi_write_9bit(0, 0xff);
+	mov	_spi_write_9bit_PARM_2,#0xFF
+	mov	dpl,#0x00
 	push	ar7
 	push	ar6
 	push	ar5
 	push	ar4
-	lcall	_spi_data
-;	main.c:407: spi_data(0x00);
-	mov	dpl,#0x00
-	lcall	_spi_data
-;	main.c:408: spi_data(0x00);
-	mov	dpl,#0x00
-	lcall	_spi_data
+	lcall	_spi_write_9bit
 	pop	ar4
 	pop	ar5
 	pop	ar6
 	pop	ar7
-;	main.c:405: for(x=0; x<340; x++){
+;	main.c:411: spi_write_9bit(0, 0xff);
+	mov	_spi_write_9bit_PARM_2,#0xFF
+	mov	dpl,#0x00
+	push	ar7
+	push	ar6
+	push	ar5
+	push	ar4
+	lcall	_spi_write_9bit
+	pop	ar4
+	pop	ar5
+	pop	ar6
+	pop	ar7
+;	main.c:412: spi_write_9bit(0, 0xff);
+	mov	_spi_write_9bit_PARM_2,#0xFF
+	mov	dpl,#0x00
+	push	ar7
+	push	ar6
+	push	ar5
+	push	ar4
+	lcall	_spi_write_9bit
+	pop	ar4
+	pop	ar5
+	pop	ar6
+	pop	ar7
+;	main.c:409: for(x=0; x<340; x++){
 	inc	r4
 	cjne	r4,#0x00,00120$
 	inc	r5
@@ -1998,7 +2051,7 @@ _color:
 	mov	a,r5
 	subb	a,#0x01
 	jc	00103$
-;	main.c:404: for(y=0; y<272; y++){
+;	main.c:408: for(y=0; y<272; y++){
 	inc	r6
 	cjne	r6,#0x00,00122$
 	inc	r7
@@ -2013,59 +2066,59 @@ _color:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'gpio_init'
 ;------------------------------------------------------------
-;	main.c:413: void gpio_init(void)
+;	main.c:417: void gpio_init(void)
 ;	-----------------------------------------
 ;	 function gpio_init
 ;	-----------------------------------------
 _gpio_init:
-;	main.c:415: P0M0 = 0x00;
+;	main.c:419: P0M0 = 0x00;
 	mov	_P0M0,#0x00
-;	main.c:416: P0M1 = 0x00;
+;	main.c:420: P0M1 = 0x00;
 	mov	_P0M1,#0x00
-;	main.c:417: P1M0 = 0x00;
+;	main.c:421: P1M0 = 0x00;
 	mov	_P1M0,#0x00
-;	main.c:418: P1M1 = 0x00;
+;	main.c:422: P1M1 = 0x00;
 	mov	_P1M1,#0x00
-;	main.c:419: P2M0 = 0x00;
+;	main.c:423: P2M0 = 0x00;
 	mov	_P2M0,#0x00
-;	main.c:420: P2M1 = 0x00;
+;	main.c:424: P2M1 = 0x00;
 	mov	_P2M1,#0x00
-;	main.c:421: P3M0 = 0x00;
+;	main.c:425: P3M0 = 0x00;
 	mov	_P3M0,#0x00
-;	main.c:422: P3M1 = 0x00;
+;	main.c:426: P3M1 = 0x00;
 	mov	_P3M1,#0x00
-;	main.c:423: P4M0 = 0x00;
+;	main.c:427: P4M0 = 0x00;
 	mov	_P4M0,#0x00
-;	main.c:424: P4M1 = 0x00;
+;	main.c:428: P4M1 = 0x00;
 	mov	_P4M1,#0x00
-;	main.c:425: P5M0 = 0x00;
+;	main.c:429: P5M0 = 0x00;
 	mov	_P5M0,#0x00
-;	main.c:426: P5M1 = 0x00;
+;	main.c:430: P5M1 = 0x00;
 	mov	_P5M1,#0x00
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'uart_init'
 ;------------------------------------------------------------
-;	main.c:429: void uart_init(void)		//9600bps@11.0592MHz
+;	main.c:433: void uart_init(void)		//9600bps@11.0592MHz
 ;	-----------------------------------------
 ;	 function uart_init
 ;	-----------------------------------------
 _uart_init:
-;	main.c:431: SCON = 0x50;		//8bit and variable baudrate
+;	main.c:435: SCON = 0x50;		//8bit and variable baudrate
 	mov	_SCON,#0x50
-;	main.c:432: AUXR |= 0x40;		//Timer1's clock is Fosc (1T)
+;	main.c:436: AUXR |= 0x40;		//Timer1's clock is Fosc (1T)
 	orl	_AUXR,#0x40
-;	main.c:433: AUXR &= 0xFE;		//Use Timer1 as baudrate generator
+;	main.c:437: AUXR &= 0xFE;		//Use Timer1 as baudrate generator
 	anl	_AUXR,#0xFE
-;	main.c:434: TMOD &= 0x0F;		//Set Timer1 as 16-bit auto reload mode
+;	main.c:438: TMOD &= 0x0F;		//Set Timer1 as 16-bit auto reload mode
 	anl	_TMOD,#0x0F
-;	main.c:435: TL1 = 0xE0;		//Initial timer value
+;	main.c:439: TL1 = 0xE0;		//Initial timer value
 	mov	_TL1,#0xE0
-;	main.c:436: TH1 = 0xFE;		//Initial timer value
+;	main.c:440: TH1 = 0xFE;		//Initial timer value
 	mov	_TH1,#0xFE
-;	main.c:437: ET1 = 0;		//Disable Timer1 interrupt
+;	main.c:441: ET1 = 0;		//Disable Timer1 interrupt
 	clr	_ET1
-;	main.c:438: TR1 = 1;		//Timer1 running
+;	main.c:442: TR1 = 1;		//Timer1 running
 	setb	_TR1
 	ret
 ;------------------------------------------------------------
@@ -2073,15 +2126,15 @@ _uart_init:
 ;------------------------------------------------------------
 ;val                       Allocated to registers 
 ;------------------------------------------------------------
-;	main.c:441: void uart_send(unsigned char val)
+;	main.c:445: void uart_send(unsigned char val)
 ;	-----------------------------------------
 ;	 function uart_send
 ;	-----------------------------------------
 _uart_send:
 	mov	_SBUF,dpl
-;	main.c:444: while (TI == 0); //判斷TI是否等於1(傳送完畢), 否則停在此行
+;	main.c:448: while (TI == 0); //判斷TI是否等於1(傳送完畢), 否則停在此行
 00101$:
-;	main.c:445: TI = 0;          //清除串列傳送完畢旗號
+;	main.c:449: TI = 0;          //清除串列傳送完畢旗號
 	jbc	_TI,00112$
 	sjmp	00101$
 00112$:
@@ -2089,64 +2142,66 @@ _uart_send:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'main'
 ;------------------------------------------------------------
-;ret                       Allocated to registers 
+;ret                       Allocated to registers r6 r7 
 ;------------------------------------------------------------
-;	main.c:448: void main(void)
+;	main.c:452: void main(void)
 ;	-----------------------------------------
 ;	 function main
 ;	-----------------------------------------
 _main:
-;	main.c:452: gpio_init();
+;	main.c:456: gpio_init();
 	lcall	_gpio_init
-;	main.c:453: uart_init();
+;	main.c:457: uart_init();
 	lcall	_uart_init
-;	main.c:454: AUXR|= 0x80;
+;	main.c:458: AUXR|= 0x80;
 	orl	_AUXR,#0x80
-;	main.c:456: reset();
+;	main.c:460: reset();
 	lcall	_reset
-;	main.c:460: delayms(3000);
+;	main.c:461: init_1();
+	lcall	_init_1
+;	main.c:462: color();
+	lcall	_color
+;	main.c:464: delayms(3000);
 	mov	dptr,#0x0BB8
 	lcall	_delayms
-;	main.c:461: uart_send(0xaa);
-	mov	dpl,#0xAA
-	lcall	_uart_send
-;	main.c:462: uart_send(0xbb);
-	mov	dpl,#0xBB
-	lcall	_uart_send
-;	main.c:463: uart_send(0xcc);
-	mov	dpl,#0xCC
-	lcall	_uart_send
-;	main.c:465: CSX = 0;
-	clr	_P42
-;	main.c:466: spi_raw_write(0x20);
-	mov	dpl,#0x20
-	lcall	_spi_raw_write
-;	main.c:467: spi_raw_write(0x00);
+;	main.c:465: spi_write_9bit(0, 0x51);
+	mov	_spi_write_9bit_PARM_2,#0x51
 	mov	dpl,#0x00
-	lcall	_spi_raw_write
-;	main.c:468: spi_raw_write(0x00);
+	lcall	_spi_write_9bit
+;	main.c:466: spi_write_9bit(1, 0xaa);
+	mov	_spi_write_9bit_PARM_2,#0xAA
+	mov	dpl,#0x01
+	lcall	_spi_write_9bit
+;	main.c:468: spi_write_9bit(0, 0x52);
+	mov	_spi_write_9bit_PARM_2,#0x52
 	mov	dpl,#0x00
-	lcall	_spi_raw_write
-;	main.c:469: spi_raw_write(0x00);
-	mov	dpl,#0x00
-	lcall	_spi_raw_write
-;	main.c:470: spi_raw_write(0xc0);
-	mov	dpl,#0xC0
-	lcall	_spi_raw_write
-;	main.c:471: ret = spi_raw_read();
+	lcall	_spi_write_9bit
+;	main.c:469: ret = spi_raw_read();
 	lcall	_spi_raw_read
+	mov	r6,dpl
+	mov	r7,dph
+;	main.c:470: uart_send(ret >> 8);
+	mov	dpl,r7
+	push	ar7
+	push	ar6
+	lcall	_uart_send
+	pop	ar6
+	pop	ar7
+;	main.c:471: uart_send(ret);
+	mov	dpl,r6
+	lcall	_uart_send
 ;	main.c:472: CSX = 1;
 	setb	_P42
-;	main.c:473: while(1){
+;	main.c:474: while(1){
 00102$:
-;	main.c:474: P55 = 0;
+;	main.c:475: P55 = 0;
 	clr	_P55
-;	main.c:475: delayms(1000);
+;	main.c:476: delayms(1000);
 	mov	dptr,#0x03E8
 	lcall	_delayms
-;	main.c:476: P55 = 1;
+;	main.c:477: P55 = 1;
 	setb	_P55
-;	main.c:477: delayms(1000);
+;	main.c:478: delayms(1000);
 	mov	dptr,#0x03E8
 	lcall	_delayms
 	sjmp	00102$
